@@ -1,4 +1,57 @@
 .intro-content {
-	display: flex;
-	justify-content: center;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.intro-message {
+	display: grid;
+	grid-row-gap: 40px;
+}
+
+.intro-image > img{
+	width: 100%;
+}
+
+.intro-points {
+	padding: 0;	
+}
+
+.intro-points > li{
+	list-style: none;
+	line-height: 0.8;
+	margin-bottom: 15px;
+}
+
+.intro-points > li::before {
+	color: #1dbd70;
+	content: ' • ';
+	font-size: 24px;
+	vertical-align: text-bottom;
+}
+
+
+
+main {
+	padding: 120px 120px 0 120px;
+}
+
+.content-break {
+	text-align: center;
+}
+
+.cta-section {
+	background: url(../../images/cta_image.jpg) no-repeat;
+	background-size: cover;
+	height: 300px;
+	padding-top: 100px;
+	text-align: center;
+}
+.cta-text {
+	color: #fff !important;
+}
+
+.footer-section {
+	text-align: center;
+	background-color: #e3eaf0;
+	padding: 20px 0;
 }

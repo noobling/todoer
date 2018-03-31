@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="246" height="368" viewBox="0 0 246 368">
+<defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #bdc4d1;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 3px;
+        stroke-dasharray: 6 12;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="Ellipse_8_copy" data-name="Ellipse 8 copy" class="cls-1" d="M245.171,0.582C116.077,120.8,41.552,261.506.637,367.768"/>
+</svg>
