@@ -1,0 +1,40 @@
+
+.btn, .btn-lg {
+	text-align: center;
+	font-weight: 500;
+	border-radius: 4px;
+	text-decoration: none;
+}
+
+.btn {
+	padding: 10px 20px;	
+	font-size: 18px;		
+}
+
+.btn-lg {
+	padding: 20px 40px;
+	font-size: 32px;
+}
+
+.btn:hover, .btn-lg {
+	transition: all 0.5s ease 0s;	
+}
+
+.btn-primary:hover {
+	background-color: #00aeff;
+}
+
+.btn-secondary:hover {
+	background-color: #1894ff;
+	color: #fff !important;
+}
+
+.btn-primary {
+	background-color:#1894ff;
+	color: #fff;
+}
+
+.btn-secondary {
+	border: 2px solid #1894ff;
+	color: #1894ff !important;
+}
