@@ -5,17 +5,50 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">		
 	<title>Todoer | Sign Up</title>
+	<link href="https://fonts.googleapis.com/css?family=Quicksand:400,500" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700" rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/base/layout.css">
+	<link rel="stylesheet" href="assets/css/modules/navbar.css">
+	<link rel="stylesheet" href="assets/css/components/buttons.css">
+	<link rel="stylesheet" href="assets/css/pages/signup.css">
+	<link rel="stylesheet" href="assets/css/components/text.css">
+	<link rel="stylesheet" href="assets/css/components/forms.css">
+	<link rel="stylesheet" href="assets/css/modules/footer.css">
+	
 </head>
 <body>
+		<nav>
+				<a href="/" class="nav-logo"><img src="assets/images/logo.jpg" class="nav-logo" alt="Todoer"></a>
+				<ul class="nav-links">
+					<li>
+						<a href="" class="nav-link">About</a>
+					</li>
+					<li>
+						<a href="" class="nav-link">How to Use</a>
+					</li>
+					<li>
+						<a href="" class="nav-link">The Team</a>
+					</li>
+					<li>
+						<a href="signup.html" class="btn btn-secondary nav-link">Sign Up Free</a>
+					</li>
+				</ul>
+			</nav>
+	
 	<main>
 		<section>
-			<form class="signup-form" action="/dashboard">
-				<input type="email" name="email" placeholder="Email" required>
-				<input type="text" name="name" placeholder="Name" required>
-				<input type="password" name="password" required>
-				<button type="submit" class="btn btn-primary">Continue</button>
+			<form class="signup-form material-border" action="dashboard.html">
+				<img src="assets/images/logo.jpg" alt="Todoer" class="form-logo">
+				<input class="form-input" type="email" name="email" placeholder="Email" required>
+				<input class="form-input" type="text" name="name" placeholder="Name" required>
+				<input class="form-input" type="password" name="Password" placeholder="password" required>
+				<button type="submit" class="btn btn-primary form-button">Continue</button>
 			</form>
 		</section>
 	</main>
+
+	<footer class="footer-section">
+			<h3 class="footer-text">Todoer ©</h3>
+	</footer>
 </body>
 </html>

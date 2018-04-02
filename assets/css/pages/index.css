@@ -29,12 +29,6 @@
 	vertical-align: text-bottom;
 }
 
-
-
-main {
-	padding: 120px 120px 0 120px;
-}
-
 .content-break {
 	text-align: center;
 }
@@ -48,10 +42,4 @@ main {
 }
 .cta-text {
 	color: #fff !important;
-}
-
-.footer-section {
-	text-align: center;
-	background-color: #e3eaf0;
-	padding: 20px 0;
 }
