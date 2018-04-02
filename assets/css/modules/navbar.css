@@ -44,3 +44,11 @@ nav {
 .nav-link:hover::after {
 	width: 100%;
 }
+
+.nav-dropdown {
+	float: right;
+}
+
+.nav-dropdown > .nav-link::after {
+	border: none;
+}

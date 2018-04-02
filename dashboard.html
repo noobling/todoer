@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="assets/css/pages/dashboard.css">
 		<link rel="stylesheet" href="assets/css/components/text.css">
 		<link rel="stylesheet" href="assets/css/modules/footer.css">
+		<link rel="stylesheet" href="assets/css/components/dropdown.css">
 
 		<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
 	</head>
@@ -31,10 +32,16 @@
 					<a href="" class="nav-link">The Team</a>
 				</li>
 				<li>
-					<div class="nav-link dropdown">
-						<button class="dropbtn"><i class><i class="fas fa-caret-down"></i></i></button>
-					</div>
+					<div class="nav-dropdown">
+							<a href="#" id="dropbtn" class="nav-link"><i class="fas fa-caret-down"></i></button>
+						
+							<div id="dropdown-list" class="dropdown-content">
+									<a href="">Profile</a>
+									<a href="">Sign Out</a>
+							</div>
+					</div>				
 				</li>
+				
 			</ul>
 		</nav>
 
@@ -45,5 +52,7 @@
 		<footer class="footer-section">
 			<h3 class="footer-text">Todoer ©</h3>
 		</footer>
+
+		<script src="assets/js/dashboard.js"></script>		
 	</body>
 </html>
