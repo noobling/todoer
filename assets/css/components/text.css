@@ -5,3 +5,8 @@
 	letter-spacing: 1px;
 	line-height: 1.2;
 }
+
+.heading-sm {
+	font-size: 28px;
+	font-weight: 700;
+}
