@@ -5,7 +5,7 @@ body {
   display: flex;
   flex-direction: column;
 }
-main {
+main, nav {
   flex: 1 0 auto;
 }
 footer {

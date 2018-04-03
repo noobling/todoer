@@ -1,6 +1,6 @@
-document.getElementById('submit').addEventListener('click', function(event) {	
+document.getElementById('submit').addEventListener('click', function() {	
 	saveFormData();
-})
+});
 
 function saveFormData() {
 	localStorage.email = document.getElementsByName('email')[0].value;
