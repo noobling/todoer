@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Complete tasks together - Todo List Sharing | Todoer</title>
+	<link href="https://fonts.googleapis.com/css?family=Quicksand:400,500" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700" rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/base/layout.css">
+	<link rel="stylesheet" href="assets/css/modules/navbar.css">
+	<link rel="stylesheet" href="assets/css/components/buttons.css">
+	<link rel="stylesheet" href="assets/css/components/text.css">
+	<link rel="stylesheet" href="assets/css/modules/footer.css">
+	<link rel="stylesheet" href="assets/css/components/dropdown.css">
+	<link rel="stylesheet" href="assets/css/hacks/sticky-footer.css">
+	<link rel="stylesheet" href="assets/css/components/tags.css">
+	<link rel="stylesheet" href="assets/css/components/cards.css">
+
+	<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+	 crossorigin="anonymous"></script>
+
+	<style>
+		.content {
+			display: grid;
+			grid-template-columns: 1fr 2fr 1fr;
+		}
+
+		.todo-item {
+			display: grid;
+			grid-template-columns: 4fr 1fr;
+		}
+
+		.time {
+			color: red;
+		}
+
+		.low-priority::before,
+		.medium-priority::before,
+		.high-priority::before {
+			content: ' • ';
+			font-size: 32px;
+			vertical-align: text-bottom;
+		}
+
+		.low-priority::before {
+			color: #1dbd70;
+		}
+
+		.high-priority::before {
+			color: red;
+		}
+
+		.medium-priority::before {
+			color: #f6682f;
+		}
+
+		.page-heading {
+			display: flex;
+			justify-content: space-between;
+		}
+	</style>
+</head>
+
+<body>
+	<nav>
+		<a href="/" class="nav-logo">
+			<img src="assets/images/logo.jpg" class="nav-logo" alt="Todoer">
+		</a>
+		<ul class="nav-links">
+			<li>
+				<a href="" class="nav-link">About</a>
+			</li>
+			<li>
+				<a href="" class="nav-link">How to Use</a>
+			</li>
+			<li>
+				<a href="" class="nav-link">The Team</a>
+			</li>
+			<li>
+				<div class="nav-dropdown">
+					<a href="#" id="dropbtn" class="nav-link">
+						<i class="fas fa-caret-down"></i>
+						</button>
+
+						<div id="dropdown-list" class="dropdown-content">
+							<a href="">Profile</a>
+							<a href="">Sign Out</a>
+						</div>
+				</div>
+			</li>
+
+		</ul>
+	</nav>
+
+	<main>
+		<section class="content">
+			<div></div>
+			<div class="">
+				<div class="page-heading">
+					<h2 class="heading mt-0">Project Name Todo List</h2>
+					<i class="fas fa-plus font-lg mt-1 clickable"></i>
+				</div>
+
+				<div class="todo-item card-horizontal mb-2 clickable">
+					<div>
+						<h3 class="heading-sm m0 mb-1 low-priority">Todo list item name</h3>
+						<p>David • Jack • Emily</p>
+						<ul class="tags">
+							<li>
+								<a href="#" class="tag">HTML</a>
+							</li>
+							<li>
+								<a href="#" class="tag">CSS</a>
+							</li>
+							<li>
+								<a href="#" class="tag">JavaScript</a>
+							</li>
+						</ul>
+					</div>
+					<div>
+						<span class="time-remaining">
+							<span class="time">3 DAYS</span>
+							LEFT
+						</span>
+					</div>
+				</div>
+			</div>
+			<div></div>
+		</section>
+	</main>
+
+	<footer class="footer-section">
+		<h3 class="footer-text">Todoer ©</h3>
+	</footer>
+
+	<script src="assets/js/navbar.js"></script>
+</body>
+
+</html>

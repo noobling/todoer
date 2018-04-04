@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="assets/css/components/text.css">
 	<link rel="stylesheet" href="assets/css/components/forms.css">
 	<link rel="stylesheet" href="assets/css/modules/footer.css">
+	<link rel="stylesheet" href="assets/css/hacks/date_placeholder.css">
 	
 </head>
 <body>
@@ -39,11 +40,21 @@
 		<section>
 			<form id="form" class="signup-form material-border" action="dashboard.html">
 				<img src="assets/images/logo.jpg" alt="Todoer" class="form-logo mb-1">
-				<h2 class="heading-sm mt-0 mb-2">Sign Up</h2>
-				<input class="form-input" type="email" name="email" placeholder="Email" required>
-				<input class="form-input" type="text" name="name" placeholder="Name" required>
-				<input class="form-input" type="password" name="Password" placeholder="password" required>
-				<button id="submit" type="submit" class="btn btn-primary form-button">Continue</button>
+				<h2 class="heading-sm mt-0 mb-2">Add a Todo for CITS 3403 Webiste</h2>
+				<input class="form-input" type="text" name="text" placeholder="Todo Heading" required>
+				<textarea class="form-input" name="description" rows="5" placeholder="Description"></textarea>
+				<input class="form-input" type="text" name="tags" placeholder="Tags: press enter to seperate tags" required>
+				<div class="d-flex-between">
+						<input class="form-input" type="date" placeholder="Due Date: ">
+					
+						<select class="form-input" name="priority" required>
+								<option value="">Priority</option>
+								<option value="low">Low</option>
+								<option value="medium">Medium</option>
+								<option value="high">High</option>
+						</select>
+				</div>
+				<button id="submit" type="submit" class="btn btn-primary form-button">Continue</button>				
 			</form>
 		</section>
 	</main>

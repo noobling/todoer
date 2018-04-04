@@ -60,3 +60,21 @@ main {
 .mr-2 {
 	margin-right: 2rem;
 }
+
+.font-lg {
+	font-size: 32px;
+}
+
+.clickable:hover {
+	cursor: pointer;
+	opacity: 0.5;
+}
+
+.clickable {
+	transition: 0.5s all;
+}
+
+.d-flex-between {
+	display: flex;
+	justify-content: space-between;
+}
