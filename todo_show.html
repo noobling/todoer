@@ -15,7 +15,8 @@
 	<link rel="stylesheet" href="assets/css/components/forms.css">
 	<link rel="stylesheet" href="assets/css/modules/footer.css">
 	<link rel="stylesheet" href="assets/css/hacks/date_placeholder.css">
-	
+	<link rel="stylesheet" href="assets/css/vendor/tags-input.css">
+
 </head>
 <body>
 		<nav>
@@ -43,7 +44,7 @@
 				<h2 class="heading-sm mt-0 mb-2">Add a Todo for CITS 3403 Webiste</h2>
 				<input class="form-input" type="text" name="text" placeholder="Todo Heading" required>
 				<textarea class="form-input" name="description" rows="5" placeholder="Description"></textarea>
-				<input class="form-input" type="text" name="tags" placeholder="Tags: press enter to seperate tags" required>
+				<input class="form-input" type="tags" name="tags" placeholder="Tags: press enter to seperate tags" required>
 				<div class="d-flex-between">
 						<input class="form-input" type="date" placeholder="Due Date: ">
 					
@@ -54,6 +55,7 @@
 								<option value="high">High</option>
 						</select>
 				</div>
+
 				<button id="submit" type="submit" class="btn btn-primary form-button">Continue</button>				
 			</form>
 		</section>
@@ -63,8 +65,11 @@
 			<h3 class="footer-text">Todoer ©</h3>
 	</footer>
 
+	<!-- External library -->
+	<script src="assets/js/vendor/tags-input.js"></script>
+	<!-- End external library -->
+	<script src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
 	<script src="assets/js/navbar.js"></script>
-	<script src="assets/js/signup.js"></script>	
 </body>
 
 </html>
