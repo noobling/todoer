@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <style>
-    #view-source {
+    #cta-button {
       position: fixed;
       display: block;
       right: 0;
@@ -24,54 +24,80 @@
       z-index: 900;
 		}
 					
-			.demo-ribbon {
+			.about-ribbon {
 				width: 100%;
 				height: 40vh;
 				background-color: #3F51B5;
 				flex-shrink: 0;
 			}
 
-			.demo-main {
+			.about-main {
 				margin-top: -35vh;
 				flex-shrink: 0;
 			}
 
-			.demo-header .mdl-layout__header-row {
+			.about-header .mdl-layout__header-row {
 				padding-left: 40px;
 			}
 
-			.demo-container {
+			.about-container {
 				max-width: 1600px;
 				width: calc(100% - 16px);
 				margin: 0 auto;
 			}
 
-			.demo-content {
+			.about-content {
 				border-radius: 2px;
 				padding: 80px 56px;
 				margin-bottom: 80px;
 			}
 
-			.demo-layout.is-small-screen .demo-content {
+			.about-layout.is-small-screen .about-content {
 				padding: 40px 28px;
 			}
 
-			.demo-content h3 {
+			.about-content h3 {
 				margin-top: 48px;
 			}
 
-			.demo-footer {
+			.about-footer {
 				padding-left: 40px;
 			}
 
-			.demo-footer .mdl-mini-footer--link-list a {
+			.about-footer .mdl-mini-footer--link-list a {
 				font-size: 13px;
+			}
+
+			.about-list-item {
+				position: fixed;
+				display: block;
+				left: 0;
+				bottom: 0;
+				margin-left: 40px;
+				margin-bottom: 40px;
+				z-index: 900;
+				border-left: 5px solid #3F51B5;
+			}
+			.blockquote {
+				background: #f9f9f9;
+				border-left: 10px solid #ccc;
+				margin: 1.5em 10px;
+				padding: 0.5em 10px;
+				quotes: "\201C""\201D""\2018""\2019";
+			}
+			.blockquote:before {
+				color: #ccc;
+				content: open-quote;
+				font-size: 4em;
+				line-height: 0.1em;
+				margin-right: 0.25em;
+				vertical-align: -0.4em;
 			}
     </style>
   </head>
   <body>
-    <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
-      <header class="demo-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
+    <div class="about-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+      <header class="about-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
         <div class="mdl-layout__header-row">
           <span class="mdl-layout-title">Todoer</span>
           <div class="mdl-layout-spacer"></div>
@@ -86,51 +112,77 @@
           </div>
         </div>
       </header>
-      <div class="demo-ribbon"></div>
-      <main class="demo-main mdl-layout__content">
-        <div class="demo-container mdl-grid">
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
-          <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+      <div class="about-ribbon"></div>
+      <main class="about-main mdl-layout__content">
+        <div class="about-container mdl-grid">
+          <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone">
+						<ul class="about-list-item mdl-list">
+							<li class="mdl-list__item">
+								<a href="#about-info" class="mdl-list__item-primary-content">
+									Info on about page
+								</a>
+							</li>
+							<li class="mdl-list__item">
+								<a href="#details" class="mdl-list__item-primary-content">
+									Details
+								</a>
+							</li>
+							<li class="mdl-list__item">
+								<a href="#references" class="mdl-list__item-primary-content">
+									References
+								</a>
+							</li>
+							<li class="mdl-list__item">
+								<a href="#extra-effort" class="mdl-list__item-primary-content">
+									Extra Effort
+								</a>
+							</li>
+						</ul>
+					</div>
+          <div class="about-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
 						<h1>About page</h1>
-						<p>The intention of this page is to satisfy this point "The website should have at least three pages/sections: one promoting the theme (and explaining how and why the matching is done); one collecting user data and preferences; and one giving your details and the references you used." And to also gain marks from this point "1% bonus mark is set aside for a separate page that demonstrates your effort in learning these libraries."</p>
-            <h3>How to install MDL</h3>
+						<p>
+							The intention of this page is to satisfy this point
+						</p>
+						<p class="blockquote">
+							The website should have at least three pages/sections: one promoting the theme (and explaining how and why the matching is
+							done); one collecting user data and preferences; and one giving your details and the references you used.
+						</p>
+						And to also gain marks from this point
+						<p class="blockquote">
+							1% bonus mark is set aside for a separate page that demonstrates your effort in learning these libraries.
+						</p>
+						<p>
+							This page mainly uses two frameworks/libraries https://getmdl.io and https://vuejs.org/ the reason why I have chosen these
+							is because I see that they have a lot of potential and so I would like to learn more about this tools.
+						</p>
+            <h3>Details</h3>
               <p>
-                Cillum dolor esse sit incididunt velit eiusmod magna ad nostrud officia aute dolor dolor. Magna esse ullamco pariatur adipisicing consectetur eu commodo officia. Ex cillum consequat mollit minim elit est deserunt occaecat nisi amet. Quis aliqua nostrud Lorem occaecat sunt. Eiusmod quis amet ullamco aliquip dolore ut incididunt duis adipisicing. Elit consequat nisi eiusmod aute ipsum sunt veniam do est. Occaecat mollit aliquip ut proident consectetur amet ex dolore consectetur aliqua elit.
-              </p>
-              <p>
-                Commodo nisi non consectetur voluptate incididunt mollit duis dolore amet amet tempor exercitation. Qui amet aute ea aute id ad aliquip proident. Irure duis qui labore deserunt enim in quis nisi sint consequat aliqua. Ex proident labore et laborum tempor fugiat sint magna veniam minim. Nulla dolor labore adipisicing in enim mollit laboris fugiat eu. Aliquip minim cillum ullamco voluptate non dolore non ex duis fugiat duis ad. Deserunt cillum ad et nisi amet non voluptate culpa qui do. Labore ullamco et minim proident est laborum mollit ad labore deserunt ut irure dolore. Reprehenderit ad ad irure ut irure qui est eu velit eu excepteur adipisicing culpa. Laborum cupidatat ullamco eu duis anim reprehenderit proident aute ad consectetur eiusmod.
-              </p>
-              <p>
-                Tempor tempor aliqua in commodo cillum Lorem magna dolore proident Lorem. Esse ad consequat est excepteur irure eu irure quis aliqua qui. Do mollit esse veniam excepteur ut veniam anim minim dolore sit commodo consequat duis commodo. Sunt dolor reprehenderit ipsum minim eiusmod eu consectetur anim excepteur eiusmod. Duis excepteur anim dolor sit enim veniam deserunt anim adipisicing Lorem elit. Cillum sunt do consequat elit laboris nisi consectetur.
-              </p>
-            <h3>Basic MDL Usage</h3>
-              <p>
-                Cillum dolor esse sit incididunt velit eiusmod magna ad nostrud officia aute dolor dolor. Magna esse ullamco pariatur adipisicing consectetur eu commodo officia. Ex cillum consequat mollit minim elit est deserunt occaecat nisi amet. Quis aliqua nostrud Lorem occaecat sunt. Eiusmod quis amet ullamco aliquip dolore ut incididunt duis adipisicing. Elit consequat nisi eiusmod aute ipsum sunt veniam do est. Occaecat mollit aliquip ut proident consectetur amet ex dolore consectetur aliqua elit.
-              </p>
-              <p>
-                Commodo nisi non consectetur voluptate incididunt mollit duis dolore amet amet tempor exercitation. Qui amet aute ea aute id ad aliquip proident. Irure duis qui labore deserunt enim in quis nisi sint consequat aliqua. Ex proident labore et laborum tempor fugiat sint magna veniam minim. Nulla dolor labore adipisicing in enim mollit laboris fugiat eu. Aliquip minim cillum ullamco voluptate non dolore non ex duis fugiat duis ad. Deserunt cillum ad et nisi amet non voluptate culpa qui do. Labore ullamco et minim proident est laborum mollit ad labore deserunt ut irure dolore. Reprehenderit ad ad irure ut irure qui est eu velit eu excepteur adipisicing culpa. Laborum cupidatat ullamco eu duis anim reprehenderit proident aute ad consectetur eiusmod.
-              </p>
-              <p>
-                Cillum dolor esse sit incididunt velit eiusmod magna ad nostrud officia aute dolor dolor. Magna esse ullamco pariatur adipisicing consectetur eu commodo officia. Ex cillum consequat mollit minim elit est deserunt occaecat nisi amet. Quis aliqua nostrud Lorem occaecat sunt. Eiusmod quis amet ullamco aliquip dolore ut incididunt duis adipisicing. Elit consequat nisi eiusmod aute ipsum sunt veniam do est. Occaecat mollit aliquip ut proident consectetur amet ex dolore consectetur aliqua elit.
-              </p>
-              <p>
-                Commodo nisi non consectetur voluptate incididunt mollit duis dolore amet amet tempor exercitation. Qui amet aute ea aute id ad aliquip proident. Irure duis qui labore deserunt enim in quis nisi sint consequat aliqua. Ex proident labore et laborum tempor fugiat sint magna veniam minim. Nulla dolor labore adipisicing in enim mollit laboris fugiat eu. Aliquip minim cillum ullamco voluptate non dolore non ex duis fugiat duis ad. Deserunt cillum ad et nisi amet non voluptate culpa qui do. Labore ullamco et minim proident est laborum mollit ad labore deserunt ut irure dolore. Reprehenderit ad ad irure ut irure qui est eu velit eu excepteur adipisicing culpa. Laborum cupidatat ullamco eu duis anim reprehenderit proident aute ad consectetur eiusmod.
-              </p>
-              <p>
-                Cillum dolor esse sit incididunt velit eiusmod magna ad nostrud officia aute dolor dolor. Magna esse ullamco pariatur adipisicing consectetur eu commodo officia. Ex cillum consequat mollit minim elit est deserunt occaecat nisi amet. Quis aliqua nostrud Lorem occaecat sunt. Eiusmod quis amet ullamco aliquip dolore ut incididunt duis adipisicing. Elit consequat nisi eiusmod aute ipsum sunt veniam do est. Occaecat mollit aliquip ut proident consectetur amet ex dolore consectetur aliqua elit.
-              </p>
-              <p>
-                Commodo nisi non consectetur voluptate incididunt mollit duis dolore amet amet tempor exercitation. Qui amet aute ea aute id ad aliquip proident. Irure duis qui labore deserunt enim in quis nisi sint consequat aliqua. Ex proident labore et laborum tempor fugiat sint magna veniam minim. Nulla dolor labore adipisicing in enim mollit laboris fugiat eu. Aliquip minim cillum ullamco voluptate non dolore non ex duis fugiat duis ad. Deserunt cillum ad et nisi amet non voluptate culpa qui do. Labore ullamco et minim proident est laborum mollit ad labore deserunt ut irure dolore. Reprehenderit ad ad irure ut irure qui est eu velit eu excepteur adipisicing culpa. Laborum cupidatat ullamco eu duis anim reprehenderit proident aute ad consectetur eiusmod.
-              </p>
-              <p>
-                Cillum dolor esse sit incididunt velit eiusmod magna ad nostrud officia aute dolor dolor. Magna esse ullamco pariatur adipisicing consectetur eu commodo officia. Ex cillum consequat mollit minim elit est deserunt occaecat nisi amet. Quis aliqua nostrud Lorem occaecat sunt. Eiusmod quis amet ullamco aliquip dolore ut incididunt duis adipisicing. Elit consequat nisi eiusmod aute ipsum sunt veniam do est. Occaecat mollit aliquip ut proident consectetur amet ex dolore consectetur aliqua elit.
-              </p>
-              <p>
-                Commodo nisi non consectetur voluptate incididunt mollit duis dolore amet amet tempor exercitation. Qui amet aute ea aute id ad aliquip proident. Irure duis qui labore deserunt enim in quis nisi sint consequat aliqua. Ex proident labore et laborum tempor fugiat sint magna veniam minim. Nulla dolor labore adipisicing in enim mollit laboris fugiat eu. Aliquip minim cillum ullamco voluptate non dolore non ex duis fugiat duis ad. Deserunt cillum ad et nisi amet non voluptate culpa qui do. Labore ullamco et minim proident est laborum mollit ad labore deserunt ut irure dolore. Reprehenderit ad ad irure ut irure qui est eu velit eu excepteur adipisicing culpa. Laborum cupidatat ullamco eu duis anim reprehenderit proident aute ad consectetur eiusmod.
-              </p>
+								David Yu (21711933) submitted on 9/04/2018
+							</p>
+						<h3>References</h3>
+							<p>
+								All code not written by me will include a comment at the top of the file noting what changes I have made to the original code and who wrote the original code.
+							</p>
+							<p>
+								I will reiterate once more in this page to make it clear what resources I used.
+							</p>
+							<ul>
+								<li>Idea for tag styling by
+									<a href="https://codepen.io/wbeeftink/" target="_blank">Wouter Beeftink</a>
+								</li>
+								<li>Original input tag
+									<a href="https://github.com/developit/tags-input" target="_blank">code</a>
+								</li>
+								<li>Logo courtesy of
+									<a href="http://www.wix.com" target="_blank">WIX</a>
+								</li>
+								<li>Website and design inspiration came from various websites e.g.
+									<a href=" https://taiga.io/" target="_blank">Taiga</a> and mocks from designers I have worked with.</li>
+							</ul>
           </div>
         </div>
-        <footer class="demo-footer mdl-mini-footer">
+        <footer class="about-footer mdl-mini-footer">
           <div class="mdl-mini-footer--left-section">
             <ul class="mdl-mini-footer--link-list">
               <li><a href="#">Help</a></li>
@@ -141,7 +193,7 @@
         </footer>
       </main>
     </div>
-    <a href="https://github.com/google/material-design-lite/blob/mdl-1.x/templates/article/" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">View Source</a>
+    <a href="index.html" target="_blank" id="cta-button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">Back to main page</a>
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   </body>
 </html>
