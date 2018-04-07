@@ -93,10 +93,23 @@
 				margin-right: 0.25em;
 				vertical-align: -0.4em;
 			}
+
+			.section-input {
+				width: 100%;
+			}
+
+			.clickable:hover {
+				cursor: pointer;
+				box-shadow: 0px 1px 6.9px 0.1px rgba(0, 0, 0, 0.4);				
+			}
+
+			.clickable {
+				transition: 0.5s all;
+			}
     </style>
   </head>
   <body>
-    <div class="about-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+    <div class="about-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100" id="app">
       <header class="about-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
         <div class="mdl-layout__header-row">
           <span class="mdl-layout-title">Todoer</span>
@@ -111,7 +124,7 @@
             </div>
           </div>
         </div>
-      </header>
+			</header>
       <div class="about-ribbon"></div>
       <main class="about-main mdl-layout__content">
         <div class="about-container mdl-grid">
@@ -141,45 +154,33 @@
 					</div>
           <div class="about-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
 						<h1>About page</h1>
-						<p>
-							The intention of this page is to satisfy this point
-						</p>
-						<p class="blockquote">
-							The website should have at least three pages/sections: one promoting the theme (and explaining how and why the matching is
-							done); one collecting user data and preferences; and one giving your details and the references you used.
-						</p>
-						And to also gain marks from this point
-						<p class="blockquote">
-							1% bonus mark is set aside for a separate page that demonstrates your effort in learning these libraries.
-						</p>
-						<p>
-							This page mainly uses two frameworks/libraries https://getmdl.io and https://vuejs.org/ the reason why I have chosen these
-							is because I see that they have a lot of potential and so I would like to learn more about this tools.
-						</p>
-            <h3>Details</h3>
-              <p>
-								David Yu (21711933) submitted on 9/04/2018
+							<div v-if="editing_sections.about">
+								<textarea class="section-input" v-model="about_section" rows=10></textarea>
+								<button @click="turnOffEditingFor('about')" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+									Update
+								</button>
+							</div>
+							<div v-else v-html="about_section" @click="turnOnEditingFor('about')" class="clickable"></div>
+								
+						<h3>Details</h3>
+							<div v-if="editing_sections.details">
+								<textarea class="section-input" rows= "3" v-model="details_section"></textarea>
+								<button @click="turnOffEditingFor('details')" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+									Update
+								</button>
+							</div>
+              <p v-else class="clickable" @click="turnOnEditingFor('details')">
+								{{ details_section }}
 							</p>
 						<h3>References</h3>
-							<p>
-								All code not written by me will include a comment at the top of the file noting what changes I have made to the original code and who wrote the original code.
-							</p>
-							<p>
-								I will reiterate once more in this page to make it clear what resources I used.
-							</p>
-							<ul>
-								<li>Idea for tag styling by
-									<a href="https://codepen.io/wbeeftink/" target="_blank">Wouter Beeftink</a>
-								</li>
-								<li>Original input tag
-									<a href="https://github.com/developit/tags-input" target="_blank">code</a>
-								</li>
-								<li>Logo courtesy of
-									<a href="http://www.wix.com" target="_blank">WIX</a>
-								</li>
-								<li>Website and design inspiration came from various websites e.g.
-									<a href=" https://taiga.io/" target="_blank">Taiga</a> and mocks from designers I have worked with.</li>
-							</ul>
+						<div v-if="editing_sections.references">
+								<textarea class="section-input" v-model="references_section" rows=10></textarea>
+								<button @click="turnOffEditingFor('references')" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+									Update
+								</button>
+							</div>
+							<div v-else v-html="references_section" @click="turnOnEditingFor('references')" class="clickable"></div>
+							
           </div>
         </div>
         <footer class="about-footer mdl-mini-footer">
@@ -194,6 +195,71 @@
       </main>
     </div>
     <a href="index.html" target="_blank" id="cta-button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">Back to main page</a>
-    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+		<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+		<!-- development version, includes helpful console warnings -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script>
+			var app = new Vue({
+				el: '#app',
+				data: {
+					message: 'hello world',
+					details_section: 'David Yu (21711933) submitted on 9/04/2018',
+					about_section:
+`<p>
+The intention of this page is to satisfy this point
+</p>
+<p class="blockquote">
+The website should have at least three pages/sections: one promoting the theme (and explaining how and why the matching is
+done); one collecting user data and preferences; and one giving your details and the references you used.
+</p>
+And to also gain marks from this point
+<p class="blockquote">
+1% bonus mark is set aside for a separate page that demonstrates your effort in learning these libraries.
+</p>
+<p>
+This page mainly uses two frameworks/libraries https://getmdl.io and https://vuejs.org/ the reason why I have chosen these
+is because I see that they have a lot of potential and so I would like to learn more about this tools.
+</p>
+<p>
+Click on any text part to see the magic of modern front end frameworks 🚀
+</p>
+`,
+					references_section:
+`<p>
+All code not written by me will include a comment at the top of the file noting what changes I have made to the original code and who wrote the original code.
+</p>
+<p>
+I will reiterate once more in this page to make it clear what resources I used.
+</p>
+<ul>
+<li>Idea for tag styling by
+<a href="https://codepen.io/wbeeftink/" target="_blank">Wouter Beeftink</a>
+</li>
+<li>Original input tag
+<a href="https://github.com/developit/tags-input" target="_blank">code</a>
+</li>
+<li>Logo courtesy of
+<a href="http://www.wix.com" target="_blank">WIX</a>
+</li>
+<li>Website and design inspiration came from various websites e.g.
+<a href=" https://taiga.io/" target="_blank">Taiga</a> and mocks from designers I have worked with.</li>
+</ul>
+`,
+					editing_sections: {
+						details: false,
+						references: false,
+						about: false
+					}
+				},
+				methods: {
+					turnOnEditingFor(section) {
+						this.editing_sections[section] = true;
+					},
+					turnOffEditingFor(section) {
+						this.editing_sections[section] = false;
+					}
+				}
+			})
+		</script>
   </body>
 </html>
