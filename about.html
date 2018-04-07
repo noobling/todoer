@@ -1,211 +1,220 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="The about page for Todoer">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>About page | Todoer</title>
 
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="The about page for Todoer">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	<title>About page | Todoer</title>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-    <style>
-    #cta-button {
-      position: fixed;
-      display: block;
-      right: 0;
-      bottom: 0;
-      margin-right: 40px;
-      margin-bottom: 40px;
-      z-index: 900;
+	<link rel="shortcut icon" href="assets/images/favicon.ico">
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+	<style>
+		#cta-button {
+			position: fixed;
+			display: block;
+			right: 0;
+			bottom: 0;
+			margin-right: 40px;
+			margin-bottom: 40px;
+			z-index: 900;
 		}
-					
-			.about-ribbon {
-				width: 100%;
-				height: 40vh;
-				background-color: #3F51B5;
-				flex-shrink: 0;
-			}
 
-			.about-main {
-				margin-top: -35vh;
-				flex-shrink: 0;
-			}
+		.about-ribbon {
+			width: 100%;
+			height: 40vh;
+			background-color: #3F51B5;
+			flex-shrink: 0;
+		}
 
-			.about-header .mdl-layout__header-row {
-				padding-left: 40px;
-			}
+		.about-main {
+			margin-top: -35vh;
+			flex-shrink: 0;
+		}
 
-			.about-container {
-				max-width: 1600px;
-				width: calc(100% - 16px);
-				margin: 0 auto;
-			}
+		.about-header .mdl-layout__header-row {
+			padding-left: 40px;
+		}
 
-			.about-content {
-				border-radius: 2px;
-				padding: 80px 56px;
-				margin-bottom: 80px;
-			}
+		.about-container {
+			max-width: 1600px;
+			width: calc(100% - 16px);
+			margin: 0 auto;
+		}
 
-			.about-layout.is-small-screen .about-content {
-				padding: 40px 28px;
-			}
+		.about-content {
+			border-radius: 2px;
+			padding: 80px 56px;
+			margin-bottom: 80px;
+		}
 
-			.about-content h3 {
-				margin-top: 48px;
-			}
+		.about-layout.is-small-screen .about-content {
+			padding: 40px 28px;
+		}
 
-			.about-footer {
-				padding-left: 40px;
-			}
+		.about-content h3 {
+			margin-top: 48px;
+		}
 
-			.about-footer .mdl-mini-footer--link-list a {
-				font-size: 13px;
-			}
+		.about-footer {
+			padding-left: 40px;
+		}
 
-			.about-list-item {
-				position: fixed;
-				display: block;
-				left: 0;
-				bottom: 0;
-				margin-left: 40px;
-				margin-bottom: 40px;
-				z-index: 900;
-				border-left: 5px solid #3F51B5;
-			}
-			.blockquote {
-				background: #f9f9f9;
-				border-left: 10px solid #ccc;
-				margin: 1.5em 10px;
-				padding: 0.5em 10px;
-				quotes: "\201C""\201D""\2018""\2019";
-			}
-			.blockquote:before {
-				color: #ccc;
-				content: open-quote;
-				font-size: 4em;
-				line-height: 0.1em;
-				margin-right: 0.25em;
-				vertical-align: -0.4em;
-			}
+		.about-footer .mdl-mini-footer--link-list a {
+			font-size: 13px;
+		}
 
-			.section-input {
-				width: 100%;
-			}
+		.about-list-item {
+			position: fixed;
+			display: block;
+			left: 0;
+			bottom: 0;
+			margin-left: 40px;
+			margin-bottom: 40px;
+			z-index: 900;
+			border-left: 5px solid #3F51B5;
+		}
 
-			.clickable:hover {
-				cursor: pointer;
-				box-shadow: 0px 1px 6.9px 0.1px rgba(0, 0, 0, 0.4);				
-			}
+		.blockquote {
+			background: #f9f9f9;
+			border-left: 10px solid #ccc;
+			margin: 1.5em 10px;
+			padding: 0.5em 10px;
+			quotes: "\201C""\201D""\2018""\2019";
+		}
 
-			.clickable {
-				transition: 0.5s all;
-			}
-    </style>
-  </head>
-  <body>
-    <div class="about-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100" id="app">
-      <header class="about-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
-        <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">Todoer</span>
-          <div class="mdl-layout-spacer"></div>
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-            <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
-              <i class="material-icons">search</i>
-            </label>
-            <div class="mdl-textfield__expandable-holder">
-              <input class="mdl-textfield__input" type="text" id="search">
-              <label class="mdl-textfield__label" for="search">Enter your query...</label>
-            </div>
-          </div>
-        </div>
-			</header>
-      <div class="about-ribbon"></div>
-      <main class="about-main mdl-layout__content">
-        <div class="about-container mdl-grid">
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone">
-						<ul class="about-list-item mdl-list">
-							<li class="mdl-list__item">
-								<a href="#about-info" class="mdl-list__item-primary-content">
-									Info on about page
-								</a>
-							</li>
-							<li class="mdl-list__item">
-								<a href="#details" class="mdl-list__item-primary-content">
-									Details
-								</a>
-							</li>
-							<li class="mdl-list__item">
-								<a href="#references" class="mdl-list__item-primary-content">
-									References
-								</a>
-							</li>
-							<li class="mdl-list__item">
-								<a href="#extra-effort" class="mdl-list__item-primary-content">
-									Extra Effort
-								</a>
-							</li>
-						</ul>
+		.blockquote:before {
+			color: #ccc;
+			content: open-quote;
+			font-size: 4em;
+			line-height: 0.1em;
+			margin-right: 0.25em;
+			vertical-align: -0.4em;
+		}
+
+		.section-input {
+			width: 100%;
+		}
+
+		.clickable:hover {
+			cursor: pointer;
+			box-shadow: 0px 1px 6.9px 0.1px rgba(0, 0, 0, 0.4);
+		}
+
+		.clickable {
+			transition: 0.5s all;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="about-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100" id="app">
+		<header class="about-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
+			<div class="mdl-layout__header-row">
+				<span class="mdl-layout-title">Todoer</span>
+				<div class="mdl-layout-spacer"></div>
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+					<label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+						<i class="material-icons">search</i>
+					</label>
+					<div class="mdl-textfield__expandable-holder">
+						<input class="mdl-textfield__input" type="text" id="search">
+						<label class="mdl-textfield__label" for="search">Enter your query...</label>
 					</div>
-          <div class="about-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
-						<h1>About page</h1>
-							<div v-if="editing_sections.about">
-								<textarea class="section-input" v-model="about_section" rows=10></textarea>
-								<button @click="turnOffEditingFor('about')" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-									Update
-								</button>
-							</div>
-							<div v-else v-html="about_section" @click="turnOnEditingFor('about')" class="clickable"></div>
-								
-						<h3>Details</h3>
-							<div v-if="editing_sections.details">
-								<textarea class="section-input" rows= "3" v-model="details_section"></textarea>
-								<button @click="turnOffEditingFor('details')" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-									Update
-								</button>
-							</div>
-              <p v-else class="clickable" @click="turnOnEditingFor('details')">
-								{{ details_section }}
-							</p>
-						<h3>References</h3>
-						<div v-if="editing_sections.references">
-								<textarea class="section-input" v-model="references_section" rows=10></textarea>
-								<button @click="turnOffEditingFor('references')" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-									Update
-								</button>
-							</div>
-							<div v-else v-html="references_section" @click="turnOnEditingFor('references')" class="clickable"></div>
-							
-          </div>
-        </div>
-        <footer class="about-footer mdl-mini-footer">
-          <div class="mdl-mini-footer--left-section">
-            <ul class="mdl-mini-footer--link-list">
-              <li><a href="#">Help</a></li>
-              <li><a href="#">Privacy and Terms</a></li>
-              <li><a href="#">User Agreement</a></li>
-            </ul>
-          </div>
-        </footer>
-      </main>
-    </div>
-    <a href="index.html" target="_blank" id="cta-button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">Back to main page</a>
-		<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-		<!-- development version, includes helpful console warnings -->
-		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-		<script>
-			var app = new Vue({
-				el: '#app',
-				data: {
-					message: 'hello world',
-					details_section: 'David Yu (21711933) submitted on 9/04/2018',
-					about_section:
-`<p>
+				</div>
+			</div>
+		</header>
+		<div class="about-ribbon"></div>
+		<main class="about-main mdl-layout__content">
+			<div class="about-container mdl-grid">
+				<div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone">
+					<ul class="about-list-item mdl-list">
+						<li class="mdl-list__item">
+							<a href="#about-info" class="mdl-list__item-primary-content">
+								Info on about page
+							</a>
+						</li>
+						<li class="mdl-list__item">
+							<a href="#details" class="mdl-list__item-primary-content">
+								Details
+							</a>
+						</li>
+						<li class="mdl-list__item">
+							<a href="#references" class="mdl-list__item-primary-content">
+								References
+							</a>
+						</li>
+						<li class="mdl-list__item">
+							<a href="#extra-effort" class="mdl-list__item-primary-content">
+								Extra Effort
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="about-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+					<h1>About page</h1>
+					<div v-if="editing_sections.about">
+						<textarea class="section-input" v-model="about_section" rows=10></textarea>
+						<button @click="turnOffEditingFor('about')" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+							Update
+						</button>
+					</div>
+					<div v-else v-html="about_section" @click="turnOnEditingFor('about')" class="clickable"></div>
+
+					<h3>Details</h3>
+					<div v-if="editing_sections.details">
+						<textarea class="section-input" rows="3" v-model="details_section"></textarea>
+						<button @click="turnOffEditingFor('details')" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+							Update
+						</button>
+					</div>
+					<p v-else class="clickable" @click="turnOnEditingFor('details')">
+						{{ details_section }}
+					</p>
+					<h3>References</h3>
+					<div v-if="editing_sections.references">
+						<textarea class="section-input" v-model="references_section" rows=10></textarea>
+						<button @click="turnOffEditingFor('references')" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+							Update
+						</button>
+					</div>
+					<div v-else v-html="references_section" @click="turnOnEditingFor('references')" class="clickable"></div>
+				</div>
+			</div>
+			<footer class="about-footer mdl-mini-footer">
+				<div class="mdl-mini-footer--left-section">
+					<ul class="mdl-mini-footer--link-list">
+						<li>
+							<a href="#">Help</a>
+						</li>
+						<li>
+							<a href="#">Privacy and Terms</a>
+						</li>
+						<li>
+							<a href="#">User Agreement</a>
+						</li>
+					</ul>
+				</div>
+			</footer>
+		</main>
+	</div>
+	<a href="index.html" target="_blank" id="cta-button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">Back to main page</a>
+	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+	<!-- development version, includes helpful console warnings -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				message: 'hello world',
+				details_section: 'David Yu (21711933) submitted on 9/04/2018',
+				about_section:
+					`<p>
 The intention of this page is to satisfy this point
 </p>
 <p class="blockquote">
@@ -224,8 +233,8 @@ is because I see that they have a lot of potential and so I would like to learn 
 Click on any text part to see the magic of modern front end frameworks 🚀
 </p>
 `,
-					references_section:
-`<p>
+				references_section:
+					`<p>
 All code not written by me will include a comment at the top of the file noting what changes I have made to the original code and who wrote the original code.
 </p>
 <p>
@@ -245,21 +254,22 @@ I will reiterate once more in this page to make it clear what resources I used.
 <a href=" https://taiga.io/" target="_blank">Taiga</a> and mocks from designers I have worked with.</li>
 </ul>
 `,
-					editing_sections: {
-						details: false,
-						references: false,
-						about: false
-					}
-				},
-				methods: {
-					turnOnEditingFor(section) {
-						this.editing_sections[section] = true;
-					},
-					turnOffEditingFor(section) {
-						this.editing_sections[section] = false;
-					}
+				editing_sections: {
+					details: false,
+					references: false,
+					about: false
 				}
-			})
-		</script>
-  </body>
+			},
+			methods: {
+				turnOnEditingFor(section) {
+					this.editing_sections[section] = true;
+				},
+				turnOffEditingFor(section) {
+					this.editing_sections[section] = false;
+				}
+			}
+		})
+	</script>
+</body>
+
 </html>
