@@ -5,16 +5,22 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">		
 	<title>Todoer | Sign Up</title>
+
+	<link rel="shortcut icon" href="assets/images/favicon.ico">	
 	<link href="https://fonts.googleapis.com/css?family=Quicksand:400,500" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700" rel="stylesheet">
 	<link rel="stylesheet" href="assets/css/base/layout.css">
 	<link rel="stylesheet" href="assets/css/modules/navbar.css">
+	<link rel="stylesheet" href="assets/css/modules/footer.css">	
 	<link rel="stylesheet" href="assets/css/components/buttons.css">
-	<link rel="stylesheet" href="assets/css/pages/signup.css">
 	<link rel="stylesheet" href="assets/css/components/text.css">
 	<link rel="stylesheet" href="assets/css/components/forms.css">
-	<link rel="stylesheet" href="assets/css/modules/footer.css">
+	<link rel="stylesheet" href="assets/css/components/dropdown.css">
+	<link rel="stylesheet" href="assets/css/vendor/tags-input.css">
 	
+
+	<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+	crossorigin="anonymous"></script>
 </head>
 <body>
 		<nav>
@@ -30,18 +36,27 @@
 						<a href="" class="nav-link">The Team</a>
 					</li>
 					<li>
-						<a href="signup.html" class="btn btn-secondary nav-link">Sign Up Free</a>
-					</li>
+							<div class="nav-dropdown">
+								<a href="#" id="dropbtn" class="nav-link">
+									<i class="fas fa-caret-down"></i>
+									</button>
+			
+									<div id="dropdown-list" class="dropdown-content">
+										<a href="">Profile</a>
+										<a href="">Sign Out</a>
+									</div>
+							</div>
+						</li>
 				</ul>
 			</nav>
 	
 	<main>
 		<section>
-			<form id="form" class="signup-form material-border mb-4" action="dashboard.html">
+			<form id="form" class="form-center" action="dashboard.html">
 				<img src="assets/images/logo.jpg" alt="Todoer" class="form-logo">
 				<h2 class="heading-sm mt-0 mb-2">Create Project Todo List</h2>
 				<input class="form-input" type="text" name="name" placeholder="Project Name" required>
-				<input class="form-input" type="text" name="team" placeholder="Team Members">				
+				<input class="form-input" type="tags" name="team" placeholder="Team Members">				
 				<textarea class="form-input" name="description" rows="5" placeholder="Description"></textarea>
 				<button id="submit" type="submit" class="btn btn-primary form-button">Continue</button>
 			</form>
@@ -52,6 +67,8 @@
 			<h3 class="footer-text">Todoer ©</h3>
 	</footer>
 
+	<script src="assets/js/vendor/tags-input.js"></script>	
+	<script src="assets/js/navbar.js"></script>	
 	<script src="assets/js/project_add.js"></script>	
 </body>
 

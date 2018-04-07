@@ -60,6 +60,11 @@
 	outline: none !important;
 	width: 100%;
 }
+
+.tags-input input::placeholder {
+  font-weight: 100;
+}
+
 .tags-input .selected ~ input {
   opacity: 0.3;
 }
