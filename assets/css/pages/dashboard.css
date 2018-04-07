@@ -3,19 +3,10 @@ main {
 	grid-template-columns: 2fr 1fr;
 }
 
-.dashboard-heading {
-	margin: 0;
-}
 
 .project-item {
 	width: 80%;
 	display: flex;
-	border-radius: 4px;
-}
-
-.project-description {
-	display: grid;
-	grid-template-columns: 1fr
 }
 
 .project-logo {
@@ -23,7 +14,7 @@ main {
 	max-height: 100%;
 }
 
-.image-box {
+.project-item-image-container {
 	width: 100px;
 	height: 100px;
 }

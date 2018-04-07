@@ -1,74 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">		
-		<title>Complete tasks together - Todo List Sharing | Todoer</title>
-		<link href="https://fonts.googleapis.com/css?family=Quicksand:400,500" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700" rel="stylesheet">
-		<link rel="stylesheet" href="assets/css/base/layout.css">
-		<link rel="stylesheet" href="assets/css/modules/navbar.css">
-		<link rel="stylesheet" href="assets/css/components/buttons.css">
-		<link rel="stylesheet" href="assets/css/pages/dashboard.css">
-		<link rel="stylesheet" href="assets/css/components/text.css">
-		<link rel="stylesheet" href="assets/css/modules/footer.css">
-		<link rel="stylesheet" href="assets/css/components/dropdown.css">
-		<link rel="stylesheet" href="assets/css/hacks/sticky-footer.css">
 
-		<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
-	</head>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Dashboard - Todo List Sharing | Todoer</title>
 
-	<body>
-		<nav>
-			<a href="/" class="nav-logo"><img src="assets/images/logo.jpg" class="nav-logo" alt="Todoer"></a>
-			<ul class="nav-links">
-				<li>
-					<a href="" class="nav-link">About</a>
-				</li>
-				<li>
-					<a href="" class="nav-link">How to Use</a>
-				</li>
-				<li>
-					<a href="" class="nav-link">The Team</a>
-				</li>
-				<li>
-					<div class="nav-dropdown">
-							<a href="#" id="dropbtn" class="nav-link"><i class="fas fa-caret-down"></i></button>
-						
-							<div id="dropdown-list" class="dropdown-content">
-									<a href="">Profile</a>
-									<a href="">Sign Out</a>
-							</div>
-					</div>				
-				</li>
-				
-			</ul>
-		</nav>
+	<link rel="shortcut icon" href="assets/images/favicon.ico">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand:400,500" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700" rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/base/layout.css">
+	<link rel="stylesheet" href="assets/css/modules/navbar.css">
+	<link rel="stylesheet" href="assets/css/modules/footer.css">
+	<link rel="stylesheet" href="assets/css/components/buttons.css">
+	<link rel="stylesheet" href="assets/css/components/text.css">
+	<link rel="stylesheet" href="assets/css/components/dropdown.css">
+	<link rel="stylesheet" href="assets/css/pages/dashboard.css">
 
-		<main>
-			<section class="project-list-section" id="projects">
-				<h2 class="heading m0 mb-3">Projects Todo List</h2>
-				<div class="project-item material-border mb-2">
-					<div class="image-box mr-2">
-						<img src="assets/images/placeholder.png" alt="Project logo" class="project-logo">
-					</div>
-					<div class="project-description">
-						<h3 class="heading-sm mt-1 mb-0">Sample Project Todo list</h3>
-						<p>This will be the description of sample project todo list</p>
-					</div>
+	<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+	 crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<nav>
+		<a href="/" class="nav-logo">
+			<img src="assets/images/logo.jpg" class="nav-logo" alt="Todoer">
+		</a>
+		<ul class="nav-links">
+			<li>
+				<a href="" class="nav-link">About</a>
+			</li>
+			<li>
+				<a href="" class="nav-link">How to Use</a>
+			</li>
+			<li>
+				<a href="" class="nav-link">The Team</a>
+			</li>
+			<li>
+				<div class="nav-dropdown">
+					<a href="#" id="dropbtn" class="nav-link">
+						<i class="fas fa-caret-down"></i>
+						</button>
+
+						<div id="dropdown-list" class="dropdown-content">
+							<a href="">Profile</a>
+							<a href="">Sign Out</a>
+						</div>
 				</div>
-			</section>
+			</li>
 
-			<aside class="add-project-section mt-3">
-				<a href="project_add.html" class="btn btn-primary">Create Project <i class="fas fa-plus"></i></a>
-			</aside>
-		</main>
+		</ul>
+	</nav>
 
-		<footer class="footer-section">
-			<h3 class="footer-text">Todoer ©</h3>
-		</footer>
+	<main>
+		<section class="project-list-section" id="projects">
+			<h2 class="heading m0 mb-3">Projects Todo List</h2>
+			<div class="project-item material-border mb-2">
+				<div class="project-item-image-container mr-2">
+					<img src="assets/images/placeholder.png" alt="Project logo" class="project-logo">
+				</div>
+				<div>
+					<h3 class="heading-sm mt-1 mb-0">Sample Project Todo list</h3>
+					<p>This will be the description of sample project todo list</p>
+				</div>
+			</div>
+		</section>
 
-		<script src="assets/js/dashboard.js"></script>		
-	</body>
+		<aside class="add-project-section mt-3">
+			<a href="project_add.html" class="btn btn-primary">Create Project
+				<i class="fas fa-plus"></i>
+			</a>
+		</aside>
+	</main>
+
+	<script src="assets/js/navbar.js"></script>
+	<script src="assets/js/dashboard.js"></script>
+</body>
+
 </html>

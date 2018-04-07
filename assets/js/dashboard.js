@@ -1,5 +1,8 @@
 addProjects();
 
+/**
+ * Display all projects saved in local storage
+ */
 function addProjects() {
 	var projects = JSON.parse(localStorage.projects);
 

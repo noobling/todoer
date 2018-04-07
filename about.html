@@ -184,6 +184,17 @@
 						</button>
 					</div>
 					<div v-else v-html="references_section" @click="turnOnEditingFor('references')" class="clickable"></div>
+
+					<h3>Code Architecture</h3>
+					<p>CSS can get messy quite fast that is why so many languages are built on top of it to make it more maintainable. e.g. SASS, LESS, stylus.</p>
+					<p>Instead of writing page specific styles I have chosen to follow <a href="https://learn.shayhowe.com/advanced-html-css/performance-organization/" target="_blank">this</a> approach by Shay Howe</p>
+					<p>In my opinion this makes our code much more maintainable and reduces code repetition. Even though it may seem more complicated initially it reduces our technical debt</p>
+
+					<h3>Extra Effort</h3>
+					<p><b>Use of es6 code</b> Most of the code is in es5 because I felt that, that was what was required in this unit. However es6 is the future, it improves of many issues people had with es5 e.g. block-level scopes, cleaner syntax, classes, loops. Much like what HTML5 was to HTML 4.01</p>
+					<p><b>Fake persistance with local storage</b> Sometimes it may seem like your data is persisted between pages. This is done through storing some of your data in localstorage. I haven't done it for every page because it is time consuming and messy to attempt it in vanilla es5.</p>
+					<p><b>Reponsiveness through flex box and grids</b> reponsiveness now is a requirement not an option for modern websites.</p>
+					<p><b>Javascript code validation in signup.html</b>Password has to be greater than 6 characters</p>
 				</div>
 			</div>
 			<footer class="about-footer mdl-mini-footer">
@@ -226,8 +237,8 @@ And to also gain marks from this point
 1% bonus mark is set aside for a separate page that demonstrates your effort in learning these libraries.
 </p>
 <p>
-This page mainly uses two frameworks/libraries https://getmdl.io and https://vuejs.org/ the reason why I have chosen these
-is because I see that they have a lot of potential and so I would like to learn more about this tools.
+This page these frameworks https://getmdl.io and https://vuejs.org/ the reason why I have chosen these
+is because I see that they have a lot of potential and so I would like to learn more about these tools.
 </p>
 <p>
 Click on any text part to see the magic of modern front end frameworks 🚀
@@ -235,10 +246,7 @@ Click on any text part to see the magic of modern front end frameworks 🚀
 `,
 				references_section:
 					`<p>
-All code not written by me will include a comment at the top of the file noting what changes I have made to the original code and who wrote the original code.
-</p>
-<p>
-I will reiterate once more in this page to make it clear what resources I used.
+All code not written by me will include a comment at the top of the file noting what changes I have made to the original code and who wrote the original code. Generally third party code is under a "vendor" folder.
 </p>
 <ul>
 <li>Idea for tag styling by
