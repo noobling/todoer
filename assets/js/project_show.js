@@ -113,7 +113,7 @@ function addTodos() {
 				<div>
 					<p class="time-remaining mb-2">${moment(todos[i].dueDate).fromNow().toUpperCase()}</p>
 	
-					<a href="todo_show.html?default=false" class="btn btn-primary">
+					<a href="todo_edit.html" class="btn btn-primary">
 						Edit
 						<i class="far fa-edit"></i>
 					</a>
