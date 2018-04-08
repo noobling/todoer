@@ -9,7 +9,7 @@
 	<title>Complete tasks together - Todo List Sharing | Todoer</title>
 
 	<link rel="shortcut icon" href="assets/images/favicon.ico">
-	
+
 	<link href="https://fonts.googleapis.com/css?family=Quicksand:400,500" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700" rel="stylesheet">
 	<link rel="stylesheet" href="assets/css/base/layout.css">
@@ -29,29 +29,29 @@
 
 <body>
 	<nav>
-		<a href="/" class="nav-logo">
+		<a href="index.html" class="nav-logo">
 			<img src="assets/images/logo.jpg" class="nav-logo" alt="Todoer">
 		</a>
 		<ul class="nav-links">
 			<li>
-				<a href="" class="nav-link">About</a>
+				<a href="index.html" class="nav-link">Landing</a>
 			</li>
 			<li>
-				<a href="" class="nav-link">How to Use</a>
+				<a href="dashboard.html" class="nav-link">Dashboard</a>
 			</li>
 			<li>
-				<a href="" class="nav-link">The Team</a>
+				<a href="about.html" class="nav-link">About</a>
+			</li>
 			</li>
 			<li>
 				<div class="nav-dropdown">
 					<a href="#" id="dropbtn" class="nav-link">
 						<i class="fas fa-caret-down"></i>
-						</button>
+					</a>
 
-						<div id="dropdown-list" class="dropdown-content">
-							<a href="">Profile</a>
-							<a href="">Sign Out</a>
-						</div>
+					<div id="dropdown-list" class="dropdown-content">
+						<a href="index.html">Sign Out</a>
+					</div>
 				</div>
 			</li>
 
@@ -64,17 +64,19 @@
 			<div id="todo-item-list" class="">
 				<div class="page-heading">
 					<h2 class="heading mt-0">Laravel Conference Todo List</h2>
-					<a href="todo_create.html"><i class="fas fa-plus font-lg mt-1 clickable"></i></a>
+					<a href="todo_create.html">
+						<i class="fas fa-plus font-lg mt-1 clickable"></i>
+					</a>
 				</div>
 
 				<div class="todo-filter-section d-flex-between">
 					<div class="todo-filter-buttons">
-							<button id="todo-filter-relevant" class="btn btn-secondary">Most Relevant</button>
-							<button id="todo-filter-priority" class="btn btn-secondary">Highest Priority</button>
+						<button id="todo-filter-relevant" class="btn btn-secondary">Most Relevant</button>
+						<button id="todo-filter-priority" class="btn btn-secondary">Highest Priority</button>
 					</div>
 
 					<div class="todo-filter-search-section">
-							<input id="filter-search" type="text" class="form-input" placeholder="Search">
+						<input id="filter-search" type="text" class="form-input" placeholder="Search">
 					</div>
 				</div>
 
