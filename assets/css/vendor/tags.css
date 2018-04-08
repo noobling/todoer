@@ -1,3 +1,6 @@
+/**
+ * Orignal code from https://codepen.io/wbeeftink/
+ */
 .tags {
   list-style: none;
   margin: 0;
@@ -20,7 +23,6 @@
   position: relative;
   margin: 0 10px 10px 0;
   text-decoration: none;
-  -webkit-transition: color 0.2s;
 }
 
 .tag::before {
@@ -44,13 +46,4 @@
   position: absolute;
   right: 0;
   top: 0;
-}
-
-.tag:hover {
-  background-color: crimson;
-  color: white;
-}
-
-.tag:hover::after {
-   border-left-color: crimson; 
 }

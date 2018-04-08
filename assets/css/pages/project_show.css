@@ -1,0 +1,50 @@
+.content {
+	display: grid;
+	grid-template-columns: 1fr 2fr 1fr;
+}
+
+.time-remaining {
+	color: red;
+}
+
+.todo-item {
+	display: grid;
+	grid-template-columns: 4fr 1fr;
+}
+.low-priority::before,
+.medium-priority::before,
+.high-priority::before {
+	content: ' • ';
+	font-size: 32px;
+	vertical-align: text-bottom;
+}
+
+.low-priority::before {
+	color: #1dbd70;
+}
+
+.high-priority::before {
+	color: red;
+}
+
+.medium-priority::before {
+	color: #f6682f;
+}
+
+.page-heading {
+	display: flex;
+	justify-content: space-between;
+}
+
+.todo-filter-section {
+	display: flex;
+}
+
+.todo-filter-search-section {
+	width: 50%;
+}
+
+button.active {
+	background-color:#1894ff;
+	color: #fff !important;
+}

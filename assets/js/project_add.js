@@ -1,9 +1,12 @@
-initialiseProjectsList();
-
 document.getElementById('submit').addEventListener('click', function() {
+	initialiseProjectsList();
+	
 	saveFormData();
 });
 
+/**
+ * Create an empty array in none exists for projects key in local storage
+ */
 function initialiseProjectsList() {
 	if (! localStorage.projects) {
 		var projectList = [];
@@ -11,6 +14,9 @@ function initialiseProjectsList() {
 	}
 }
 
+/**
+ * Save project data to be used on another page
+ */
 function saveFormData() {
 	var project = projectObj(); 
 

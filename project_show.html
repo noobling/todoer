@@ -10,57 +10,17 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700" rel="stylesheet">
 	<link rel="stylesheet" href="assets/css/base/layout.css">
 	<link rel="stylesheet" href="assets/css/modules/navbar.css">
+	<link rel="stylesheet" href="assets/css/modules/footer.css">
 	<link rel="stylesheet" href="assets/css/components/buttons.css">
 	<link rel="stylesheet" href="assets/css/components/text.css">
-	<link rel="stylesheet" href="assets/css/modules/footer.css">
 	<link rel="stylesheet" href="assets/css/components/dropdown.css">
-	<link rel="stylesheet" href="assets/css/hacks/sticky-footer.css">
-	<link rel="stylesheet" href="assets/css/components/tags.css">
+	<link rel="stylesheet" href="assets/css/components/forms.css">
 	<link rel="stylesheet" href="assets/css/components/cards.css">
+	<link rel="stylesheet" href="assets/css/vendor/tags.css">
+	<link rel="stylesheet" href="assets/css/pages/project_show.css">
 
 	<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
 	 crossorigin="anonymous"></script>
-
-	<style>
-		.content {
-			display: grid;
-			grid-template-columns: 1fr 2fr 1fr;
-		}
-
-		.todo-item {
-			display: grid;
-			grid-template-columns: 4fr 1fr;
-		}
-
-		.time {
-			color: red;
-		}
-
-		.low-priority::before,
-		.medium-priority::before,
-		.high-priority::before {
-			content: ' • ';
-			font-size: 32px;
-			vertical-align: text-bottom;
-		}
-
-		.low-priority::before {
-			color: #1dbd70;
-		}
-
-		.high-priority::before {
-			color: red;
-		}
-
-		.medium-priority::before {
-			color: #f6682f;
-		}
-
-		.page-heading {
-			display: flex;
-			justify-content: space-between;
-		}
-	</style>
 </head>
 
 <body>
@@ -97,33 +57,40 @@
 	<main>
 		<section class="content">
 			<div></div>
-			<div class="">
+			<div id="todo-item-list" class="">
 				<div class="page-heading">
-					<h2 class="heading mt-0">Project Name Todo List</h2>
+					<h2 class="heading mt-0">Laravel Conference Todo List</h2>
 					<i class="fas fa-plus font-lg mt-1 clickable"></i>
 				</div>
 
-				<div class="todo-item card-horizontal mb-2 clickable">
+				<div class="todo-filter-section d-flex-between">
+					<div class="todo-filter-buttons">
+							<button id="todo-filter-relevant" class="btn btn-secondary">Most Relevant</button>
+							<button id="todo-filter-priority" class="btn btn-secondary">Highest Priority</button>
+					</div>
+
+					<div class="todo-filter-search-section">
+							<input id="filter-search" type="text" class="form-input" placeholder="Search">
+					</div>
+				</div>
+
+				<div class="todo-item card-horizontal mb-2">
 					<div>
-						<h3 class="heading-sm m0 mb-1 low-priority">Todo list item name</h3>
-						<p>David • Jack • Emily</p>
+						<h3 class="heading-sm m0 mb-1 low-priority">Send out emails</h3>
+						<p>David Yu • Jack Wang • Emily Lee</p>
 						<ul class="tags">
-							<li>
-								<a href="#" class="tag">HTML</a>
-							</li>
-							<li>
-								<a href="#" class="tag">CSS</a>
-							</li>
-							<li>
-								<a href="#" class="tag">JavaScript</a>
-							</li>
+							<li class="tag">Admin</li>
+							<li class="tag">Email Sending</li>
+							<li class="tag">Send Grid</li>
 						</ul>
 					</div>
 					<div>
-						<span class="time-remaining">
-							<span class="time">3 DAYS</span>
-							LEFT
-						</span>
+						<p class="time-remaining mb-2">IN 3 DAYS</p>
+
+						<a href="todo_show.html?default=false" class="btn btn-primary">
+							Edit
+							<i class="far fa-edit"></i>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -136,6 +103,8 @@
 	</footer>
 
 	<script src="assets/js/navbar.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.0/moment.min.js"></script>
+	<script src="assets/js/project_show.js"></script>
 </body>
 
 </html>
