@@ -41,3 +41,13 @@
 	color: #1894ff !important;
 	background-color: #fff;
 }
+
+.btn-delete {
+	cursor: pointer;
+	font-size: 28px;
+	transition: 0.5s all;
+}
+
+.btn-delete:hover {
+	opacity: 0.5;
+}

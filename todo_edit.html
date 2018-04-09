@@ -64,7 +64,8 @@
 				<h2 class="heading-sm mt-0 mb-2">Edit Todo</h2>
 				<input class="form-input" type="text" name="name" placeholder="Todo Heading" value="Send Emails" required>
 				<textarea class="form-input" name="description" rows="5" placeholder="Description" required>We need to send out emails to everyone who registered for the conference</textarea>
-				<input class="form-input" type="tags" name="tags" placeholder="Tags: press enter to seperate tags" value="Send Grid">
+				<input class="form-input" type="tags" name="tags" placeholder="Tags" value="Send Grid">
+				<input class="form-input" type="tags" name="members" placeholder="Team Members" value="Jack">
 				<input class="form-input" type="date" placeholder="Due Date: " value="2018-04-22" required>
 
 				<select class="form-input" name="priority" required>
@@ -74,7 +75,14 @@
 					<option value="high">High</option>
 				</select>
 
-				<button id="submit" type="submit" class="btn btn-primary form-button">Continue</button>
+				<div class="d-flex-between">
+						<div class="btn-delete">
+							<a href="project_show.html">
+									<i class="far fa-trash-alt"></i>
+							</a>
+						</div>
+						<button id="submit" type="submit" class="btn btn-primary form-button">Continue</button>
+				</div>
 			</form>
 		</section>
 	</main>
