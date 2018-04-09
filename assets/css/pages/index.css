@@ -1,7 +1,7 @@
 .index-content {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	grid-column-gap: 200px;
+	grid-column-gap: 100px;
 }
 
 .index-intro-message {
@@ -43,4 +43,24 @@
 }
 .cta-text {
 	color: #fff !important;
+}
+
+/**
+ * Implement responsiveness
+ */
+@media only screen and (max-width: 1280px) {
+	.index-content {
+		grid-template-columns: 1fr;
+		grid-column-gap: 0;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+	.content-break img {
+		display: none;
+	}
+
+	.content-break {
+		margin-bottom: 200px;
+	}
 }

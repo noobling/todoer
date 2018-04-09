@@ -52,3 +52,11 @@ nav {
 .nav-dropdown > .nav-link::after {
 	border: none;
 }
+
+@media only screen and (max-width: 800px) {
+	.nav-links .btn-secondary {
+		display: block;
+		margin-top: 10px;
+		margin-left: 0;
+	}
+}
