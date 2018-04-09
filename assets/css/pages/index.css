@@ -1,11 +1,14 @@
 .index-content {
 	display: grid;
+	display: -ms-grid;
 	grid-template-columns: 1fr 1fr;
+	-ms-grid-columns: 1fr 1fr;
 	grid-column-gap: 100px;
 }
 
 .index-intro-message {
 	display: grid;
+	display: -ms-grid;
 	grid-row-gap: 40px;
 }
 
@@ -51,6 +54,7 @@
 @media only screen and (max-width: 1280px) {
 	.index-content {
 		grid-template-columns: 1fr;
+		-ms-grid-columns: 1fr;
 		grid-column-gap: 0;
 	}
 }

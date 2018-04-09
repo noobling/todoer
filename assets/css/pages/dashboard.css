@@ -1,6 +1,8 @@
 main {
 	display: grid;
+	display: -ms-grid;
 	grid-template-columns: 2fr 1fr;
+	-ms-grid-columns: 2fr 1fr;
 }
 
 
@@ -22,6 +24,7 @@ main {
 @media only screen and (max-width: 1000px) {
 	main {
 		grid-template-columns: 1fr;
+		-ms-grid-columns: 1fr;
 	}
 }
 

@@ -1,6 +1,8 @@
 .content {
 	display: grid;
+	display: -ms-grid;
 	grid-template-columns: 0.5fr 2fr 0.5fr;
+	-ms-grid-columns: 0.5fr 2fr 0.5fr;
 }
 
 .time-remaining {
@@ -9,7 +11,9 @@
 
 .todo-item {
 	display: grid;
+	display: -ms-grid;
 	grid-template-columns: 4fr 1fr;
+	-ms-grid-columns: 4fr 1fr;
 }
 .low-priority::before,
 .medium-priority::before,
@@ -55,30 +59,35 @@ button.active {
 @media only screen and (max-width: 1400px) {
 	.content {
 		grid-template-columns: 0.5fr 3fr 0.5fr;
+		-ms-grid-columns: 0.5fr 3fr 0.5fr;
 	}
 }
 
 @media only screen and (max-width: 1000px) {
 	.content {
 		grid-template-columns: 0 1fr 0;
+		-ms-grid-columns: 0 1fr 0;
 	}
 }
 
 @media only screen and (max-width: 850px) {
 	.todo-item {
 		grid-template-columns: 3fr 1fr;
+		-ms-grid-columns: 3fr 1fr;
 	}
 }
 
 @media only screen and (max-width: 600px) {
 	.todo-item {
 		grid-template-columns: 2fr 1fr;
+		-ms-grid-columns: 2fr 1fr;
 	}
 }
 
 @media only screen and (max-width: 450px) {
 	.todo-item {
 		grid-template-columns: 1fr;
+		-ms-grid-columns: 1fr;
 		padding-bottom: 20px
 	}
 
