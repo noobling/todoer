@@ -1,82 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">		
 
-		<title>Complete tasks together - Todo List Sharing | Todoer</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-		<link rel="shortcut icon" href="assets/images/favicon.ico">
-		<link href="https://fonts.googleapis.com/css?family=Quicksand:400,500" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700" rel="stylesheet">
-		<link rel="stylesheet" href="assets/css/base/layout.css">
-		<link rel="stylesheet" href="assets/css/modules/navbar.css">
-		<link rel="stylesheet" href="assets/css/modules/footer.css">		
-		<link rel="stylesheet" href="assets/css/components/buttons.css">
-		<link rel="stylesheet" href="assets/css/components/text.css">
-		<link rel="stylesheet" href="assets/css/pages/index.css">
-	</head>
+	<title>Complete tasks together - Todo List Sharing | Todoer</title>
 
-	<body>
-		<nav>
-			<a href="index.html" class="nav-logo"><img src="assets/images/logo.jpg" class="nav-logo" alt="Todoer"></a>
-			<ul class="nav-links">
-				<li>
-					<a href="index.html" class="nav-link">Landing</a>
-				</li>
-				<li>
-					<a href="about.html" class="nav-link">About</a>
-				</li>
-				<li>
-					<a href="signup.html" class="btn btn-secondary nav-link">Sign Up Free</a>
-				</li>
-			</ul>
-		</nav>
+	<link rel="shortcut icon" href="assets/images/favicon.ico">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand:400,500" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700" rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/base/layout.css">
+	<link rel="stylesheet" href="assets/css/modules/navbar.css">
+	<link rel="stylesheet" href="assets/css/modules/footer.css">
+	<link rel="stylesheet" href="assets/css/components/buttons.css">
+	<link rel="stylesheet" href="assets/css/components/text.css">
+	<link rel="stylesheet" href="assets/css/pages/index.css">
+</head>
 
-		<main>
-			<section class="intro-content">
-				<div class="intro-message">
-					<h2 class="heading">
-						Collaborate together, <br>
-						to get tasks done.
-					</h2>
-					<div>
-							<a href="signup.html" class="btn-lg btn-primary">Start Journey Now</a>
-					</div>
-					<ul class="intro-points">
-						<li>Completely Free</li>
-						<li>Boosts productivity by 50%</li>
-						<li>Open Source Software built by the community</li>
-					</ul>
+<body>
+	<nav>
+		<a href="index.html" class="nav-logo">
+			<img src="assets/images/logo.jpg" class="nav-logo" alt="Todoer">
+		</a>
+		<ul class="nav-links">
+			<li>
+				<a href="index.html" class="nav-link">Landing</a>
+			</li>
+			<li>
+				<a href="about.html" class="nav-link">About</a>
+			</li>
+			<li>
+				<a href="signup.html" class="btn btn-secondary nav-link">Sign Up Free</a>
+			</li>
+		</ul>
+	</nav>
+
+	<main>
+		<section class="index-content">
+			<div class="index-intro-message">
+				<h2 class="heading">
+					An intelligent shared todo list, for all your proejcts in one place.
+				</h2>
+				<div>
+					<a href="signup.html" class="btn-lg btn-primary">Start Journey Now</a>
 				</div>
-				<div class="intro-image">
-					<img src="assets/images/working_together.jpg" alt="Working together">
-				</div>
-			</section>
-
-			<div class="content-break">
-				<img src="assets/images/line.svg" alt="line">
+				<ul class="index-points">
+					<li>
+						Automatically assigns members to todos.
+					</li>
+					<li>
+						Displays only the most relevant todos for you.
+					</li>
+					<li>
+						Simple yet powerful filtering to get exactly what you want.
+					</li>
+				</ul>
 			</div>
-
-			<section class="intro-content">
-					<div class="intro-image">
-						<img src="assets/images/collaboration.jpg" alt="People Collaborating together">
-					</div>
-					<div class="intro-message">
-						<h2 class="heading">Increased collaboration among teams.</h2>
-						<p class="text">Research has shown that Todoer improves communication among teams.</p>
-					</div>
-			</section>
-		</main>
-
-		<section class="cta-section">
-			<h3 class="heading cta-text">Get Started Now</h3>
-			<a href="signup.html" class="btn-lg btn-primary">Sign Up</a>
+			<div class="index-image">
+				<img src="assets/images/landing_img_1.png" alt="Working together">
+			</div>
 		</section>
 
-		<footer class="footer-section">
-			<h3 class="footer-text">Todoer ©</h3>
-		</footer>
-	</body>
+		<div class="content-break">
+			<img src="assets/images/line.svg" alt="line">
+		</div>
+
+		<section class="index-content">
+			<div class="index-image">
+				<img src="assets/images/landing_img_2.png" alt="landing image 2">
+			</div>
+			<div class="index-message">
+				<h2 class="heading" id="auto-assign">Automatically assigns appropriate team members to todos</h2>
+				<p class="text">The algorithm works by looking for the user's skills in the todo item's heading, description and tags. The more matches
+					found the more suitable the user is for that todo item. For example a user enters Front end and Back end for their skill
+					set. The program will search for Front end and Back end in the todo item matching every word that is similar to Front
+					end and Back end. The user with the most skill matches in the todo item is deemed to most appropriate.</p>
+			</div>
+		</section>
+
+		<div class="content-break">
+			<img src="assets/images/line2.svg" alt="line">
+		</div>
+
+		<section class="index-content">
+			<div class="index-image">
+				<img src="assets/images/landing_img_3.png" alt="landing image 3">
+			</div>
+			<div class="index-message">
+				<h2 class="heading" id="relevant-todo">Displays the most relevant todos to you first</h2>
+				<p class="text">Having a shared todo list can be a nightmare to manage because the number of todos becomes overwhelming. We have solved
+					this problem similar to how Facebook presents your news feed. We place the most relevant todos first for you. So you
+					only deal with whats most important to you</p>
+				<p>The algorithm for this works like so: First find all todo items where which you are assigned to then order todos by priority
+					and days left before it is due. Priority takes precedence over days left. Priority is color coded as red for high, orange for medium and green for low.</p>
+			</div>
+		</section>
+
+
+		<div class="content-break">
+			<img src="assets/images/line.svg" alt="line">
+		</div>
+
+		<section class="index-content mb-4">
+			<div class="index-message">
+				<h2 class="heading" id="simple-filtering">Simple yet powerful filtering to enhance your work flow</h2>
+				<p class="text">As we have previously mentioned shared todo lists become very large so having a powerful filtering feature is a must. However there is often a trade off with usuability, but we have engineered our filtering mechanism so there is no such compromise.</p>
+				<p>You can search through the entire todo list instantly with the search bar. It matches words in the filter with words present in the todo item.</p>
+				<p>You can click the most relevant filter option to find all items most relevant to you. How this is done has been explained in the section above. We have deliberately abstracted away this because there should be no need for the user to figure out what they want. An intelligent program should be able to find out themselves.</p>
+				<p>Click on highest priorty to find todo items that are most critical for the entire project even if you are not assigned to it. This is so that you can get an overview of what your team is doing so you can help them out with their todos.</p>
+			</div>
+			<div class="index-image">
+					<img src="assets/images/landing_img_4.png" alt="landing image 3">
+				</div>
+		</section>
+	</main>
+
+	<section class="cta-section">
+		<h3 class="heading cta-text">Get Started Now</h3>
+		<a href="signup.html" class="btn-lg btn-primary">Sign Up</a>
+	</section>
+
+	<footer class="footer-section">
+		<h3 class="footer-text">Todoer ©</h3>
+	</footer>
+</body>
+
 </html>

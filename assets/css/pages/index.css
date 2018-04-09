@@ -1,28 +1,29 @@
-.intro-content {
+.index-content {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
+	grid-column-gap: 200px;
 }
 
-.intro-message {
+.index-intro-message {
 	display: grid;
 	grid-row-gap: 40px;
 }
 
-.intro-image > img{
+.index-image > img{
 	width: 100%;
 }
 
-.intro-points {
+.index-points {
 	padding: 0;	
 }
 
-.intro-points > li{
+.index-points > li{
 	list-style: none;
 	line-height: 0.8;
 	margin-bottom: 15px;
 }
 
-.intro-points > li::before {
+.index-points > li::before {
 	color: #1dbd70;
 	content: ' • ';
 	font-size: 24px;

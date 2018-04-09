@@ -133,28 +133,6 @@
 		<main class="about-main mdl-layout__content">
 			<div class="about-container mdl-grid">
 				<div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone">
-					<ul class="about-list-item mdl-list">
-						<li class="mdl-list__item">
-							<a href="#about-info" class="mdl-list__item-primary-content">
-								Info on about page
-							</a>
-						</li>
-						<li class="mdl-list__item">
-							<a href="#details" class="mdl-list__item-primary-content">
-								Details
-							</a>
-						</li>
-						<li class="mdl-list__item">
-							<a href="#references" class="mdl-list__item-primary-content">
-								References
-							</a>
-						</li>
-						<li class="mdl-list__item">
-							<a href="#extra-effort" class="mdl-list__item-primary-content">
-								Extra Effort
-							</a>
-						</li>
-					</ul>
 				</div>
 				<div class="about-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
 					<h1>About page</h1>
@@ -187,14 +165,14 @@
 
 					<h3>Code Architecture</h3>
 					<p>CSS can get messy quite fast that is why so many languages are built on top of it to make it more maintainable. e.g. SASS, LESS, stylus.</p>
-					<p>Instead of writing page specific styles I have chosen to follow <a href="https://learn.shayhowe.com/advanced-html-css/performance-organization/" target="_blank">this</a> approach by Shay Howe</p>
+					<p>I hav minimised page specific styles by adopting <a href="https://learn.shayhowe.com/advanced-html-css/performance-organization/" target="_blank">this</a> approach by Shay Howe</p>
 					<p>In my opinion this makes our code much more maintainable and reduces code repetition. Even though it may seem more complicated initially it reduces our technical debt</p>
 
 					<h3>Extra Effort</h3>
 					<p><b>Use of es6 code</b> Most of the code is in es5 because I felt that, that was what was required in this unit. However es6 is the future, it improves of many issues people had with es5 e.g. block-level scopes, cleaner syntax, classes, loops. Much like what HTML5 was to HTML 4.01</p>
 					<p><b>Fake persistance with local storage</b> Sometimes it may seem like your data is persisted between pages. This is done through storing some of your data in localstorage. I haven't done it for every page because it is time consuming and messy to attempt it in vanilla es5.</p>
 					<p><b>Reponsiveness through flex box and grids</b> reponsiveness now is a requirement not an option for modern websites.</p>
-					<p><b>Javascript code validation in signup.html</b>Password has to be greater than 6 characters</p>
+					<p><b>Javascript code validation in signup.html</b> Password has to be greater than 6 characters</p>
 				</div>
 			</div>
 			<footer class="about-footer mdl-mini-footer">
@@ -237,16 +215,17 @@ And to also gain marks from this point
 1% bonus mark is set aside for a separate page that demonstrates your effort in learning these libraries.
 </p>
 <p>
-This page these frameworks https://getmdl.io and https://vuejs.org/ the reason why I have chosen these
+This page uses these frameworks https://getmdl.io and https://vuejs.org/ the reason why I have chosen these
 is because I see that they have a lot of potential and so I would like to learn more about these tools.
 </p>
+<p>This page tempalate comes from https://getmdl.io also</p>
 <p>
 Click on any text part to see the magic of modern front end frameworks 🚀
 </p>
 `,
 				references_section:
 					`<p>
-All code not written by me will include a comment at the top of the file noting what changes I have made to the original code and who wrote the original code. Generally third party code is under a "vendor" folder.
+All code not written by me will include a comment at the top of the file noting what changes I have made to the original code and who wrote the original code. Generally third party code is under a "vendor" folder. Or I use a cdn to reference it.
 </p>
 <ul>
 <li>Idea for tag styling by
@@ -262,6 +241,7 @@ All code not written by me will include a comment at the top of the file noting 
 <a href=" https://taiga.io/" target="_blank">Taiga</a> and mocks from designers I have worked with.
 </li>
 <li>Google fonts and font awesome used for some fonts refer to the document head to find the exact font used</li>
+<li>The Fonts, colors and images used in the landing page come from meet notes</li>
 <li>Used moment js for working with dates</li>
 </ul>
 `,

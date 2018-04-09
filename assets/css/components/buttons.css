@@ -42,12 +42,16 @@
 	background-color: #fff;
 }
 
-.btn-delete {
+.btn-delete, .btn-check {
 	cursor: pointer;
 	font-size: 28px;
 	transition: 0.5s all;
 }
 
-.btn-delete:hover {
+.btn-delete:hover, .btn-check:hover {
 	opacity: 0.5;
+}
+
+.btn-check {
+	color: green;
 }
