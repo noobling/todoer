@@ -18,3 +18,15 @@ main {
 	width: 100px;
 	height: 100px;
 }
+
+@media only screen and (max-width: 1000px) {
+	main {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	.project-item {
+		padding-right: 20px;
+	}
+}

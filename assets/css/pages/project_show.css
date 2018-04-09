@@ -1,6 +1,6 @@
 .content {
 	display: grid;
-	grid-template-columns: 1fr 2fr 1fr;
+	grid-template-columns: 0.5fr 2fr 0.5fr;
 }
 
 .time-remaining {
@@ -47,4 +47,46 @@
 button.active {
 	background-color:#1894ff;
 	color: #fff !important;
+}
+
+/**
+ * Make it responsive
+ */
+@media only screen and (max-width: 1400px) {
+	.content {
+		grid-template-columns: 0.5fr 3fr 0.5fr;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.content {
+		grid-template-columns: 0 1fr 0;
+	}
+}
+
+@media only screen and (max-width: 850px) {
+	.todo-item {
+		grid-template-columns: 3fr 1fr;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.todo-item {
+		grid-template-columns: 2fr 1fr;
+	}
+}
+
+@media only screen and (max-width: 450px) {
+	.todo-item {
+		grid-template-columns: 1fr;
+		padding-bottom: 20px
+	}
+
+	.todo-filter-search-section {
+		width: 100%;
+	}
+
+	.todo-filter-buttons button{
+		margin-bottom: 20px;
+	}
 }
