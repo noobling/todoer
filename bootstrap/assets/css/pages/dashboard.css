@@ -1,0 +1,35 @@
+main {
+	display: grid;
+	display: -ms-grid;
+	grid-template-columns: 2fr 1fr;
+	-ms-grid-columns: 2fr 1fr;
+}
+
+
+.project-item {
+	width: 80%;
+	display: flex;
+}
+
+.project-logo {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.project-item-image-container {
+	width: 100px;
+	height: 100px;
+}
+
+@media only screen and (max-width: 1000px) {
+	main {
+		grid-template-columns: 1fr;
+		-ms-grid-columns: 1fr;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	.project-item {
+		padding-right: 20px;
+	}
+}

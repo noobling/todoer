@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<title>Todoer | Sign Up</title>
+
+	<link rel="shortcut icon" href="assets/images/favicon.ico">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand:400,500" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+	<link rel="stylesheet" href="assets/css/base/layout.css">
+	<link rel="stylesheet" href="assets/css/modules/navbar.css">
+	<link rel="stylesheet" href="assets/css/modules/footer.css">
+	<link rel="stylesheet" href="assets/css/components/buttons.css">
+	<link rel="stylesheet" href="assets/css/components/forms.css">
+	<link rel="stylesheet" href="assets/css/components/cards.css">
+	<link rel="stylesheet" href="assets/css/vendor/tags-input.css">
+
+	<style>
+		.error {
+			color: red;
+		}
+	</style>
+
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-md">
+		<a href="index.html" class="navbar-brand">
+			<img src="assets/images/logo.jpg" class="navbar-brand" alt="Todoer">
+		</a>
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="index.html">Landing</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="about.html" class="nav-link">About</a>
+			</li>
+			<li class="nav-item">
+				<a href="signup.html" class="btn btn-secondary nav-link">Sign Up Free</a>
+			</li>
+		</ul>
+	</nav>
+
+	<main class="container">
+		<div class="row justify-content-center">
+			<div class="col-12 col-sm-9 col-md-8 col-lg-6 col-xl-5">
+				<section>
+					<form id="form" class="form-center" action="dashboard.html">
+						<img src="assets/images/logo.jpg" alt="Todoer" class="form-logo mb-3">
+						<h2 class="heading-sm mt-0 mb-6">Sign Up</h2>
+						<input class="form-input" type="email" name="email" placeholder="Email" id="email" required>
+						<input class="form-input" type="text" name="name" placeholder="Name" id="name" required>
+						<input class="form-input" type="tags" name="skills" placeholder="Skills: Tab separated">
+						<input class="form-input" type="password" name="Password" placeholder="Password" id="password" required>
+						<button id="submit" type="submit" class="btn btn-primary form-button">Continue</button>
+					</form>
+				</section>
+			</div>
+		</div>
+	</main>
+
+	<footer class="footer-section">
+		<h3 class="footer-text">Todoer ©</h3>
+	</footer>
+
+	<script src="assets/js/vendor/tags-input.js"></script>
+	<script src="assets/js/signup.js"></script>
+</body>
+
+</html>

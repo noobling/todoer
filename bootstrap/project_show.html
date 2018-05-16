@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<title>Complete tasks together - Todo List Sharing | Todoer</title>
+
+	<link rel="shortcut icon" href="assets/images/favicon.ico">
+
+	<link href="https://fonts.googleapis.com/css?family=Quicksand:400,500" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+	<link rel="stylesheet" href="assets/css/base/layout.css">
+	<link rel="stylesheet" href="assets/css/modules/navbar.css">
+	<link rel="stylesheet" href="assets/css/modules/footer.css">
+	<link rel="stylesheet" href="assets/css/components/buttons.css">
+	<link rel="stylesheet" href="assets/css/components/dropdown.css">
+	<link rel="stylesheet" href="assets/css/components/forms.css">
+	<link rel="stylesheet" href="assets/css/components/cards.css">
+	<link rel="stylesheet" href="assets/css/vendor/tags.css">
+	<link rel="stylesheet" href="assets/css/pages/project_show.css">
+
+	<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+	 crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-md">
+		<a class="navbar-brand" href="index.html">
+			<img src="assets/images/logo.jpg" class="navbar-brand" alt="Todoer">
+		</a>
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="index.html">Landing</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="dashboard.html">Dashboard</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="about.html">About</a>
+			</li>
+			<li class="nav-item">
+				<div class="nav-dropdown">
+					<a href="#" id="dropbtn" class="nav-link">
+						<i class="fas fa-caret-down"></i>
+					</a>
+
+					<div id="dropdown-list" class="dropdown-content">
+						<a href="index.html">Sign Out</a>
+					</div>
+				</div>
+			</li>
+
+		</ul>
+	</nav>
+
+	<main>
+		<section class="content">
+			<div></div>
+			<div id="todo-item-list" class="">
+				<div class="page-heading">
+					<h2 class="heading mt-0">Laravel Conference Todo List
+							<a href="dashboard.html" class="btn-delete">
+									<i class="far fa-trash-alt"></i>
+							</a>
+					</h2>
+					<a href="todo_create.html">
+						<i class="fas fa-plus font-lg mt-3 clickable"></i>
+					</a>
+				</div>
+
+				<div class="todo-filter-section d-flex-between">
+					<div class="todo-filter-buttons">
+						<button id="todo-filter-relevant" class="btn btn-secondary">Most Relevant</button>
+						<button id="todo-filter-priority" class="btn btn-secondary">Highest Priority</button>
+					</div>
+
+					<div class="todo-filter-search-section">
+						<input id="filter-search" type="text" class="form-input" placeholder="Search">
+					</div>
+				</div>
+
+				<div class="todo-item card-horizontal mb-6">
+					<div>
+						<h3 class="heading-sm m-0 mb-3 low-priority">Send out emails</h3>
+						<p>David Yu • Jack Wang • Emily Lee</p>
+						<ul class="tags">
+							<li class="tag">Admin</li>
+							<li class="tag">Email Sending</li>
+							<li class="tag">Send Grid</li>
+						</ul>
+					</div>
+					<div>
+						<p class="time-remaining mb-6">IN 3 DAYS</p>
+
+						<a href="todo_edit.html" class="btn btn-primary">
+							Edit
+							<i class="far fa-edit"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div></div>
+		</section>
+	</main>
+
+	<footer class="footer-section">
+		<h3 class="footer-text">Todoer ©</h3>
+	</footer>
+
+	<script src="assets/js/navbar.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.0/moment.min.js"></script>
+	<script src="assets/js/project_show.js"></script>
+</body>
+
+</html>

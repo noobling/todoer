@@ -1,0 +1,70 @@
+/**
+ * Coded by: Jason Miller (https://github.com/developit)
+ * Modifications by: David Yu (https://github.com/noobling)
+ *
+ * Gives inputs with type tags special tag features
+ */
+.tags-input {
+  box-shadow: 0px 2px 7.8px 0.2px rgba(0, 0, 0, 0.3);
+	border: 2px solid #5A6377;
+	width: 100%;
+	padding: 0.5rem 0.75rem;
+	border-radius: 0.25rem;
+	line-height: 1.6;
+	margin-bottom: 1rem;
+	box-sizing: border-box;
+	font-size: 18px;
+	text-align: left;
+}
+
+.tags-input.focus {
+	border-color: #1894ff;
+	outline: 0;
+	-webkit-box-shadow: 0 0 0 0.2rem rgba(24, 148, 255, 0.25);
+	box-shadow: 0 0 0 0.2rem rgba(24, 148, 255, 0.25);
+}
+
+.tags-input .tag {
+  display: inline-block;
+  background: #EEE;
+  color: #444;
+  padding: 0 4px;
+  margin: 2px;
+  border: 1px solid #CCC;
+  border-radius: 2px;
+  font: inherit;
+  user-select: none;
+  cursor: pointer;
+  transition: all 100ms ease;
+}
+.tags-input .tag.selected {
+  background-color: #777;
+  border-color: #777;
+  color: #EEE;
+}
+.tags-input .tag.dupe {
+  transform: scale3d(1.2, 1.2, 1.2);
+  background-color: #FCC;
+  border-color: #700;
+}
+.tags-input input {
+  appearance: none !important;
+  display: inline-block !important;
+  padding: 3px;
+  margin: 0 !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  font: inherit !important;
+  font-size: 100% !important;
+	outline: none !important;
+	width: 100%;
+}
+
+.tags-input input::placeholder {
+  font-weight: 100;
+}
+
+.tags-input .selected ~ input {
+  opacity: 0.3;
+}

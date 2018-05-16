@@ -1,0 +1,101 @@
+.content {
+	display: grid;
+	display: -ms-grid;
+	grid-template-columns: 0.5fr 2fr 0.5fr;
+	-ms-grid-columns: 0.5fr 2fr 0.5fr;
+}
+
+.time-remaining {
+	color: red;
+}
+
+.todo-item {
+	display: grid;
+	display: -ms-grid;
+	grid-template-columns: 4fr 1fr;
+	-ms-grid-columns: 4fr 1fr;
+}
+.low-priority::before,
+.medium-priority::before,
+.high-priority::before {
+	content: ' • ';
+	font-size: 32px;
+	vertical-align: text-bottom;
+}
+
+.low-priority::before {
+	color: #1dbd70;
+}
+
+.high-priority::before {
+	color: red;
+}
+
+.medium-priority::before {
+	color: #f6682f;
+}
+
+.page-heading {
+	display: flex;
+	justify-content: space-between;
+}
+
+.todo-filter-section {
+	display: flex;
+}
+
+.todo-filter-search-section {
+	width: 50%;
+}
+
+button.active {
+	background-color:#1894ff;
+	color: #fff !important;
+}
+
+/**
+ * Make it responsive
+ */
+@media only screen and (max-width: 1400px) {
+	.content {
+		grid-template-columns: 0.5fr 3fr 0.5fr;
+		-ms-grid-columns: 0.5fr 3fr 0.5fr;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.content {
+		grid-template-columns: 0 1fr 0;
+		-ms-grid-columns: 0 1fr 0;
+	}
+}
+
+@media only screen and (max-width: 850px) {
+	.todo-item {
+		grid-template-columns: 3fr 1fr;
+		-ms-grid-columns: 3fr 1fr;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.todo-item {
+		grid-template-columns: 2fr 1fr;
+		-ms-grid-columns: 2fr 1fr;
+	}
+}
+
+@media only screen and (max-width: 450px) {
+	.todo-item {
+		grid-template-columns: 1fr;
+		-ms-grid-columns: 1fr;
+		padding-bottom: 20px
+	}
+
+	.todo-filter-search-section {
+		width: 100%;
+	}
+
+	.todo-filter-buttons button{
+		margin-bottom: 20px;
+	}
+}
