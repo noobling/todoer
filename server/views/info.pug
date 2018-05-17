@@ -1,0 +1,71 @@
+doctype html
+head
+  meta(http-equiv='Content-Type' content='text/html; charset=utf-8')
+  title Information page for Todoer
+  link(rel='stylesheet' type='text/css' href='https://rawgit.com/alvarotrigo/fullPage.js/master/jquery.fullPage.css')
+  style.
+    /* Style for our header texts
+    * --------------------------------------- */
+    h1{
+      font-size: 5em;
+      font-family: arial,helvetica;
+      color: #fff;
+      margin:0;
+    }
+    .intro p{
+      color: #fff;
+      font-family: arial,helvetica;   
+      font-size: 24px;   
+    }
+    /* Centered texts in each section
+    * --------------------------------------- */
+    .section{
+      text-align:center;
+    }
+    /* Overwriting styles for control arrows for slides
+    * --------------------------------------- */
+    .controlArrow.prev {
+      left: 50px;
+    }
+    .controlArrow.next{
+      right: 50px;
+    }
+    /* Bottom menu
+    * --------------------------------------- */
+    #infoMenu li a {
+      color: #fff;
+    }
+  //if IE
+    script(type='text/javascript').
+      var console = { log: function() {} };
+  script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+  script(src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js')
+  script(type='text/javascript' src='https://rawgit.com/alvarotrigo/fullPage.js/master/jquery.fullPage.js')
+  script(type='text/javascript').
+    $(document).ready(function() {
+    $('#fullpage').fullpage({
+    anchors: ['firstPage', 'secondPage', '3rdPage'],
+    sectionsColor: ['#0094F0', '#FF4F74', '#FFC600'],
+    navigation: true,
+    navigationPosition: 'right',
+    navigationTooltips: ['First page', 'Second page', 'Third and last page']
+    });
+    });
+#fullpage
+  #section0.section
+    .intro
+      h1 The Architecture
+      p SPA with express API server
+  #section1.section
+    #slide1.slide
+      .intro
+        h1 Testing
+        p
+          | You can even click on the navigation and jump directly to another section.
+    #slide2.slide
+      h1 Validation
+      p 
+        | Validation text here
+  #section2.section
+    .intro
+      h1 Matching Algorithm
