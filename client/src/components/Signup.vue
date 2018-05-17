@@ -8,12 +8,14 @@
           label="Name"
           required
         ></v-text-field>
+        
         <v-text-field
           v-model="email"
           :rules="emailRules"
           label="E-mail"
           required
         ></v-text-field>
+        
         <v-select
           v-model="select"
           :items="items"
@@ -21,14 +23,25 @@
           label="Skill"
           required
         ></v-select>
-    
+        
+        <v-text-field
+          :append-icon="visible ? 'visibility' : 'visibility_off'"
+          :append-icon-cb="() => (visible = !visible)"
+          :rules="passwordRules"
+          :type="visible ? 'password' : 'text'"
+          label="Enter your password"
+          hint="At least 6 characters"
+          min="6"
+          v-model="password"
+          :counter="6"
+          required
+        ></v-text-field>
         <v-btn
           :disabled="!valid"
           @click="submit"
         >
           submit
         </v-btn>
-        <v-btn @click="clear">clear</v-btn>
       </v-form>
     </v-container>
   </v-content>
@@ -38,27 +51,33 @@
   import axios from 'axios'
 
   export default {
-    data: () => ({
-      valid: true,
-      name: '',
-      nameRules: [
-        v => !!v || 'Name is required',
-        v => (v && v.length <= 10) || 'Name must be less than 10 characters'
-      ],
-      email: '',
-      emailRules: [
-        v => !!v || 'E-mail is required',
-        v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
-      ],
-      select: null,
-      items: [
-        'Frontend',
-        'Backend',
-        'Marketing',
-        'Designer'
-      ],
-      checkbox: false
-    }),
+    data () {
+      return {
+        valid: false,
+        visible: true,
+        name: '',
+        nameRules: [
+          v => !!v || 'Name is required'
+        ],
+        email: '',
+        emailRules: [
+          v => !!v || 'E-mail is required',
+          v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
+        ],
+        password: '',
+        passwordRules: [
+          v => (v && v.length >= 6) || 'Password must be at least 6 chracters'
+        ],
+        select: null,
+        items: [
+          'Frontend',
+          'Backend',
+          'Marketing',
+          'Designer'
+        ],
+        checkbox: false
+      }
+    },
 
     methods: {
       submit () {
@@ -68,12 +87,9 @@
             name: this.name,
             email: this.email,
             select: this.select,
-            checkbox: this.checkbox
+            password: this.password
           })
         }
-      },
-      clear () {
-        this.$refs.form.reset()
       }
     }
   }

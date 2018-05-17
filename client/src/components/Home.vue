@@ -25,7 +25,9 @@
                 </router-link>
               </v-flex>
               <v-flex>
-                <v-btn large color="primary">Log In</v-btn>
+                <router-link to="/login">
+                  <v-btn large color="primary">Log In</v-btn>
+                </router-link>
               </v-flex>
             </v-layout>
             
