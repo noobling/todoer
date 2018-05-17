@@ -1,28 +1,21 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app dark id="inspire">
+    <Navbar/>
+      <router-view></router-view>
+  </v-app>
 </template>
-
+   
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Navbar from './components/Navbar'
 export default {
-  name: 'app',
   components: {
-    HelloWorld
-  }
+    Navbar
+  },
+  data () {
+    return {
+      title: 'Vuetify.js'
+    }
+  },
+  name: 'App'
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
