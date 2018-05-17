@@ -1,29 +1,31 @@
 <template>
   <v-content>
     <v-container>
-      <v-form ref="form" v-model="valid" lazy-validation>
+      <v-form ref="form" v-model="valid" lazy-validation>  
         <v-text-field
           v-model="email"
           :rules="emailRules"
           label="E-mail"
           required
         ></v-text-field>
+        
         <v-text-field
-            :append-icon="visible ? 'visibility' : 'visibility_off'"
-            :append-icon-cb="() => (visible = !visible)"
-            :rules="[() => ('The email and password you entered don\'t match')]"
-            :type="visible ? 'password' : 'text'"
-            label="Enter your password"
-            hint="At least 8 characters"
-            min="8"
-            v-model="password"
-            error
+          :append-icon="visible ? 'visibility' : 'visibility_off'"
+          :append-icon-cb="() => (visible = !visible)"
+          :rules="passwordRules"
+          :type="visible ? 'password' : 'text'"
+          label="Enter your password"
+          hint="At least 6 characters"
+          min="6"
+          v-model="password"
+          :counter="6"
+          required
         ></v-text-field>
         <v-btn
           :disabled="!valid"
           @click="submit"
         >
-          Login
+          Log In
         </v-btn>
       </v-form>
     </v-container>
@@ -31,10 +33,34 @@
 </template>
 
 <script>
+  import axios from 'axios'
+
   export default {
     data () {
       return {
-        visible: false
+        valid: false,
+        visible: true,
+        email: '',
+        emailRules: [
+          v => !!v || 'E-mail is required',
+          v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
+        ],
+        password: '',
+        passwordRules: [
+          v => (v && v.length >= 6) || 'Password must be at least 6 chracters'
+        ]
+      }
+    },
+
+    methods: {
+      submit () {
+        if (this.$refs.form.validate()) {
+          // Native form submission is not yet supported
+          axios.post('/api/submit', {
+            email: this.email,
+            password: this.password
+          })
+        }
       }
     }
   }

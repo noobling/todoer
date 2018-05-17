@@ -40,7 +40,7 @@
           :disabled="!valid"
           @click="submit"
         >
-          submit
+          Sign Up
         </v-btn>
       </v-form>
     </v-container>
@@ -74,8 +74,7 @@
           'Backend',
           'Marketing',
           'Designer'
-        ],
-        checkbox: false
+        ]
       }
     },
 
