@@ -7,12 +7,24 @@
       fixed
       app
     >
+    <v-toolbar flat class="transparent">
+        <v-list class="pa-0">
+          <v-list-tile avatar>
+            <v-list-tile-avatar>
+              <img src="https://randomuser.me/api/portraits/men/85.jpg" >
+            </v-list-tile-avatar>
+            <v-list-tile-content>
+              <v-list-tile-title>John Leider</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+      </v-toolbar>
       <v-list>
         <v-list-tile
-          value="true"
           v-for="(item, i) in items"
           :key="i"
           @click=""
+          :to="item.action"
         >
           <v-list-tile-action>
             <v-icon v-html="item.icon"></v-icon>
@@ -31,15 +43,11 @@
   <div v-if="loggedIn">
     <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
   </div>
-    <router-link to="/">
-      <v-btn flat>Home</v-btn>
-    </router-link>
+    <v-btn flat to="/">Home</v-btn>
 
-    <router-link to="/dashboard">
-      <v-btn flat>
-        Dashboard
-      </v-btn>
-    </router-link>   
+    <v-btn flat to="/dashboard">
+      Dashboard
+    </v-btn>
   </v-toolbar>
 </div>
     
@@ -61,11 +69,13 @@ export default {
       items: [
         {
           icon: 'settings',
-          title: 'Settings'
+          title: 'Settings',
+          action: '/login'
         },
         {
           icon: 'dashboard',
-          title: 'Dashboard'
+          title: 'Dashboard',
+          action: '/signup'
         }
       ],
       miniVariant: false,

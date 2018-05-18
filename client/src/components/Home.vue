@@ -13,21 +13,20 @@
             <div class="subheading mb-3 text-xs-center">Powered by Vuetify</div>
             <v-layout class="mt-5">
               <v-flex>
-                <router-link to="/signup">
-                  <v-btn
-                    class="blue lighten-2"
-                    dark
-                    large
-                    href="/pre-made-themes"
-                  >
-                  Get Started
-                  </v-btn>
-                </router-link>
+                <v-btn
+                  class="blue lighten-2"
+                  dark
+                  large
+                  href="/pre-made-themes"
+                  to="/signup"
+                >
+                Get Started
+                </v-btn>
               </v-flex>
               <v-flex>
-                <router-link to="/login">
-                  <v-btn large color="primary">Log In</v-btn>
-                </router-link>
+                <v-btn large color="primary" to="/login">
+                  Log In
+                </v-btn>
               </v-flex>
               <v-flex>
                 <a href="/info">
@@ -197,3 +196,9 @@
       </v-footer>
     </v-content>
 </template>
+
+<style>
+  a {
+    text-decoration: none;
+  }
+</style>

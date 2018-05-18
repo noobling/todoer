@@ -48,7 +48,9 @@
                             </v-card-actions>
                           </v-card>
                         </v-dialog>
-                        <v-btn flat color="orange">View</v-btn>
+                        <router-link :to="'/todolist/'+card.id">
+                          <v-btn flat color="orange">View</v-btn>                        
+                        </router-link>
                       </v-card-actions>
                     </v-card>
                   </v-flex>
@@ -69,9 +71,9 @@ export default {
   data () {
     return {
       cards: [
-        { title: 'Family Todo list', src: require('@/assets/todolists-img1.jpeg'), flex: 12, dialog: false },
-        { title: 'CITS 2401 Project', src: require('@/assets/todolists-img2.jpeg'), flex: 6, dialog: false },
-        { title: 'Coders for Causes Committee Todo List', src: require('@/assets/todolists-img3.jpeg'), flex: 6 }
+        { title: 'Family Todo list', src: require('@/assets/todolists-img1.jpeg'), flex: 6, dialog: false, id: 1 },
+        { title: 'CITS 2401 Project', src: require('@/assets/todolists-img2.jpeg'), flex: 6, dialog: false, id: 2 },
+        { title: 'Coders for Causes Committee Todo List', src: require('@/assets/todolists-img3.jpeg'), flex: 6, id: 3 }
       ]
     }
   }

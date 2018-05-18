@@ -4,6 +4,7 @@ import Dashboard from '@/components/Dashboard'
 import Home from '@/components/Home'
 import Signup from '@/components/Signup'
 import Login from '@/components/Login'
+import TodoList from '@/components/TodoList'
 
 Vue.use(Router)
 
@@ -13,6 +14,7 @@ export default new Router({
     { path: '/dashboard', component: Dashboard },
     { path: '/', component: Home },
     { path: '/signup', component: Signup },
-    { path: '/login', component: Login }
+    { path: '/login', component: Login },
+    { path: '/todolist/:id', component: TodoList }
   ]
 })
