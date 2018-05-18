@@ -29,6 +29,13 @@
                   <v-btn large color="primary">Log In</v-btn>
                 </router-link>
               </v-flex>
+              <v-flex>
+                <a href="/info">
+                  <v-btn large color="success">
+                      Info
+                  </v-btn>
+                </a>
+              </v-flex>
             </v-layout>
             
           </v-layout>

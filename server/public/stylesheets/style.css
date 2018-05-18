@@ -6,3 +6,21 @@ body {
 a {
   color: #00B7FF;
 }
+
+.info-page-btn {
+  display: inline-block;
+  padding: 5px 30px;
+  border-radius: 5px;
+  width: 25%;
+  max-width: 118px;
+  -webkit-font-smoothing: antialiased;
+  background: #2fd069;
+  font-size: 1.6em;
+  color: #fff;
+  text-decoration: none;
+}
+
+.info-page-btn:hover {
+  background: #37b264;
+  transition: all 0.5s;
+}
