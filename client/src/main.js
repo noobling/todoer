@@ -10,6 +10,11 @@ Vue.use(Vuetify)
 
 Vue.config.productionTip = false
 
+Vue.prototype.loggedIn = false
+
+// The global event bus where we pass data between components
+window.events = new Vue()
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

@@ -32,7 +32,7 @@
               <v-flex>
                 <a href="/info">
                   <v-btn large color="success">
-                      Info
+                    Info
                   </v-btn>
                 </a>
               </v-flex>

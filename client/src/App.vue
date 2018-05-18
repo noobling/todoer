@@ -1,12 +1,12 @@
 <template>
   <v-app dark id="inspire">
-    <Navbar/>
-      <router-view></router-view>
+    <Navbar></Navbar>
+    <router-view></router-view>
   </v-app>
 </template>
    
 <script>
-import Navbar from './components/Navbar'
+import Navbar from '@/components/Navbar'
 export default {
   components: {
     Navbar

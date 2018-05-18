@@ -51,6 +51,10 @@
   import axios from 'axios'
 
   export default {
+    created () {
+      window.loggedIn = true     
+      window.events.$emit('loggedInStateChange')
+    },
     data () {
       return {
         valid: false,
