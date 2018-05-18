@@ -1,12 +1,70 @@
 <template>
     <div>
       <v-content>
-        <p>Content here</p>
+        <v-layout column>
+          <v-flex xs12 sm6>
+                <v-btn large color="green">
+                  Create New Shared Todo List
+                  <v-icon>add</v-icon>
+                </v-btn>
+                <v-btn large color="info">
+                  Join a Shared Todo List
+                  <v-icon>group</v-icon>
+                </v-btn>
+          </v-flex>
+          <v-flex xs12 sm6 mt-5>
+            <v-card>
+              <v-container fluid grid-list-md>
+                <v-layout row wrap>
+                  <v-flex
+                    v-for="card in cards"
+                    v-bind="{ [`xs${card.flex}`]: true }"
+                    :key="card.title"
+                  >
+                    <v-card>
+                      <v-card-media
+                        :src="card.src"
+                        height="200px"
+                      >
+                        <v-container fill-height fluid>
+                          <v-layout fill-height>
+                            <v-flex xs12 align-end flexbox>
+                              <span class="headline white--text" v-text="card.title"></span>
+                            </v-flex>
+                          </v-layout>
+                        </v-container>
+                      </v-card-media>
+                      <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn flat color="red">Delete</v-btn>
+                        <v-btn flat color="orange">View</v-btn>
+                      </v-card-actions>
+                    </v-card>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-card>
+          </v-flex>
+        </v-layout>
       </v-content>
-      <v-footer :fixed="fixed" app>
+      <v-footer app>
         <span>&copy; 2017</span>
       </v-footer>
     </div>
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      cards: [
+        { title: 'Family Todo list', src: require('@/assets/todolists-img1.jpeg'), flex: 12 },
+        { title: 'CITS 2401 Project', src: require('@/assets/todolists-img2.jpeg'), flex: 6 },
+        { title: 'Coders for Causes Committee Todo List', src: require('@/assets/todolists-img3.jpeg'), flex: 6 }
+      ]
+    }
+  }
+}
+</script>
 
 

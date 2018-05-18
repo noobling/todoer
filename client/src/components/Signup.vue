@@ -52,7 +52,7 @@
 
   export default {
     created () {
-      window.loggedIn = true     
+      window.loggedIn = true
       window.events.$emit('loggedInStateChange')
     },
     data () {
