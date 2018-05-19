@@ -48,52 +48,43 @@
 </template>
 
 <script>
-  import axios from 'axios'
+import axios from 'axios'
 
-  export default {
-    created () {
-      window.loggedIn = true
-      window.events.$emit('loggedInStateChange')
-    },
-    data () {
-      return {
-        valid: false,
-        visible: true,
-        name: '',
-        nameRules: [
-          v => !!v || 'Name is required'
-        ],
-        email: '',
-        emailRules: [
-          v => !!v || 'E-mail is required',
-          v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
-        ],
-        password: '',
-        passwordRules: [
-          v => (v && v.length >= 6) || 'Password must be at least 6 chracters'
-        ],
-        select: null,
-        items: [
-          'Frontend',
-          'Backend',
-          'Marketing',
-          'Designer'
-        ]
-      }
-    },
+export default {
+  created () {
+    window.loggedIn = true
+    window.events.$emit('loggedInStateChange')
+  },
+  data () {
+    return {
+      valid: false,
+      visible: true,
+      name: '',
+      nameRules: [v => !!v || 'Name is required'],
+      email: '',
+      emailRules: [
+        v => !!v || 'E-mail is required',
+        v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
+      ],
+      password: '',
+      passwordRules: [v => (v && v.length >= 6) || 'Password must be at least 6 chracters'],
+      select: null,
+      items: ['Frontend', 'Backend', 'Marketing', 'Designer']
+    }
+  },
 
-    methods: {
-      submit () {
-        if (this.$refs.form.validate()) {
-          // Native form submission is not yet supported
-          axios.post('/api/submit', {
-            name: this.name,
-            email: this.email,
-            select: this.select,
-            password: this.password
-          })
-        }
+  methods: {
+    submit () {
+      if (this.$refs.form.validate()) {
+        // Native form submission is not yet supported
+        axios.post('/api/submit', {
+          name: this.name,
+          email: this.email,
+          select: this.select,
+          password: this.password
+        })
       }
     }
   }
+}
 </script>
