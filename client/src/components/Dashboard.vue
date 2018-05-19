@@ -3,14 +3,44 @@
       <v-content>
         <v-layout column>
           <v-flex xs12 sm6>
-                <v-btn large color="green">
-                  Create New Shared Todo List
-                  <v-icon>add</v-icon>
-                </v-btn>
-                <v-btn large color="info">
-                  Join a Shared Todo List
-                  <v-icon>group</v-icon>
-                </v-btn>
+            <v-btn large color="green" to="/todolist/create">
+              Create New Shared Todo List
+              <v-icon>add</v-icon>
+            </v-btn>
+            <v-btn large color="info" @click="joinDialog = true">
+              Join a Shared Todo List
+              <v-icon>group</v-icon>           
+            </v-btn>              
+            <v-dialog v-model="joinDialog">
+              <v-card>
+                <v-list>
+                  <v-subheader>Public Shared Todo Lists</v-subheader>   
+                  <v-list-tile @click="">
+                      <v-list-tile-action>
+                          <v-btn flat color="green">Join</v-btn>
+                      </v-list-tile-action>
+                      <v-list-tile-content>
+                          <v-list-tile-title>Alis family todo list</v-list-tile-title>
+                          <v-list-tile-sub-title>Alis family todo list</v-list-tile-sub-title>
+                      </v-list-tile-content>
+                  </v-list-tile>
+                  <v-subheader>Private Shared Todo Lists</v-subheader>   
+                  <v-list-tile>
+                      <v-list-tile-action>
+                          <v-btn flat color="green">Request Join</v-btn>                       
+                      </v-list-tile-action>
+                      <v-list-tile-content>
+                          <v-list-tile-title>Coders for Causes todo list</v-list-tile-title>
+                          <v-list-tile-sub-title>A very good shared todo list</v-list-tile-sub-title>
+                      </v-list-tile-content>
+                  </v-list-tile>        
+                </v-list>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="green" flat @click.native="joinDialog = false">Cancel</v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
           </v-flex>
           <v-flex xs12 sm6 mt-5>
             <v-card>
@@ -68,6 +98,7 @@
 export default {
   data () {
     return {
+      joinDialog: false,
       cards: [
         { title: 'Family Todo list', src: require('@/assets/todolists-img1.jpeg'), flex: 6, dialog: false, id: 1 },
         { title: 'CITS 2401 Project', src: require('@/assets/todolists-img2.jpeg'), flex: 6, dialog: false, id: 2 },
