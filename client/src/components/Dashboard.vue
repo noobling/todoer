@@ -48,9 +48,7 @@
                             </v-card-actions>
                           </v-card>
                         </v-dialog>
-                        <router-link :to="'/todolist/'+card.id">
-                          <v-btn flat color="orange">View</v-btn>                        
-                        </router-link>
+                        <v-btn flat color="orange" :to="'/todolist/'+card.id">View</v-btn>                        
                       </v-card-actions>
                     </v-card>
                   </v-flex>

@@ -37,7 +37,7 @@
                   </v-card-text>
                   <v-card-actions>
                     <v-btn color="primary" flat @click.stop="item.profileDialog=false">Close</v-btn>
-                    <v-btn color="orange" flat @click.stop="item.profileDialog=false">View Profile</v-btn>                    
+                    <v-btn color="orange" flat :to="'/profile/'+item.userId">View Profile</v-btn>                                        
                   </v-card-actions>
                 </v-card>
               </v-dialog>
@@ -94,7 +94,8 @@ export default {
             "<span class='text--primary'>Ali Connors</span> &mdash; I'll be in your neighborhood doing errands this weekend. Do you want to hang out?",
           id: 1,
           profileDialog: false,
-          itemDialog: false
+          itemDialog: false,
+          userId: 1
         },
         { divider: true, inset: true },
         {
@@ -104,7 +105,8 @@ export default {
             "<span class='text--primary'>Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?",
           id: 2,
           profileDialog: false,
-          itemDialog: false
+          itemDialog: false,
+          userId: 2
         },
         { divider: true, inset: true },
         {
@@ -114,7 +116,8 @@ export default {
             "<span class='text--primary'>Trevor Hansen</span> &mdash; Have any ideas about what we should get Heidi for her birthday?",
           id: 3,
           profileDialog: false,
-          itemDialog: false
+          itemDialog: false,
+          userId: 3
         },
         { divider: true, inset: true },
         {
@@ -124,7 +127,8 @@ export default {
             "<span class='text--primary'>Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.",
           id: 4,
           profileDialog: false,
-          itemDialog: false
+          itemDialog: false,
+          userId: 4
         }
       ]
     }
