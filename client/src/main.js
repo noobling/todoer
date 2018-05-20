@@ -12,8 +12,12 @@ Vue.config.productionTip = false
 
 Vue.prototype.loggedIn = false
 
+require('dotenv').config()
+
 // The global event bus where we pass data between components
 window.events = new Vue()
+
+window.HOST = 'http://localhost:3000'
 
 /* eslint-disable no-new */
 new Vue({
