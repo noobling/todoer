@@ -77,12 +77,14 @@ export default {
     submit () {
       if (this.$refs.form.validate()) {
         // Native form submission is not yet supported
-        axios.post(window.HOST + '/register', {
-          username: this.username,
-          email: this.email,
-          skill: this.skill,
-          password: this.password
-        }, {
+        axios(window.HOST + '/register', {
+          method: 'post',
+          data: {
+            username: this.username,
+            email: this.email,
+            skill: this.skill,
+            password: this.password
+          },
           withCredentials: true
         })
       }

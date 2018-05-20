@@ -52,9 +52,13 @@
       submit () {
         if (this.$refs.form.validate()) {
           // Native form submission is not yet supported
-          axios.post(window.HOST + '/login', {
-            username: this.username,
-            password: this.password
+          axios(window.HOST + '/login', {
+            method: 'post',
+            data: {
+              username: this.username,
+              password: this.password
+            },
+            withCredentials: true
           })
         }
       }
