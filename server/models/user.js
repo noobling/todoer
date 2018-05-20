@@ -1,17 +1,37 @@
 let mongoose = require("mongoose");
-let passportLocalMongoose = require("passport-local-mongoose");
+const crypto = require('crypto');
 
 let UserSchema = new mongoose.Schema({
-    email: {
-        type: String,
-        required: true,
-        trim: true,
-        unique: true
-    }
+  email: {
+    type: String,
+    required: true,
+    trim: true,
+    unique: true
+  },
+  hash: {
+    type: String,
+    required: true
+  },
+  // Salt for password
+  salt: {
+    type: String,
+    required: true
+  }
 });
 
-UserSchema.plugin(passportLocalMongoose);
-  
+UserSchema.methods.setPassword = function setPassword(password) {
+  this.salt = crypto.randomBytes(16).toString("hex");
+  this.hash = crypto
+    .pbkdf2Sync(password, this.salt, 1000, 64, "sha512")
+    .toString("hex");
+};
+
+UserSchema.methods.validPassword = function validPassword(password) {
+  const hash = crypto
+    .pbkdf2Sync(password, this.salt, 1000, 64, "sha512")
+    .toString("hex");
+  return this.hash === hash;
+};
 
 let User = mongoose.model("User", UserSchema);
 

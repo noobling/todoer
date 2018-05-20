@@ -82,6 +82,8 @@ export default {
           email: this.email,
           skill: this.skill,
           password: this.password
+        }, {
+          withCredentials: true
         })
       }
     }

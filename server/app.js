@@ -11,14 +11,8 @@ var usersRouter = require("./routes/users");
 
 require("dotenv").config();
 require("./models/db");
+require('./config/passport');
 const cors = require('cors');
-
-const User = require("./models/user");
-
-passport.use(new LocalStrategy(User.authenticate()));
-
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
 
 var app = express();
 
@@ -31,17 +25,24 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-app.use(cors());
+app.use(cors({credentials: true, origin: 'http://localhost:8080'}));
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
 app.use(
   require("express-session")({
     secret: process.env.secret,
-    resave: false,
-    saveUninitialized: false
+    resave: true,
+    saveUninitialized: true
   })
 );
+app.use((req, res, next) => {
+  res.locals.session = req.session;
+  next();
+});
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use("/", indexRouter);
+app.use("/users", usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -58,16 +59,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
-
-// User.register(new User({
-//   username: 'b@k.com',
-//   email: 'a2A.COM'
-// }), 'password', function (err, user) {
-//   if (err) {
-//       console.log(err);
-//   } else {
-//      console.log(user)};
-  
-// });
 
 module.exports = app;

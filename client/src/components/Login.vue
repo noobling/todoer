@@ -3,9 +3,9 @@
     <v-container>
       <v-form ref="form" v-model="valid" lazy-validation>  
         <v-text-field
-          v-model="email"
-          :rules="emailRules"
-          label="E-mail"
+          v-model="username"
+          :rules="[v => !!v || 'Username is required']"
+          label="username"
           required
         ></v-text-field>
         
@@ -40,11 +40,7 @@
       return {
         valid: false,
         visible: true,
-        email: '',
-        emailRules: [
-          v => !!v || 'E-mail is required',
-          v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
-        ],
+        username: '',
         password: '',
         passwordRules: [
           v => (v && v.length >= 6) || 'Password must be at least 6 chracters'
@@ -56,8 +52,8 @@
       submit () {
         if (this.$refs.form.validate()) {
           // Native form submission is not yet supported
-          axios.post('/api/submit', {
-            email: this.email,
+          axios.post(window.HOST + '/login', {
+            username: this.username,
             password: this.password
           })
         }

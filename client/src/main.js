@@ -19,6 +19,10 @@ window.events = new Vue()
 
 window.HOST = 'http://localhost:3000'
 
+window.axios = require('axios')
+
+window.axios.defaults.headers.common['Access-Control-Allow-Credentials'] = true
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

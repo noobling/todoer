@@ -1,42 +1,46 @@
 const User = require("../models/user");
+const passport = require("passport");
 
 module.exports.register = (req, res) => {
-  console.log(req.body);
-  User.register(
-    new User({
-      username: req.body.username,
-      email: req.body.email
-    }),
-    req.body.password,
-    function(err, user) {
+  const user = new User();
+  user.email = req.body.email;
+  user.setPassword(req.body.password);
+  user.save().then(savedUser => {
+    req.login(savedUser, err => {
       if (err) {
-        res.json(err);
+        console.log(err)
+        next(err);
+        return;
       } else {
-        res.json(user);
+        res.json(savedUser)
       }
-    }
-  );
+    });
+  })
+  .catch((err) => {
+    console.log(err)
+  });
 };
 
-module.exports.login = (req, res) => {
-  User.authenticate()(
-    req.body.username,
-    req.body.password,
-    (err, user, options) => {
-      console.log(user)
-      res.json('/')
-      // if (err) res.json(err);
-      // else if (user === false) {
-      //   res.json("Username and password don't match");
-      // } else {
-      //   req.login(user, function(err) {
-      //     if (err) res.json(err);
-      //     else {
-      //       res.json(user);
-      //       return;
-      //     }
-      //   });
-      // }
+module.exports.login = (req, res, next) => {
+  // const prevPage = req.header('Referer') || '/';
+  passport.authenticate("local", (err, user) => {
+    if (err) {
+      next(err);
     }
-  );
+
+    if (!user) {
+      console.log("no user");
+      res.render("index", { errors: ["Incorrect credentials"] });
+      return;
+    }
+    req.logIn(user, err2 => {
+      if (err2) {
+        next(err);
+      }
+      if (req.body.lengthOfStay) {
+        res.redirect(307, "/locations/".concat(req.body.lengthOfStay)); // show vacancies
+      }
+      res.redirect("/admin");
+    });
+  })(req, res, next);
 };
