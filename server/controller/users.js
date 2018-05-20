@@ -4,43 +4,46 @@ const passport = require("passport");
 module.exports.register = (req, res) => {
   const user = new User();
   user.email = req.body.email;
+  user.name = req.body.name;
   user.setPassword(req.body.password);
-  user.save().then(savedUser => {
-    req.login(savedUser, err => {
-      if (err) {
-        console.log(err)
-        next(err);
-        return;
-      } else {
-        res.json(savedUser)
-      }
+  user
+    .save()
+    .then(savedUser => {
+      req.login(savedUser, err => {
+        if (err) {
+          console.log(err);
+          res.status(400).json(err);
+        } else {
+          res.json(savedUser);
+        }
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
     });
-  })
-  .catch((err) => {
-    console.log(err)
-  });
 };
 
 module.exports.login = (req, res, next) => {
   // const prevPage = req.header('Referer') || '/';
   passport.authenticate("local", (err, user) => {
     if (err) {
-      next(err);
+      res.status(400).json(err);
+      return;
     }
 
     if (!user) {
       console.log("no user");
-      res.render("index", { errors: ["Incorrect credentials"] });
+      res.status(400).json("Invalid credentials");
       return;
     }
     req.logIn(user, err2 => {
       if (err2) {
-        next(err);
+        res.status(400).json(err2);
+        return;
       }
-      if (req.body.lengthOfStay) {
-        res.redirect(307, "/locations/".concat(req.body.lengthOfStay)); // show vacancies
-      }
-      res.redirect("/admin");
+
+      res.json(user);
     });
   })(req, res, next);
 };
