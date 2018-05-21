@@ -3,16 +3,16 @@
     <v-container>
       <v-form ref="form" v-model="valid" lazy-validation>
         <v-text-field
-          v-model="username"
-          :rules="nameRules"
-          label="Username"
-          required
-        ></v-text-field>
-        
-        <v-text-field
           v-model="email"
           :rules="emailRules"
           label="E-mail"
+          required
+        ></v-text-field>
+
+         <v-text-field
+          v-model="name"
+          :rules="nameRules"
+          label="name"
           required
         ></v-text-field>
         
@@ -59,7 +59,7 @@ export default {
     return {
       valid: false,
       visible: true,
-      username: '',
+      name: '',
       nameRules: [v => !!v || 'Name is required'],
       email: '',
       emailRules: [
@@ -80,13 +80,20 @@ export default {
         axios(window.HOST + '/register', {
           method: 'post',
           data: {
-            username: this.username,
+            name: this.name,
             email: this.email,
             skill: this.skill,
             password: this.password
           },
           withCredentials: true
         })
+          .then(user => {
+            window.events.$emit('NewRegistration', user)
+            this.$router.push('/dashboard')
+          })
+          .catch(err => {
+            console.log(err)
+          })
       }
     }
   }
