@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const ctrlUsers = require("../controller/users");
+const ctrlTodoLists = require("../controller/todoLists");
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
@@ -12,7 +13,9 @@ router.get("/info", function(req, res, next) {
 });
 
 router.post("/register", ctrlUsers.register);
-
 router.post("/login", ctrlUsers.login);
+router.get("/user", ctrlUsers.show);
+
+router.post("/todoList", ctrlTodoLists.store);
 
 module.exports = router;

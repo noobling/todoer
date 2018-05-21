@@ -47,3 +47,7 @@ module.exports.login = (req, res, next) => {
     });
   })(req, res, next);
 };
+
+module.exports.show = (req, res) => {
+  res.json(req.user)
+}

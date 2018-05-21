@@ -17,10 +17,15 @@ let UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  // Salt for password
   salt: {
     type: String,
     required: true
+  },
+  todoLists: {
+    type: [mongoose.Schema.ObjectId]
+  },
+  skills: {
+    type: [String]
   }
 });
 

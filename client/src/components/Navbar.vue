@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div v-if="loggedIn">
+  <div v-if="user">
     <v-navigation-drawer
       persistent
       v-model="drawer"
@@ -14,7 +14,7 @@
               <img src="https://randomuser.me/api/portraits/men/85.jpg" >
             </v-list-tile-avatar>
             <v-list-tile-content>
-              <v-list-tile-title>John Leider</v-list-tile-title>
+              <v-list-tile-title>{{ user.name }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
@@ -40,7 +40,7 @@
     app
     :clipped-left="clipped"
   >
-  <div v-if="loggedIn">
+  <div v-if="user">
     <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
   </div>
     <v-btn flat to="/">Home</v-btn>
@@ -53,15 +53,19 @@
     
 </template>
 <script>
+import axios from 'axios'
+
 export default {
   created () {
-    window.events.$on('loggedInStateChange', () => {
-      console.log('got event')
-      this.loggedIn = window.loggedIn
+    window.events.$on('NewRegistration', (user) => {
+      this.user = user
     })
+
+    this.fetchUser()
   },
   data () {
     return {
+      user: '',
       loggedIn: window.loggedIn,
       clipped: false,
       drawer: true,
@@ -82,6 +86,17 @@ export default {
       right: true,
       rightDrawer: false,
       title: 'Vuetify.js'
+    }
+  },
+
+  methods: {
+    fetchUser () {
+      axios(window.HOST + '/user', {
+        method: 'GET',
+        withCredentials: true
+      }).then(({data}) => {
+        this.user = data
+      })
     }
   }
 }

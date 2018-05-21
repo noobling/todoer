@@ -86,8 +86,8 @@ export default {
           },
           withCredentials: true
         })
-          .then(user => {
-            window.events.$emit('NewRegistration', user)
+          .then(({data}) => {
+            window.events.$emit('NewRegistration', data)
             this.$router.push('/dashboard')
           })
           .catch((err) => {

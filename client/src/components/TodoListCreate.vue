@@ -20,10 +20,9 @@
         ></v-text-field>
 
         <v-select
-          v-model="select"
-          :items="items"
-          :rules="[v => !!v || 'Choose at least one skill']"
-          label="Skills needed for project"
+          v-model="skills"
+          :rules="[v => v.length > 0 || 'Choose at least one skill']"
+          label="Skills needed for project (enter separated)"
           chips
           tags
           required
@@ -59,10 +58,7 @@ export default {
       nameRules: [v => !!v || 'Name is required'],
       description: '',
       descriptionRules: [v => !!v || 'Description is required'],
-      password: '',
-      passwordRules: [v => (v && v.length >= 6) || 'Password must be at least 6 chracters'],
-      select: null,
-      items: ['Frontend', 'Backend', 'Marketing', 'Designer'],
+      skills: null,
       filename: ''
     }
   },
@@ -98,11 +94,21 @@ export default {
     submit () {
       if (this.$refs.form.validate()) {
         // Native form submission is not yet supported
-        axios.post('/api/submit', {
-          name: this.name,
-          email: this.email,
-          select: this.select,
-          password: this.password
+        axios(window.HOST + '/todoList', {
+          method: 'POST',
+          data: {
+            name: this.name,
+            description: this.description,
+            skills: this.skills
+          },
+          withCredentials: true
+        }).then(({data}) => {
+          window.events.$emit('TodoListCreated', data)
+          this.$router.push('/todolist/' + data._id)
+        }).catch(err => {
+          // eslint-disable-next-line
+          flash('Validation failed please try again, check developer console for more information.', 'error')
+          console.log(err.response.data.message)
         })
       }
     }

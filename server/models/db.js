@@ -41,3 +41,4 @@ process.on("SIGTERM", () => {
 });
 
 require('./user');
+require('./todoList')
