@@ -23,6 +23,9 @@ window.axios = require('axios')
 
 window.axios.defaults.headers.common['Access-Control-Allow-Credentials'] = true
 
+window.flash = (message, type = 'success') => {
+  window.events.$emit('Flash', {message, type})
+}
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

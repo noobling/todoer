@@ -12,8 +12,15 @@ head
       font-family: arial,helvetica;
       color: #fff;
       margin:0;
+      margin-bottom: 20px;
     }
-    .intro p{
+    h2 {
+      font-size: 3em;
+      font-family: arial,helvetica;
+      color: #fff;
+      margin:0;
+    }
+    p{
       color: #fff;
       font-family: arial,helvetica;   
       font-size: 24px;   
@@ -44,13 +51,10 @@ head
   script(type='text/javascript' src='https://rawgit.com/alvarotrigo/fullPage.js/master/jquery.fullPage.js')
   script(type='text/javascript').
     $(document).ready(function() {
-    $('#fullpage').fullpage({
-    anchors: ['firstPage', 'secondPage', '3rdPage'],
-    sectionsColor: ['#0094F0', '#FF4F74', '#FFC600'],
-    navigation: true,
-    navigationPosition: 'right',
-    navigationTooltips: ['First page', 'Second page', 'Third and last page']
-    });
+      $('#fullpage').fullpage({
+        anchors: ['firstPage', 'secondPage', '3rdPage'],
+        sectionsColor: ['#0094F0', '#FF4F74', '#FFC600'],
+      });
     });
 #fullpage
   #section0.section
@@ -61,13 +65,15 @@ head
   #section1.section
     #slide1.slide
       .intro
-        h1 Testing
+        h1 Challenges
         p
-          | You can even click on the navigation and jump directly to another section.
+          | Developing SPA apps can be pretty hard here are the challenges and our solution
     #slide2.slide
-      h1 Validation
-      p 
-        | Validation text here
+      h1 CORS
+      h2 Problem
+      p Unable to access back end from frontend dev server due to CORS
+      h2 Solution
+      p You have to use the CORS library in express server then set Access-Control-Allow-Credentials to true and withCredentials to true in your http request library. Then you need to add this to app.js app.use(cors({credentials: true, origin: 'frontendserveraddress'})); 
   #section2.section
     .intro
       h1 Matching Algorithm

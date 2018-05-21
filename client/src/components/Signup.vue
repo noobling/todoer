@@ -52,7 +52,6 @@ import axios from 'axios'
 
 export default {
   created () {
-    window.loggedIn = true
     window.events.$emit('loggedInStateChange')
   },
   data () {
@@ -91,8 +90,10 @@ export default {
             window.events.$emit('NewRegistration', user)
             this.$router.push('/dashboard')
           })
-          .catch(err => {
-            console.log(err)
+          .catch((err) => {
+            // eslint-disable-next-line
+            flash('Something went wrong :/ check developer console for more information', 'error')
+            console.log(err.response.data)
           })
       }
     }
