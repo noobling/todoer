@@ -18,7 +18,7 @@ export default new Router({
     { path: '/signup', component: Signup },
     { path: '/login', component: Login },
     { path: '/todolist/create', component: TodoListCreate },
-    { path: '/todolist/:todolistId', component: TodoList },
+    { path: '/todolist/:todoListId', component: TodoList },
     { path: '/profile/:userId', component: Profile }
   ]
 })

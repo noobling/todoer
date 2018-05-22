@@ -17,5 +17,6 @@ router.post("/login", ctrlUsers.login);
 router.get("/user", ctrlUsers.show);
 
 router.post("/todoList", ctrlTodoLists.store);
+router.get("/todoList/:todoListId", ctrlTodoLists.show);
 
 module.exports = router;

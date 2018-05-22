@@ -17,10 +17,12 @@
         ></v-text-field>
         
         <v-select
-          v-model="skill"
+          v-model="skills"
           :items="items"
-          :rules="[v => !!v || 'Item is required']"
-          label="Skill"
+          :rules="[v => v.length > 0 || 'You need to have at least one skill']"
+          label="Skills"
+          chips
+          tags
           required
         ></v-select>
         
@@ -67,7 +69,7 @@ export default {
       ],
       password: '',
       passwordRules: [v => (v && v.length >= 6) || 'Password must be at least 6 chracters'],
-      skill: null,
+      skills: null,
       items: ['Frontend', 'Backend', 'Marketing', 'Designer']
     }
   },
@@ -81,7 +83,7 @@ export default {
           data: {
             name: this.name,
             email: this.email,
-            skill: this.skill,
+            skills: this.skills,
             password: this.password
           },
           withCredentials: true

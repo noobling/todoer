@@ -36,7 +36,7 @@
               <v-dialog v-model="item.profileDialog" max-width="500px">
                 <v-card>
                   <v-card-title>
-                    {{ item.title }} 's Todo List
+                    {{todoList.name}}
                   </v-card-title>
                   <v-card-text>
                     
@@ -88,9 +88,16 @@
   
 </template>
 <script>
+import axios from 'axios'
+
 export default {
+  created () {
+    this.fetchTodoList()
+  },
+
   data () {
     return {
+      todoList: null,
       items: [
         { header: 'Coders for Causes Committee Todo List' },
         {
@@ -137,6 +144,21 @@ export default {
           userId: 4
         }
       ]
+    }
+  },
+
+  methods: {
+    fetchTodoList () {
+      axios(window.HOST + '/todolist/' + this.$route.params.todoListId, {
+        method: 'GET',
+        withCredentials: true
+      }).then(({data}) => {
+        this.todoList = data
+      }).catch((err) => {
+        // eslint-disable-next-line
+        flash('Failed to fetch todolist check developer console for more information', 'error')
+        console.log(err.response.data)
+      })
     }
   }
 }

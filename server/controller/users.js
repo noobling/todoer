@@ -5,6 +5,7 @@ module.exports.register = (req, res) => {
   const user = new User();
   user.email = req.body.email;
   user.name = req.body.name;
+  user.skills = req.body.skills;
   user.setPassword(req.body.password);
   user
     .save()
