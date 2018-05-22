@@ -17,7 +17,7 @@ require('dotenv').config()
 // The global event bus where we pass data between components
 window.events = new Vue()
 
-window.HOST = 'http://localhost:3000'
+window.HOST = ''
 
 window.axios = require('axios')
 
