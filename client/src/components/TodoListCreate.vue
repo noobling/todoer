@@ -20,6 +20,14 @@
         ></v-text-field>
 
         <v-select
+          v-model="selectedNames"
+          :items="names"
+          label="Who do you want to share this todo list with?"
+          chips
+          tags
+        ></v-select>
+
+        <v-select
           v-model="skills"
           :rules="[v => v.length > 0 || 'Choose at least one skill']"
           label="Skills needed for project (enter separated)"
@@ -27,7 +35,7 @@
           tags
           required
         ></v-select>
-        
+
         <v-text-field prepend-icon="attach_file" single-line
                 v-model="filename" label="Image"
                 ref="fileTextField"
@@ -50,8 +58,16 @@
 import axios from 'axios'
 
 export default {
+  created () {
+    this.fetchUsers()
+  },
+
   data () {
     return {
+      users: null,
+      selectedNames: null,
+      selectedUsers: null,
+      names: [],
       valid: false,
       visible: true,
       name: '',
@@ -60,6 +76,17 @@ export default {
       descriptionRules: [v => !!v || 'Description is required'],
       skills: null,
       filename: ''
+    }
+  },
+
+  watch: {
+    selectedNames: function (val) {
+      this.selectedUsers = []
+      val.forEach(selectedName => {
+        this.users.forEach(user => {
+          if (user.name === selectedName) this.selectedUsers.push(user._id)
+        })
+      })
     }
   },
 
@@ -99,7 +126,8 @@ export default {
           data: {
             name: this.name,
             description: this.description,
-            skills: this.skills
+            skills: this.skills,
+            participants: this.selectedUsers
           },
           withCredentials: true
         }).then(({data}) => {
@@ -111,6 +139,20 @@ export default {
           console.log(err.response.data.message)
         })
       }
+    },
+
+    fetchUsers () {
+      axios(window.HOST + '/users', {
+        method: 'GET',
+        withCredentials: true
+      }).then(({data}) => {
+        this.users = data
+        this.users.forEach((user) => {
+          if (user.name) {
+            this.names.push(user.name)
+          }
+        })
+      })
     }
   }
 }

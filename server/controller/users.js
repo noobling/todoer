@@ -50,5 +50,11 @@ module.exports.login = (req, res, next) => {
 };
 
 module.exports.show = (req, res) => {
-  res.json(req.user)
-}
+  res.json(req.user);
+};
+
+module.exports.index = (req, res) => {
+  User.find({}, (err, users) => {
+    res.json(users);
+  });
+};

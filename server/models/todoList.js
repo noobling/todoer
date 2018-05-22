@@ -21,6 +21,9 @@ let TodoListSchema = new mongoose.Schema({
   },
   todoItems: {
     type: [mongoose.Schema.ObjectId]
+  },
+  participants: {
+    type: [mongoose.Schema.ObjectId]
   }
 });
 

@@ -22,9 +22,9 @@
       <v-flex xs12 sm6 offset-sm3>
         <v-card>
         <v-list three-line>
+          <v-subheader>{{ todoList.name }}</v-subheader>          
           <template v-for="(item, index) in items">
-            <v-subheader v-if="item.header" :key="item.header">{{ item.header }}</v-subheader>
-            <v-divider v-else-if="item.divider" :inset="item.inset" :key="index"></v-divider>
+            <v-divider v-if="item.divider" :inset="item.inset" :key="index"></v-divider>
             <v-list-tile v-else :key="item.title" class="tile" avatar>
               <v-list-tile-avatar @click="item.profileDialog = true">
                 <img :src="item.avatar">
@@ -36,7 +36,7 @@
               <v-dialog v-model="item.profileDialog" max-width="500px">
                 <v-card>
                   <v-card-title>
-                    {{todoList.name}}
+                    {{ item.title }} 's Todo List
                   </v-card-title>
                   <v-card-text>
                     
@@ -99,7 +99,6 @@ export default {
     return {
       todoList: null,
       items: [
-        { header: 'Coders for Causes Committee Todo List' },
         {
           avatar: require('@/assets/profile1.jpeg'),
           title: 'Brunch this weekend?',

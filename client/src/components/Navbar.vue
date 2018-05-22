@@ -57,8 +57,10 @@ import axios from 'axios'
 
 export default {
   created () {
-    window.events.$on('NewRegistration', (user) => {
-      this.user = user
+    ['NewRegistraion', 'Login'].forEach(event => {
+      window.events.$on(event, user => {
+        this.user = user
+      })
     })
 
     this.fetchUser()
@@ -94,7 +96,7 @@ export default {
       axios(window.HOST + '/user', {
         method: 'GET',
         withCredentials: true
-      }).then(({data}) => {
+      }).then(({ data }) => {
         this.user = data
       })
     }

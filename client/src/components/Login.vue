@@ -3,9 +3,9 @@
     <v-container>
       <v-form ref="form" v-model="valid" lazy-validation>  
         <v-text-field
-          v-model="username"
-          :rules="[v => !!v || 'Username is required']"
-          label="username"
+          v-model="email"
+          :rules="[v => !!v || 'Email is required']"
+          label="Email"
           required
         ></v-text-field>
         
@@ -40,7 +40,7 @@
       return {
         valid: false,
         visible: true,
-        username: '',
+        email: '',
         password: '',
         passwordRules: [
           v => (v && v.length >= 6) || 'Password must be at least 6 chracters'
@@ -55,10 +55,13 @@
           axios(window.HOST + '/login', {
             method: 'post',
             data: {
-              username: this.username,
+              email: this.email,
               password: this.password
             },
             withCredentials: true
+          }).then(({data}) => {
+            window.events.$emit('Login', data)
+            this.$router.push('/dashboard')
           })
         }
       }

@@ -13,6 +13,7 @@ module.exports.store = (req, res) => {
   todoList.description = req.body.description;
   todoList.skills = req.body.skills;
   todoList.owner = req.user.id;
+  todoList.participants = req.body.participants
 
   todoList
     .save()
