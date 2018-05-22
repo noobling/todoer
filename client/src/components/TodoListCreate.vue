@@ -29,6 +29,7 @@
 
         <v-select
           v-model="skills"
+          :items="skillsList"
           :rules="[v => v.length > 0 || 'Choose at least one skill']"
           label="Skills needed for project (enter separated)"
           chips
@@ -74,6 +75,7 @@ export default {
       nameRules: [v => !!v || 'Name is required'],
       description: '',
       descriptionRules: [v => !!v || 'Description is required'],
+      skillsList: [],
       skills: null,
       filename: ''
     }
@@ -84,7 +86,11 @@ export default {
       this.selectedUsers = []
       val.forEach(selectedName => {
         this.users.forEach(user => {
-          if (user.name === selectedName) this.selectedUsers.push(user._id)
+          if (user.name === selectedName) {
+            this.selectedUsers.push(user._id)
+
+            this.addUserSkills(user)
+          }
         })
       })
     }
@@ -152,6 +158,13 @@ export default {
             this.names.push(user.name)
           }
         })
+      })
+    },
+
+    addUserSkills (user) {
+      user.skills.forEach(userSkill => {
+        console.log(userSkill)
+        if (this.skillsList.indexOf(userSkill) === -1) this.skillsList.push(userSkill)
       })
     }
   }

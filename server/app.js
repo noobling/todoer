@@ -7,7 +7,7 @@ var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+var apiRouter = require("./routes/api");
 
 require("dotenv").config();
 require("./models/db");
@@ -42,7 +42,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/api", apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
