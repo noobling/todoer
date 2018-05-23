@@ -11,7 +11,6 @@ let TodoItemSchema = new mongoose.Schema({
   },
   participants: {
     type: [mongoose.Schema.ObjectId],
-    required: true
   },
   skills: {
     type: [String]
@@ -20,6 +19,9 @@ let TodoItemSchema = new mongoose.Schema({
     type: Date
   },
   creator: {
+    type: mongoose.Schema.ObjectId
+  },
+  todoList: {
     type: mongoose.Schema.ObjectId
   }
 });

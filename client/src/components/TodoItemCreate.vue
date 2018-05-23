@@ -75,7 +75,7 @@ export default {
       users: null,
       autoAssign: true,
       names: [],
-      selectNames: [],
+      selectedNames: [],
       selectedUsers: [],
       dueDate: null,
       skills: null,
@@ -89,13 +89,9 @@ export default {
   watch: {
     selectedNames: function (val) {
       this.selectedUsers = []
-      val.forEach(selectedName => {
-        this.users.forEach(user => {
-          if (user.name === selectedName) {
-            this.selectedUsers.push(user._id)
-          }
-        })
-      })
+      for (let i = 0; i < this.users.length; i++) {
+        if (this.users[i].name === val) this.selectedUsers.push(this.users[i]._id)
+      }
     }
   },
 

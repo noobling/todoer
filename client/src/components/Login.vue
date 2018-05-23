@@ -62,6 +62,9 @@
           }).then(({data}) => {
             window.events.$emit('Login', data)
             this.$router.push('/dashboard')
+          }).catch((err) => {
+            // eslint-disable-next-line
+            flash(err.response.data, 'error')
           })
         }
       }
