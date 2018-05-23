@@ -25,16 +25,16 @@
       <v-flex xs12 sm6 offset-sm3>
         <v-card>
         <v-list three-line>
-          <v-subheader>{{ todoList.name }}</v-subheader>          
-          <template v-for="(item, index) in items">
-            <v-divider v-if="item.divider" :inset="item.inset" :key="index"></v-divider>
-            <v-list-tile v-else :key="item.title" class="tile" avatar>
+          <v-subheader v-if="todoList.name">{{ todoList.name }}</v-subheader>
+          <template v-for="(item, index) in todoItems">
+            <v-divider v-if="index != 0" :inset="true" :key="index"></v-divider>
+            <v-list-tile :key="item.name" class="tile" avatar>
               <v-list-tile-avatar @click="item.profileDialog = true">
                 <img :src="item.avatar">
               </v-list-tile-avatar>
               <v-list-tile-content @click="item.itemDialog = true" class="tile-text">
-                <v-list-tile-title v-html="item.title"></v-list-tile-title>
-                <v-list-tile-sub-title v-html="item.subtitle"></v-list-tile-sub-title>
+                <v-list-tile-title v-html="item.name"></v-list-tile-title>
+                <v-list-tile-sub-title v-html="item.description"></v-list-tile-sub-title>
               </v-list-tile-content>
               <v-dialog v-model="item.profileDialog" max-width="500px">
                 <v-card>
@@ -96,11 +96,14 @@ import axios from 'axios'
 export default {
   created () {
     this.fetchTodoList()
+    this.fetchTodoListItems()
   },
 
   data () {
     return {
-      todoList: null,
+      todoList: '',
+      todoItems: [],
+      todoListId: this.$route.params.todoListId,
       items: [
         {
           avatar: require('@/assets/profile1.jpeg'),
@@ -151,7 +154,7 @@ export default {
 
   methods: {
     fetchTodoList () {
-      axios(window.HOST + '/todolist/' + this.$route.params.todoListId, {
+      axios(window.HOST + '/todolist/' + this.todoListId, {
         method: 'GET',
         withCredentials: true
       }).then(({data}) => {
@@ -161,6 +164,22 @@ export default {
         flash('Failed to fetch todolist check developer console for more information', 'error')
         console.log(err.response.data)
       })
+    },
+
+    fetchTodoListItems () {
+      axios.get(window.HOST + '/todolist/' + this.todoListId + '/todoItems')
+        .then(({data}) => {
+          for (let i = 0; i < data.length; i++) {
+            this.todoItems.push(data[i])
+            data[i].participants.forEach(participant => {
+              axios.get(window.HOST + '/user/' + participant)
+                .then(({data}) => {
+                  // assuming only one participant for now
+                  this.todoItems[i].assignedUser = data
+                })
+            })
+          }
+        })
     }
   }
 }

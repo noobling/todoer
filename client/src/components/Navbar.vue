@@ -93,7 +93,7 @@ export default {
 
   methods: {
     fetchUser () {
-      axios(window.HOST + '/user', {
+      axios(window.HOST + '/loggedInUser', {
         method: 'GET',
         withCredentials: true
       }).then(({ data }) => {

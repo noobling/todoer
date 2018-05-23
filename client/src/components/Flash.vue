@@ -27,6 +27,7 @@ export default {
       this.message = data.message
       this.type = data.type
       this.alert = true
+      setTimeout(function () { this.alert = false }, 2000)
     })
   }
 }

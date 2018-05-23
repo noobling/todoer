@@ -20,28 +20,38 @@ module.exports.store = (req, res) => {
       req.body.skills,
       suitableUser => {
         todoItem.participants = suitableUser;
-        saveTodoItem(todoItem, req, res)            
+        saveTodoItem(todoItem, req, res);
       }
     );
   } else {
     todoItem.participants = req.body.participants;
-    saveTodoItem(todoItem, req, res)
+    saveTodoItem(todoItem, req, res);
   }
+};
+
+module.exports.index = (req, res) => {
+  TodoList.findById(req.params.todoListId).then(todoList => {
+    TodoItem.find({
+      _id: {
+        $in: todoList.todoItems
+      }
+    }).then(todoItems => res.json(todoItems));
+  });
 };
 
 function saveTodoItem(todoItem, req, res) {
   todoItem
-  .save()
-  .then(newTodoItem => {
-    TodoList.findOne({ _id: req.params.todoListId }).then(result => {
-      result.todoItems.push(newTodoItem._id);
-      result.save();
-      res.json(newTodoItem);
+    .save()
+    .then(newTodoItem => {
+      TodoList.findOne({ _id: req.params.todoListId }).then(result => {
+        result.todoItems.push(newTodoItem._id);
+        result.save();
+        res.json(newTodoItem);
+      });
+    })
+    .catch(err => {
+      res.status(400).json(err);
     });
-  })
-  .catch(err => {
-    res.status(400).json(err);
-  });
 }
 
 function findMostSuitableUser(todoListId, skills, cb) {

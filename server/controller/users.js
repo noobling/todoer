@@ -49,12 +49,18 @@ module.exports.login = (req, res, next) => {
   })(req, res, next);
 };
 
-module.exports.show = (req, res) => {
+module.exports.loggedInUser = (req, res) => {
   res.json(req.user);
 };
 
 module.exports.index = (req, res) => {
   User.find({}, (err, users) => {
     res.json(users);
+  });
+};
+
+module.exports.show = (req, res) => {
+  User.findById(req.params.userId, "email name", (err, user) => {
+    res.json(user);
   });
 };
