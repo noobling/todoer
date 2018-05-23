@@ -1,4 +1,6 @@
 const TodoList = require("../models/todoList");
+const User = require("../models/user");
+const mongoose = require("mongoose");
 
 module.exports.store = (req, res) => {
   if (!req.user) {
@@ -13,7 +15,7 @@ module.exports.store = (req, res) => {
   todoList.description = req.body.description;
   todoList.skills = req.body.skills;
   todoList.owner = req.user.id;
-  todoList.participants = req.body.participants
+  todoList.participants = req.body.participants;
 
   todoList
     .save()
@@ -30,9 +32,27 @@ module.exports.show = (req, res) => {
   TodoList.findById(req.params.todoListId, (err, todoList) => {
     if (err) {
       console.log(err);
-      res.status(400).json(err)
+      res.status(400).json(err);
     } else {
-      res.json(todoList)
+      res.json(todoList);
+    }
+  });
+};
+
+module.exports.users = (req, res) => {
+  TodoList.findById(req.params.todoListId, (err, todoList) => {
+    if (err) res.status(400).json(err);
+    else {
+      User.find(
+        {
+          _id: {
+            $in: todoList.participants
+          }
+        },
+        function(err, docs) {
+          res.json(docs)
+        }
+      );
     }
   });
 };

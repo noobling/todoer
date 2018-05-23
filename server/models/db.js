@@ -40,5 +40,6 @@ process.on("SIGTERM", () => {
   });
 });
 
-require('./user');
-require('./todoList')
+require("./user");
+require("./todoList");
+require("./todoItem");

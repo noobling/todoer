@@ -7,11 +7,14 @@
           dense
         >
         <v-text-field prepend-icon="search" hide-details single-line placeholder="Search Todos"></v-text-field>
-        <v-btn icon>
+        <v-btn :to="'/todolist/'+todoList._id+'/todoItem/create'" icon>
           <v-icon>add</v-icon>
         </v-btn>
         <v-btn icon>
           <v-icon>edit</v-icon>
+        </v-btn>
+        <v-btn icon>
+          <v-icon>people</v-icon>
         </v-btn>
       </v-toolbar>
       </v-flex>

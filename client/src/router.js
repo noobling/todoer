@@ -7,6 +7,7 @@ import Login from '@/components/Login'
 import TodoList from '@/components/TodoList'
 import Profile from '@/components/Profile'
 import TodoListCreate from '@/components/TodoListCreate'
+import TodoItemCreate from '@/components/TodoItemCreate'
 
 Vue.use(Router)
 
@@ -19,6 +20,7 @@ export default new Router({
     { path: '/login', component: Login },
     { path: '/todolist/create', component: TodoListCreate },
     { path: '/todolist/:todoListId', component: TodoList },
-    { path: '/profile/:userId', component: Profile }
+    { path: '/profile/:userId', component: Profile },
+    { path: '/todoList/:todoListId/todoItem/create', component: TodoItemCreate }
   ]
 })
