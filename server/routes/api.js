@@ -1,14 +1,19 @@
 const express = require("express");
 const router = express.Router();
 const ctrlUsers = require("../controller/users");
+const auth = require("../controller/auth");
 const ctrlTodoLists = require("../controller/todoLists");
 const ctrlTodoItems = require("../controller/todoItems");
 
-router.post("/register", ctrlUsers.register);
-router.post("/login", ctrlUsers.login);
-router.get("/loggedInUser", ctrlUsers.loggedInUser);
-router.get('/user/:userId', ctrlUsers.show);
+router.post("/register", auth.register);
+router.post("/login", auth.login);
+router.get("/logout", auth.logout);
+
 router.get("/users", ctrlUsers.index);
+router.get("/loggedInUser", ctrlUsers.loggedInUser);
+router.get("/user/todoLists", ctrlUsers.userTodoLists);
+router.get("/user/:userId", ctrlUsers.show);
+router.get("/user/:userId/todoLists", ctrlUsers.todoLists);
 
 router.post("/todoList", ctrlTodoLists.store);
 router.get("/todoList/:todoListId", ctrlTodoLists.show);

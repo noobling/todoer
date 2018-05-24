@@ -40,14 +40,23 @@
     app
     :clipped-left="clipped"
   >
-  <div v-if="user">
-    <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-  </div>
-    <v-btn flat to="/">Home</v-btn>
-
-    <v-btn flat to="/dashboard">
-      Dashboard
-    </v-btn>
+    <div v-if="user">
+      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-btn flat to="/dashboard">
+        Dashboard
+      </v-btn>
+    </div>
+    <div v-else>
+      <v-btn flat to="/">Home</v-btn>
+    </div>
+    <v-spacer></v-spacer>    
+    <div v-if="!user">
+        <v-btn to="/login" flat>Log In</v-btn>
+        <v-btn to="/signup" flat>Sign Up</v-btn>
+    </div>
+    <div v-else>
+      <v-btn flat @click="logout">Logout</v-btn>
+    </div>
   </v-toolbar>
 </div>
     
@@ -98,6 +107,16 @@ export default {
         withCredentials: true
       }).then(({ data }) => {
         this.user = data
+      })
+    },
+
+    logout () {
+      axios(window.HOST + '/logout', {
+        method: 'GET',
+        withCredentials: true
+      }).then(() => {
+        this.user = null
+        this.$router.push('/')
       })
     }
   }
