@@ -36,7 +36,8 @@
                         </div>
                       </v-card-title>
                       <v-card-actions>
-                        <v-btn flat color="orange" :to="'/todolist/'+todoList._id">View</v-btn>                        
+                        <v-btn flat color="orange" :to="'/todolist/'+todoList._id">View</v-btn>
+                        <delete-dialog :todoList="todoList"></delete-dialog>
                       </v-card-actions>
                     </v-card>
                   </v-flex>
@@ -54,10 +55,15 @@
 
 <script>
 import axios from 'axios'
+import DeleteDialog from './DeleteDialog'
 
 export default {
+  components: {DeleteDialog},
+
   created () {
     this.fetchUserTodoLists()
+
+    window.events.$on('DeletedTodoList', () => this.fetchUserTodoLists())
   },
 
   data () {

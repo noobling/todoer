@@ -21,9 +21,6 @@ let UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  todoLists: {
-    type: [mongoose.Schema.ObjectId]
-  },
   skills: {
     type: [String]
   }

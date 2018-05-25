@@ -18,6 +18,7 @@ router.get("/user/:userId/todoLists", ctrlUsers.todoLists);
 router.post("/todoList", ctrlTodoLists.store);
 router.get("/todoList/:todoListId", ctrlTodoLists.show);
 router.get("/todoList/:todoListId/users", ctrlTodoLists.users);
+router.delete("/todoList/:todoListId", ctrlTodoLists.destroy);
 
 router.post("/todoList/:todoListId/todoItem/create", ctrlTodoItems.store);
 router.get("/todoList/:todoListId/todoItems", ctrlTodoItems.index);

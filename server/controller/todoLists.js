@@ -1,5 +1,6 @@
 const TodoList = require("../models/todoList");
 const User = require("../models/user");
+const TodoItem = require("../models/todoItem");
 const mongoose = require("mongoose");
 
 module.exports.store = (req, res) => {
@@ -50,9 +51,19 @@ module.exports.users = (req, res) => {
           }
         },
         function(err, docs) {
-          res.json(docs)
+          res.json(docs);
         }
       );
     }
   });
+};
+
+module.exports.destroy = (req, res) => {
+  const todoListIdToDel = req.params.todoListId;
+
+  TodoItem.deleteMany({ todoList: todoListIdToDel }, err => console.log(err))
+
+  TodoList.deleteOne({ _id: todoListIdToDel }, err => console.log(err));
+
+  res.json("TodoListDeleted");
 };
