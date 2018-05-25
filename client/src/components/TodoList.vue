@@ -99,6 +99,8 @@ export default {
   created () {
     this.fetchTodoList()
     this.fetchTodoListItems()
+    // eslint-disable-next-line
+    window.events.$on('JoinedTodoList', flash('Joined Todo List'))
   },
 
   watch: {
