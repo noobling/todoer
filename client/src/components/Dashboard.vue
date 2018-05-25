@@ -2,12 +2,6 @@
     <div>
       <v-content>
         <v-layout column>
-          <v-flex xs12 sm6>
-            <v-btn large color="green" to="/todolist/create">
-              Create New Shared Todo List
-              <v-icon>add</v-icon>
-            </v-btn>
-          </v-flex>
           <v-flex xs12 sm6 mt-5>
             <v-card>
               <v-container fluid grid-list-md>
@@ -18,7 +12,7 @@
                     xs12
                   >
                     <v-card>
-                      <v-card-media
+                    <v-card-media
                         :src="todoList.src ? todoList.src: randomTodoListImg()"
                         height="200px"
                       >

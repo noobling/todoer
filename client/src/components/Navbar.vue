@@ -33,6 +33,19 @@
             <v-list-tile-title v-text="item.title"></v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+
+        <v-list-group>
+          <v-list-tile slot="activator">
+            <v-list-tile-title>Your Todo Lists</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile 
+            v-for="(todoList, i) in todoLists"
+            :key="i"
+            :to="'/todolist/' + todoList._id"
+          >
+            <v-list-tile-title>{{todoList.name}}</v-list-tile-title>
+          </v-list-tile>
+        </v-list-group>
       </v-list>
     </v-navigation-drawer>
   </div>  
@@ -42,8 +55,8 @@
   >
     <div v-if="user">
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-btn flat to="/dashboard">
-        Dashboard
+      <v-btn flat :to="user? '/dashboard': '/home'">
+        Home
       </v-btn>
     </div>
     <div v-else>
@@ -74,6 +87,13 @@ export default {
 
     this.fetchUser()
   },
+
+  watch: {
+    user: function (val) {
+      this.fetchUserTodoLists()
+    }
+  },
+
   data () {
     return {
       user: '',
@@ -81,22 +101,33 @@ export default {
       clipped: false,
       drawer: true,
       fixed: false,
+      todoLists: null,
       items: [
+        {
+          icon: 'dashboard',
+          title: 'Dashboard',
+          action: '/dashboard'
+        },
+        {
+          icon: 'add',
+          title: 'Create Todo List',
+          action: '/todolist/create'
+        },
+        {
+          icon: 'group',
+          title: 'Join Todo List',
+          action: '/todolist/join'
+        },
         {
           icon: 'settings',
           title: 'Settings',
           action: '/login'
-        },
-        {
-          icon: 'dashboard',
-          title: 'Dashboard',
-          action: '/signup'
         }
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'Todoer'
     }
   },
 
@@ -118,6 +149,13 @@ export default {
         this.user = null
         this.$router.push('/')
       })
+    },
+
+    fetchUserTodoLists () {
+      axios(window.HOST + '/user/todoLists', {
+        method: 'GET',
+        withCredentials: true
+      }).then(({data}) => { this.todoLists = data })
     }
   }
 }

@@ -99,6 +99,14 @@ export default {
     this.fetchTodoListItems()
   },
 
+  watch: {
+    '$route' (to, from) {
+      this.todoListId = to.params.todoListId
+      this.fetchTodoList()
+      this.fetchTodoListItems()
+    }
+  },
+
   data () {
     return {
       todoList: '',
