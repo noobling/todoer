@@ -5,6 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
+var proxy = require('http-proxy-middleware');
 
 var indexRouter = require("./routes/index");
 var apiRouter = require("./routes/api");
@@ -26,6 +27,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors({credentials: true, origin: 'http://localhost:8080'}));
+app.use('/api/avatars', proxy({target: 'https://ui-avatars.com/api/', changeOrigin: true}));
 
 app.use(
   require("express-session")({

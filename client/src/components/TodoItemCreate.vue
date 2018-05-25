@@ -1,7 +1,7 @@
 <template>
   <v-content>
     <v-container>
-        <h3 class="display-3">Create New Todo for {{ todoList.name }}</h3>
+        <h3 class="display-3" v-if="todoList" >Create New Todo for {{ todoList.name }}</h3>
 
       <v-form ref="form" v-model="valid" lazy-validation>
         <v-text-field

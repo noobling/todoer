@@ -11,7 +11,7 @@
         <v-list class="pa-0">
           <v-list-tile avatar>
             <v-list-tile-avatar>
-              <img src="https://randomuser.me/api/portraits/men/85.jpg" >
+              <img :src="userAvatar(user)" >
             </v-list-tile-avatar>
             <v-list-tile-content>
               <v-list-tile-title>{{ user.name }}</v-list-tile-title>
@@ -76,6 +76,7 @@
 </template>
 <script>
 import axios from 'axios'
+const utils = require('../js/utils')
 
 export default {
   created () {
@@ -102,6 +103,7 @@ export default {
       drawer: true,
       fixed: false,
       todoLists: null,
+      userAvatar: utils.userAvatar,
       items: [
         {
           icon: 'dashboard',

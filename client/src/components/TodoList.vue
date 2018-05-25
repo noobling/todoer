@@ -30,7 +30,7 @@
             <v-divider v-if="index != 0" :inset="true" :key="index"></v-divider>
             <v-list-tile :key="item.name" class="tile" avatar>
               <v-list-tile-avatar @click="item.profileDialog = true">
-                <img :src="item.avatar">
+                <img :src="userAvatar(item)">
               </v-list-tile-avatar>
               <v-list-tile-content @click="item.itemDialog = true" class="tile-text">
                 <v-list-tile-title v-html="item.name"></v-list-tile-title>
@@ -93,6 +93,8 @@
 <script>
 import axios from 'axios'
 
+let utils = require('../js/utils')
+
 export default {
   created () {
     this.fetchTodoList()
@@ -112,51 +114,7 @@ export default {
       todoList: '',
       todoItems: [],
       todoListId: this.$route.params.todoListId,
-      items: [
-        {
-          avatar: require('@/assets/profile1.jpeg'),
-          title: 'Brunch this weekend?',
-          subtitle:
-            "<span class='text--primary'>Ali Connors</span> &mdash; I'll be in your neighborhood doing errands this weekend. Do you want to hang out?",
-          id: 1,
-          profileDialog: false,
-          itemDialog: false,
-          userId: 1
-        },
-        { divider: true, inset: true },
-        {
-          avatar: require('@/assets/profile3.jpeg'),
-          title: 'Oui oui',
-          subtitle:
-            "<span class='text--primary'>Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?",
-          id: 2,
-          profileDialog: false,
-          itemDialog: false,
-          userId: 2
-        },
-        { divider: true, inset: true },
-        {
-          avatar: require('@/assets/profile4.jpg'),
-          title: 'Birthday gift',
-          subtitle:
-            "<span class='text--primary'>Trevor Hansen</span> &mdash; Have any ideas about what we should get Heidi for her birthday?",
-          id: 3,
-          profileDialog: false,
-          itemDialog: false,
-          userId: 3
-        },
-        { divider: true, inset: true },
-        {
-          avatar: require('@/assets/hero.jpeg'),
-          title: 'Recipe to try',
-          subtitle:
-            "<span class='text--primary'>Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.",
-          id: 4,
-          profileDialog: false,
-          itemDialog: false,
-          userId: 4
-        }
-      ]
+      userAvatar: utils.userAvatar
     }
   },
 
