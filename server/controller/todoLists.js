@@ -74,13 +74,7 @@ module.exports.index = (req, res) => {
 
 module.exports.join = (req, res) => {
   if (!req.user) return res.status(401).json({message: 'Unauthorized'})
-  // TodoList.update({_id: req.params.todoListId}, {
-  //   $push: {
-  //     participants: req.user.id
-  //   }
-  // }, (err, result) => res.json({ message: 'JoinedTodoList'}))
-  console.log(req.params.todoListId)
-  console.log(req.user.id)
+
   TodoList.findOne({ _id: req.params.todoListId}).then(result => {
     result.participants.push(req.user.id)
     result.save()

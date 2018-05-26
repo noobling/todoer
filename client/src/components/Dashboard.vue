@@ -2,41 +2,47 @@
     <div>
       <v-content>
         <v-layout column>
-
-          <v-flex xs12 sm6 mt-5 v-if="todoLists && todoLists.length > 0">
+          <v-flex xs12 sm6 v-if="todoLists && todoLists.length > 0">
             <v-card>
               <v-container fluid grid-list-md>
-                <v-layout row wrap>
-                  <v-flex
-                    v-for="todoList in todoLists"
-                    :key="todoList.name"
-                    xs12
-                  >
-                    <v-card>
-                    <v-card-media
-                        :src="todoList.src ? todoList.src: randomTodoListImg()"
-                        height="200px"
+                <v-tabs>
+                  <v-tab key="owner">
+                    Todo lists you created
+                  </v-tab>
+                  <v-tab-item key="owner">
+                    <v-layout row wrap>
+                      <v-flex
+                        v-for="todoList in ownerTodoLists"
+                        :key="todoList.name"
+                        xs12
                       >
-                        <v-container fill-height fluid>
-                          <v-layout fill-height>
-                            <v-flex xs12 align-end flexbox>
-                              <span class="headline white--text" v-text="todoList.name"></span>
-                            </v-flex>
-                          </v-layout>
-                        </v-container>
-                      </v-card-media>
-                      <v-card-title>
-                        <div>
-                          <span>{{ todoList.description }}</span>
-                        </div>
-                      </v-card-title>
-                      <v-card-actions>
-                        <v-btn flat color="orange" :to="'/todolist/'+todoList._id">View</v-btn>
-                        <delete-dialog :todoList="todoList"></delete-dialog>
-                      </v-card-actions>
-                    </v-card>
-                  </v-flex>
-                </v-layout>
+                      <todo-list-brief :todoList="todoList"></todo-list-brief>
+                      </v-flex>
+                    </v-layout>
+                  </v-tab-item>
+
+                  <v-tab key="participating">
+                    Todo lists you joined
+                  </v-tab>
+                  <v-tab-item key="participating">
+                    <v-layout row wrap>
+                      <v-flex
+                        v-for="todoList in participantTodoLists"
+                        :key="todoList.name"
+                        xs12
+                      >
+                        <todo-list-brief :todoList="todoList"></todo-list-brief>
+                      </v-flex>
+                    </v-layout>
+                  </v-tab-item>
+
+                  <v-tab key="join">
+                    Join a todo list
+                  </v-tab>
+                  <v-tab-item key="join">
+                    <todo-list-join-child-component></todo-list-join-child-component>
+                  </v-tab-item>
+                </v-tabs>
               </v-container>
             </v-card>
           </v-flex>
@@ -52,11 +58,12 @@
 
 <script>
 import axios from 'axios'
-import DeleteDialog from './DeleteDialog'
 import GettingStartedDialog from './GettingStartedDialog'
+import TodoListBrief from './TodoListBrief'
+import TodoListJoinChildComponent from './TodoListJoinChildComponent'
 
 export default {
-  components: {DeleteDialog, GettingStartedDialog},
+  components: {GettingStartedDialog, TodoListBrief, TodoListJoinChildComponent},
 
   created () {
     this.fetchUserTodoLists()
@@ -66,22 +73,31 @@ export default {
 
   data () {
     return {
-      todoLists: null
+      ownerTodoLists: [],
+      participantTodoLists: [],
+      todoLists: null,
+      userId: null
     }
   },
 
   methods: {
     fetchUserTodoLists () {
-      axios(window.HOST + '/user/todoLists', {
-        method: 'GET',
-        withCredentials: true
-      }).then(({data}) => { this.todoLists = data })
-    },
-    getRandomInt: function (max) {
-      return Math.floor(Math.random() * Math.floor(max))
-    },
-    randomTodoListImg: function () {
-      return require('@/assets/todolist-' + this.getRandomInt(4) + '.jpg')
+      axios.get(window.HOST + '/loggedInUser', {withCredentials: true}).then((result) => {
+        this.userId = result.data._id
+        axios(window.HOST + '/user/todoLists', {
+          method: 'GET',
+          withCredentials: true
+        }).then(({data}) => {
+          data.forEach(todoList => {
+            if (todoList.owner === this.userId) {
+              this.ownerTodoLists.push(todoList)
+            } else {
+              this.participantTodoLists.push(todoList)
+            }
+          })
+          this.todoLists = this.ownerTodoLists.concat(this.participantTodoLists)
+        })
+      })
     }
   }
 }

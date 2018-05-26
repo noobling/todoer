@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const passport = require("passport");
 const TodoList = require("../models/todoList");
 
 
@@ -25,8 +26,7 @@ module.exports.todoLists = (req, res) => {
 };
 
 module.exports.userTodoLists = (req, res) => {
-  console.log("here");
-  TodoList.find({ owner: req.user.id }, (err, todoLists) =>
+  TodoList.find({ $or: [{owner: req.user.id}, {participants: req.user.id}] }, (err, todoLists) =>
     res.json(todoLists)
   );
 };

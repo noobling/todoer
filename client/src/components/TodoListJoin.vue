@@ -2,7 +2,7 @@
   <div>
     <v-content>
       <v-layout column>
-        <v-flex xs12 sm6 mt-5>
+        <v-flex xs12>
           <v-card>
             <v-container fluid grid-list-md>
               <v-layout row wrap>
