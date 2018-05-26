@@ -80,7 +80,7 @@ const utils = require('../js/utils')
 
 export default {
   created () {
-    ['NewRegistraion', 'Login'].forEach(event => {
+    ['NewRegistration', 'Login'].forEach(event => {
       window.events.$on(event, user => {
         this.user = user
       })

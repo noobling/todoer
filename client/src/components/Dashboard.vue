@@ -2,7 +2,8 @@
     <div>
       <v-content>
         <v-layout column>
-          <v-flex xs12 sm6 mt-5>
+
+          <v-flex xs12 sm6 mt-5 v-if="todoLists && todoLists.length > 0">
             <v-card>
               <v-container fluid grid-list-md>
                 <v-layout row wrap>
@@ -39,20 +40,23 @@
               </v-container>
             </v-card>
           </v-flex>
+
+          <div v-else>
+            <getting-started-dialog></getting-started-dialog>
+            <h1 class="headline text-sm-center mt-4">You are not part of any shared todo list...</h1>
+          </div>
         </v-layout>
       </v-content>
-      <v-footer app>
-        <span>&copy; 2017</span>
-      </v-footer>
     </div>
 </template>
 
 <script>
 import axios from 'axios'
 import DeleteDialog from './DeleteDialog'
+import GettingStartedDialog from './GettingStartedDialog'
 
 export default {
-  components: {DeleteDialog},
+  components: {DeleteDialog, GettingStartedDialog},
 
   created () {
     this.fetchUserTodoLists()
@@ -62,8 +66,7 @@ export default {
 
   data () {
     return {
-      todoLists: null,
-      joinDialog: false
+      todoLists: null
     }
   },
 
