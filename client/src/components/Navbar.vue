@@ -39,7 +39,20 @@
             <v-list-tile-title>Your Todo Lists</v-list-tile-title>
           </v-list-tile>
           <v-list-tile 
-            v-for="(todoList, i) in todoLists"
+            v-for="(todoList, i) in ownerTodoLists"
+            :key="i"
+            :to="'/todolist/' + todoList._id"
+          >
+            <v-list-tile-title>{{todoList.name}}</v-list-tile-title>
+          </v-list-tile>
+        </v-list-group>
+
+        <v-list-group>
+          <v-list-tile slot="activator">
+            <v-list-tile-title>Todo Lists Participating In</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile 
+            v-for="(todoList, i) in participatingTodoLists"
             :key="i"
             :to="'/todolist/' + todoList._id"
           >
@@ -102,7 +115,8 @@ export default {
       clipped: false,
       drawer: true,
       fixed: false,
-      todoLists: null,
+      ownerTodoLists: [],
+      participatingTodoLists: [],
       userAvatar: utils.userAvatar,
       items: [
         {
@@ -157,7 +171,15 @@ export default {
       axios(window.HOST + '/user/todoLists', {
         method: 'GET',
         withCredentials: true
-      }).then(({data}) => { this.todoLists = data })
+      }).then(({data}) => {
+        data.forEach(todoList => {
+          if (todoList.owner === this.user._id) {
+            this.ownerTodoLists.push(todoList)
+          } else {
+            this.participatingTodoLists.push(todoList)
+          }
+        })
+      })
     }
   }
 }

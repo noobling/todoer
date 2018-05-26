@@ -33,7 +33,7 @@
                 <img :src="userAvatar(item)">
               </v-list-tile-avatar>
               <v-list-tile-content @click="item.itemDialog = true" class="tile-text">
-                <v-list-tile-title v-html="item.name"></v-list-tile-title>
+                <v-list-tile-title>{{ item.name }} <span :class="overDue(item.dueDate)? 'red': ''">{{ timeago().format(item.dueDate) }}</span></v-list-tile-title>
                 <v-list-tile-sub-title v-html="item.description"></v-list-tile-sub-title>
               </v-list-tile-content>
               <v-dialog v-model="item.profileDialog" max-width="500px">
@@ -92,6 +92,7 @@
 </template>
 <script>
 import axios from 'axios'
+import timeago from 'timeago.js'
 
 let utils = require('../js/utils')
 
@@ -118,7 +119,8 @@ export default {
       todoList: '',
       todoItems: [],
       todoListId: this.$route.params.todoListId,
-      userAvatar: utils.userAvatar
+      userAvatar: utils.userAvatar,
+      timeago: timeago
     }
   },
 
@@ -150,6 +152,14 @@ export default {
             })
           }
         })
+    },
+
+    overDue (time) {
+      if (time) {
+        return new Date(time) < new Date()
+      } else {
+        return false
+      }
     }
   }
 }
