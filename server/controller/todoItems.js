@@ -39,6 +39,12 @@ module.exports.index = (req, res) => {
   });
 };
 
+module.exports.complete = (req, res) => {
+  TodoItem.update({_id: req.params.todoItemId}, {$set: {completed: true}}, (err, result) => {
+    res.json({message: 'Set todo to complete'})
+  })
+}
+
 function saveTodoItem(todoItem, req, res) {
   todoItem
     .save()

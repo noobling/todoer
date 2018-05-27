@@ -23,6 +23,10 @@ let TodoItemSchema = new mongoose.Schema({
   },
   todoList: {
     type: mongoose.Schema.ObjectId
+  },
+  completed: {
+    type: Boolean,
+    default: false
   }
 });
 
