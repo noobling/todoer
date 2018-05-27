@@ -40,10 +40,20 @@ module.exports.index = (req, res) => {
 };
 
 module.exports.complete = (req, res) => {
-  TodoItem.update({_id: req.params.todoItemId}, {$set: {completed: true}}, (err, result) => {
-    res.json({message: 'Set todo to complete'})
-  })
-}
+  TodoItem.update(
+    { _id: req.params.todoItemId },
+    { $set: { completed: true } },
+    (err, result) => {
+      res.json({ message: "Set todo to complete" });
+    }
+  );
+};
+
+module.exports.uncomplete = (req, res) => {
+  TodoItem.update({ _id: req.params.todoItemId }, { $set: {completed: false }}, (err, result) => {
+    res.json({message: 'Set completed to false'})
+  });
+};
 
 function saveTodoItem(todoItem, req, res) {
   todoItem

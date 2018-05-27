@@ -29,7 +29,7 @@
       <v-card-actions>
         <v-spacer></v-spacer>        
         <v-btn color="red">Delete <v-icon>delete</v-icon></v-btn>
-        <v-btn color="green" @click="complete">Complete <v-icon>done</v-icon></v-btn>        
+        <v-btn :color="item.completed? 'orange': 'green'" @click="complete" v-html="item.completed? 'Uncomplete': 'Complete'" width="100px"></v-btn>        
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -57,10 +57,14 @@
 
     methods: {
       complete: function () {
-        axios.post(window.HOST + '/todoItem/' + this.item._id + '/complete')
+        const endpoint = this.item.completed ? '/uncomplete' : '/complete'
+        axios.post(window.HOST + '/todoItem/' + this.item._id + endpoint)
           .then(() => {
             window.events.$emit('CompletedTodo')
             this.dialog = false
+            const status = this.item.completed ? 'Uncompleted' : 'Completed'
+            //eslint-disable-next-line
+            flash(status + ' Todo')
           })
       }
     }

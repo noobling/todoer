@@ -75,23 +75,25 @@ export default {
           if (flag === 'completed') {
             if (data[i].completed) {
               this.todoItems.push(data[i])
-              this.addParticipant(data, i)
+              const indexToAdd = this.todoItems.length - 1
+              this.addParticipantToLastItem(data, i, indexToAdd)
             }
           } else {
             if (!data[i].completed) {
               this.todoItems.push(data[i])
-              this.addParticipant(data, i)
+              const indexToAdd = this.todoItems.length - 1
+              this.addParticipantToLastItem(data, i, indexToAdd)
             }
           }
         }
       })
     },
 
-    addParticipant (todoItems, todoItemIndex) {
+    addParticipantToLastItem (todoItems, todoItemIndex, indexToAdd) {
       todoItems[todoItemIndex].participants.forEach(participant => {
         axios.get(window.HOST + '/user/' + participant).then(({ data }) => {
           // assuming only one participant for now
-          this.todoItems[todoItemIndex].assignedUser = data
+          this.todoItems[indexToAdd].assignedUser = data
         })
       })
     }
