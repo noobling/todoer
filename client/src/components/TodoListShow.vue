@@ -32,8 +32,10 @@ export default {
   props: ['payload'],
 
   created () {
-    window.events.$on('CompletedTodo', () => {
-      this.fetchTodoListItems(this.flag)
+    ['CompletedTodo', 'DeletedTodo'].forEach(item => {
+      window.events.$on(item, () => {
+        this.fetchTodoListItems(this.flag)
+      })
     })
   },
 
@@ -65,7 +67,7 @@ export default {
     },
 
     showTodoItem (todoItem) {
-      window.events.$emit('ShowTodoItem', todoItem)
+      window.events.$emit('ShowTodoItem', {todoItem, todoList: this.todoList})
     },
 
     fetchTodoListItems (flag) {

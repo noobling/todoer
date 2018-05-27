@@ -50,9 +50,22 @@ module.exports.complete = (req, res) => {
 };
 
 module.exports.uncomplete = (req, res) => {
-  TodoItem.update({ _id: req.params.todoItemId }, { $set: {completed: false }}, (err, result) => {
-    res.json({message: 'Set completed to false'})
-  });
+  TodoItem.update(
+    { _id: req.params.todoItemId },
+    { $set: { completed: false } },
+    (err, result) => {
+      res.json({ message: "Set completed to false" });
+    }
+  );
+};
+
+module.exports.delete = (req, res) => {
+  TodoList.update(
+    { _id: req.params.todoListId },
+    { $pull: req.params.todoItemId }
+  ).then(() => {});
+
+  TodoItem.deleteOne({_id: req.params.todoItemId}, err => res.json('Delete todo item'))
 };
 
 function saveTodoItem(todoItem, req, res) {

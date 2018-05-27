@@ -28,7 +28,7 @@
 
       <v-card-actions>
         <v-spacer></v-spacer>        
-        <v-btn color="red">Delete <v-icon>delete</v-icon></v-btn>
+        <v-btn color="red" @click="deleteTodo">Delete <v-icon>delete</v-icon></v-btn>
         <v-btn :color="item.completed? 'orange': 'green'" @click="complete" v-html="item.completed? 'Uncomplete': 'Complete'" width="100px"></v-btn>        
       </v-card-actions>
     </v-card>
@@ -41,8 +41,9 @@
 
   export default {
     created () {
-      window.events.$on('ShowTodoItem', todoItem => {
-        this.item = todoItem
+      window.events.$on('ShowTodoItem', payload => {
+        this.item = payload.todoItem
+        this.todoList = payload.todoList
         this.dialog = true
       })
     },
@@ -50,6 +51,7 @@
     data () {
       return {
         item: null,
+        todoList: null,
         dialog: false,
         timeago
       }
@@ -63,8 +65,18 @@
             window.events.$emit('CompletedTodo')
             this.dialog = false
             const status = this.item.completed ? 'Uncompleted' : 'Completed'
-            //eslint-disable-next-line
+            // eslint-disable-next-line
             flash(status + ' Todo')
+          })
+      },
+
+      deleteTodo: function () {
+        axios.delete(window.HOST + '/todoItem/' + this.todoList._id + '/' + this.item._id)
+          .then(() => {
+            window.events.$emit('DeletedTodo')
+            this.dialog = false
+            // eslint-disable-next-line
+            flash('Deleted Todo', 'warning')
           })
       }
     }
