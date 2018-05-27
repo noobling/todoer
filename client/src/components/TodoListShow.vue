@@ -32,7 +32,7 @@ export default {
   props: ['payload'],
 
   created () {
-    ['CompletedTodo', 'DeletedTodo'].forEach(item => {
+    ['CompletedTodo', 'DeletedTodo', 'UpdatedTodo'].forEach(item => {
       window.events.$on(item, () => {
         this.fetchTodoListItems(this.flag)
       })

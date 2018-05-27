@@ -1,8 +1,9 @@
 <template>
   <v-dialog v-model="dialog" max-width="440">
-    <v-card v-if="item">
+    <v-card v-if="item && !editing">
       <v-card-title class="title">
         {{ item.name }}
+        <v-icon class="edit-btn" @click="editing=true">edit</v-icon>
         <v-spacer></v-spacer>
         <v-btn flat @click="dialog=false">
           <v-icon>close</v-icon>
@@ -32,19 +33,34 @@
         <v-btn :color="item.completed? 'orange': 'green'" @click="complete" v-html="item.completed? 'Uncomplete': 'Complete'" width="100px"></v-btn>        
       </v-card-actions>
     </v-card>
+
+    <v-card v-else>
+      <v-card-text>
+        <todo-item-create-show :item="item"></todo-item-create-show>
+        <v-btn @click="editing=false" color="primary">Cancel</v-btn>        
+        
+      </v-card-text>
+    </v-card>
   </v-dialog>
 </template>
 
 <script>
   import timeago from 'timeago.js'
   import axios from 'axios'
+  import TodoItemCreateShow from './TodoItemCreateShow'
 
   export default {
+    components: { TodoItemCreateShow },
+
     created () {
       window.events.$on('ShowTodoItem', payload => {
         this.item = payload.todoItem
         this.todoList = payload.todoList
         this.dialog = true
+      })
+
+      window.events.$on('UpdatedTodo', () => {
+        this.dialog = false
       })
     },
 
@@ -53,7 +69,16 @@
         item: null,
         todoList: null,
         dialog: false,
-        timeago
+        timeago,
+        editing: false
+      }
+    },
+
+    watch: {
+      dialog: function (val) {
+        if (val === false) {
+          this.editing = false
+        }
       }
     },
 
@@ -86,5 +111,10 @@
 <style scoped>
   .todoItem li {
     list-style: none;
+  }
+
+  .edit-btn {
+    cursor: pointer;
+    margin-left: 1rem;
   }
 </style>

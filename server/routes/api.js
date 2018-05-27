@@ -27,5 +27,6 @@ router.get("/todoList/:todoListId/todoItems", ctrlTodoItems.index);
 router.post("/todoItem/:todoItemId/complete", ctrlTodoItems.complete);
 router.post("/todoItem/:todoItemId/uncomplete", ctrlTodoItems.uncomplete);
 router.delete("/todoItem/:todoListId/:todoItemId", ctrlTodoItems.delete);
+router.put('/todoItem/:todoItemId', ctrlTodoItems.update);
 
 module.exports = router;

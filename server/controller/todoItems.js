@@ -65,7 +65,15 @@ module.exports.delete = (req, res) => {
     { $pull: req.params.todoItemId }
   ).then(() => {});
 
-  TodoItem.deleteOne({_id: req.params.todoItemId}, err => res.json('Delete todo item'))
+  TodoItem.deleteOne({ _id: req.params.todoItemId }, err =>
+    res.json("Delete todo item")
+  );
+};
+
+module.exports.update = (req, res) => {
+  TodoItem.update({ _id: req.params.todoItemId }, req.body).then(() => {
+    res.json("Updated Todo");
+  });
 };
 
 function saveTodoItem(todoItem, req, res) {
