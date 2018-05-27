@@ -57,9 +57,10 @@
 
     methods: {
       complete: function () {
-        axios.post(window.HOST + '/todoItem/' + this.todoItem._id + '/complete')
+        axios.post(window.HOST + '/todoItem/' + this.item._id + '/complete')
           .then(() => {
             window.events.$emit('CompletedTodo')
+            this.dialog = false
           })
       }
     }

@@ -24,27 +24,30 @@
         Ongoing Todos
       </v-tab>
       <v-tab-item key="todoListKey">
-          <todo-list-show :todoList="todoList"></todo-list-show>
+        <todo-list-show :payload="{todoList, flag: 'normal'}"></todo-list-show>
       </v-tab-item>
 
       <v-tab key="todoListCompleted">
         Completed Todos
       </v-tab>
       <v-tab-item key="todoListCompleted">
-          <todo-list-show :todoList="todoList"></todo-list-show>          
+        <todo-list-show :payload="{todoList, flag: 'completed'}"></todo-list-show>          
       </v-tab-item>
     </v-tabs>
 
+    <todo-item-dialog></todo-item-dialog>    
 </v-content>
   
 </template>
 <script>
 import axios from 'axios'
 import TodoListShow from './TodoListShow'
+import TodoItemDialog from './TodoItemDialog'
 
 export default {
   components: {
-    TodoListShow
+    TodoListShow,
+    TodoItemDialog
   },
 
   created () {

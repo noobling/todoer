@@ -1,7 +1,5 @@
 <template>
-  <v-layout row mt-4>
-    <todo-item-dialog></todo-item-dialog>
-
+  <v-layout row mt-4 v-if="todoList">
     <v-flex xs12 sm6 offset-sm3>
       <v-card>
         <v-list three-line>
@@ -26,31 +24,34 @@
 
 <script>
 import timeago from 'timeago.js'
-import TodoItemDialog from './TodoItemDialog'
 import axios from 'axios'
 
 let utils = require('../js/utils')
 
 export default {
-  components: { TodoItemDialog },
-
-  props: ['todoList'],
+  props: ['payload'],
 
   created () {
-    this.fetchTodoListItems()
+    window.events.$on('CompletedTodo', () => {
+      this.fetchTodoListItems(this.flag)
+    })
   },
 
   watch: {
-    todoList: function (val) {
-      this.fetchTodoListItems()
+    payload: function (val) {
+      this.todoList = this.payload.todoList
+      this.flag = this.payload.flag
+      this.fetchTodoListItems(this.payload.flag)
     }
   },
 
   data () {
     return {
       todoItems: [],
+      todoList: '',
       userAvatar: utils.userAvatar,
-      timeago: timeago
+      timeago: timeago,
+      flag: 'normal'
     }
   },
 
@@ -67,18 +68,31 @@ export default {
       window.events.$emit('ShowTodoItem', todoItem)
     },
 
-    fetchTodoListItems () {
+    fetchTodoListItems (flag) {
       axios.get(window.HOST + '/todolist/' + this.todoList._id + '/todoItems').then(({ data }) => {
         this.todoItems = []
         for (let i = 0; i < data.length; i++) {
-          this.todoItems.push(data[i])
-          data[i].participants.forEach(participant => {
-            axios.get(window.HOST + '/user/' + participant).then(({ data }) => {
-              // assuming only one participant for now
-              this.todoItems[i].assignedUser = data
-            })
-          })
+          if (flag === 'completed') {
+            if (data[i].completed) {
+              this.todoItems.push(data[i])
+              this.addParticipant(data, i)
+            }
+          } else {
+            if (!data[i].completed) {
+              this.todoItems.push(data[i])
+              this.addParticipant(data, i)
+            }
+          }
         }
+      })
+    },
+
+    addParticipant (todoItems, todoItemIndex) {
+      todoItems[todoItemIndex].participants.forEach(participant => {
+        axios.get(window.HOST + '/user/' + participant).then(({ data }) => {
+          // assuming only one participant for now
+          this.todoItems[todoItemIndex].assignedUser = data
+        })
       })
     }
   }
