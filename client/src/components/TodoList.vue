@@ -1,6 +1,5 @@
 <template>
   <v-content>
-
     <v-layout mt-5>
       <v-flex xs12 sm6 offset-sm3>
         <v-toolbar
@@ -20,8 +19,21 @@
       </v-toolbar>
       </v-flex>
     </v-layout>
-      
-    <todo-list-show :todoList="todoList"></todo-list-show>
+    <v-tabs>
+      <v-tab key="todoListKey">
+        Ongoing Todos
+      </v-tab>
+      <v-tab-item key="todoListKey">
+          <todo-list-show :todoList="todoList"></todo-list-show>
+      </v-tab-item>
+
+      <v-tab key="todoListCompleted">
+        Completed Todos
+      </v-tab>
+      <v-tab-item key="todoListCompleted">
+          <todo-list-show :todoList="todoList"></todo-list-show>          
+      </v-tab-item>
+    </v-tabs>
 
 </v-content>
   
@@ -53,7 +65,6 @@ export default {
   data () {
     return {
       todoList: '',
-      todoItems: [],
       todoListId: this.$route.params.todoListId
     }
   },
