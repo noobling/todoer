@@ -5,3 +5,7 @@ exports.userAvatar = user => {
   const lastName = user.name.split(' ')[1]
   return window.HOST + '/avatars?name=' + firstName + '+' + lastName
 }
+
+exports.backgroundImg = user => {
+  return require('@/assets/hero.jpeg')
+}

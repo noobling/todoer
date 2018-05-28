@@ -1,8 +1,10 @@
 <template>
   <v-content>
     <v-container>
-        <h3 class="display-3" v-if="todoList" >Create New Todo for {{ todoList.name }}</h3>
-
+      <h3 class="display-3" v-if="todoList" >Create New Todo for {{ todoList.name }}</h3>
+      <v-btn icon dark @click="$router.go(-1)">
+        <v-icon>chevron_left</v-icon>
+      </v-btn>
       <v-form ref="form" v-model="valid" lazy-validation>
         <v-text-field
           v-model="name"

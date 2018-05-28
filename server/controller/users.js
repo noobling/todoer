@@ -20,7 +20,7 @@ module.exports.show = (req, res) => {
 };
 
 module.exports.todoLists = (req, res) => {
-  TodoList.find({ owner: req.params.userId }, (err, todoLists) => {
+  TodoList.find({ $or: [{owner: req.params.userId}, {participants: req.params.userId}] }, (err, todoLists) => {
     res.json(todoLists);
   });
 };

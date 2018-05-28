@@ -9,7 +9,7 @@
     >
     <v-toolbar flat class="transparent">
         <v-list class="pa-0">
-          <v-list-tile avatar>
+          <v-list-tile avatar @click="profile">
             <v-list-tile-avatar>
               <img :src="userAvatar(user)" >
             </v-list-tile-avatar>
@@ -180,6 +180,10 @@ export default {
           }
         })
       })
+    },
+
+    profile: function () {
+      this.$router.push('/profile/' + this.user._id)
     }
   }
 }

@@ -8,7 +8,7 @@
       </v-card-title>
 
       <v-list three-line>
-        <v-list-tile v-for="(participant, index) in participants" :key="index">
+        <v-list-tile v-for="(participant, index) in participants" :key="index" @click="profile(participant)">
           <v-list-tile-avatar>
             <img :src="userAvatar(participant)">
           </v-list-tile-avatar>
@@ -58,6 +58,10 @@ export default {
 
     fetchUser: function (userId) {
       axios.get(window.HOST + '/user/' + userId).then(({ data }) => this.participants.push(data))
+    },
+
+    profile: function (user) {
+      this.$router.push('/profile/' + user._id)
     }
   }
 }
