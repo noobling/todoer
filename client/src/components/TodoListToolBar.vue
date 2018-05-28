@@ -12,7 +12,7 @@
     <v-btn icon @click="edit">
       <v-icon>edit</v-icon>
     </v-btn>
-    <v-btn icon>
+    <v-btn icon @click="participants">
       <v-icon>people</v-icon>
     </v-btn>
   </v-toolbar>
@@ -27,6 +27,10 @@
     methods: {
       edit: function () {
         window.events.$emit('ShowEditTodoList', this.todoList)
+      },
+
+      participants: function () {
+        window.events.$emit('ShowTodoListParticipants', this.todoList)
       }
     }
   }

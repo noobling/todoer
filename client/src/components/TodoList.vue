@@ -19,7 +19,8 @@
     </v-tabs>
 
     <todo-item-dialog></todo-item-dialog>
-    <todo-list-edit-dialog></todo-list-edit-dialog>   
+    <todo-list-edit-dialog></todo-list-edit-dialog>
+    <participant-list-dialog></participant-list-dialog>
 </v-content>
   
 </template>
@@ -29,13 +30,15 @@ import TodoListShow from './TodoListShow'
 import TodoItemDialog from './TodoItemDialog'
 import TodoListToolBar from './TodoListToolBar'
 import TodoListEditDialog from './TodoListEditDialog'
+import ParticipantListDialog from './ParticipantListDialog'
 
 export default {
   components: {
     TodoListShow,
     TodoItemDialog,
     TodoListToolBar,
-    TodoListEditDialog
+    TodoListEditDialog,
+    ParticipantListDialog
   },
 
   created () {
