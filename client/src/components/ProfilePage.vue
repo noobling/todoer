@@ -2,7 +2,7 @@
 <v-content>
   <v-layout row mt-4>
     <v-flex x12 sm6 offset-sm3>
-      <v-card>
+      <v-card v-if="user">
         <v-card-media :src="backgroundImg(user)" height="300px">
         <v-layout column class="media">
           <v-card-title>
@@ -10,7 +10,7 @@
               <v-icon>chevron_left</v-icon>
             </v-btn>
             <v-spacer></v-spacer>
-            <v-btn icon class="mr-3">
+            <v-btn icon class="mr-3" v-if="loggedInUser._id === user._id" @click="edit">
               <v-icon>edit</v-icon>
             </v-btn>
             <v-btn icon>
@@ -48,16 +48,25 @@
       </v-card>
     </v-flex>
   </v-layout>
+
+  <profile-edit-dialog></profile-edit-dialog>
 </v-content>
 </template>
 
 <script>
 import axios from 'axios'
+import ProfileEditDialog from './ProfileEditDialog'
 const utils = require('../js/utils')
 
 export default {
+  components: {ProfileEditDialog},
+
   created () {
     this.fetchData()
+    this.fetchLoggedInUser()
+    window.events.$on('UpdatedProfile', () => {
+      this.fetchData()
+    })
   },
 
   data () {
@@ -65,7 +74,8 @@ export default {
       user: null,
       dialog: false,
       todoLists: null,
-      backgroundImg: utils.backgroundImg
+      backgroundImg: utils.backgroundImg,
+      loggedInUser: null
     }
   },
 
@@ -80,6 +90,15 @@ export default {
     fetchUserTodoLists: function () {
       axios.get(window.HOST + '/user/' + this.user._id + '/todoLists', {withCredentials: true})
         .then(({data}) => { this.todoLists = data })
+    },
+
+    fetchLoggedInUser: function () {
+      axios.get(window.HOST + '/loggedInUser', {withCredentials: true})
+        .then(({data}) => { this.loggedInUser = data })
+    },
+
+    edit: function () {
+      window.events.$emit('ShowProfileEdit', this.user)
     }
   }
 }

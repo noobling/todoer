@@ -14,6 +14,7 @@ router.get("/loggedInUser", ctrlUsers.loggedInUser);
 router.get("/user/todoLists", ctrlUsers.userTodoLists);
 router.get("/user/:userId", ctrlUsers.show);
 router.get("/user/:userId/todoLists", ctrlUsers.todoLists);
+router.put("/user", ctrlUsers.update);
 
 router.post("/todoList", ctrlTodoLists.store);
 router.get("/todoLists", ctrlTodoLists.index);

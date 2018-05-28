@@ -14,7 +14,7 @@ module.exports.index = (req, res) => {
 };
 
 module.exports.show = (req, res) => {
-  User.findById(req.params.userId, "email name", (err, user) => {
+  User.findById(req.params.userId, "email name skills", (err, user) => {
     res.json(user);
   });
 };
@@ -31,4 +31,8 @@ module.exports.userTodoLists = (req, res) => {
   );
 };
 
-
+module.exports.update = (req, res) => {
+  User.update({_id: req.user._id}, req.body).then(() => {
+    res.json('Updated User')
+  })
+}
