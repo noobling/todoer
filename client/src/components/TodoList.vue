@@ -44,6 +44,10 @@ export default {
       // eslint-disable-next-line
       flash('Joined Todo List')
     })
+
+    window.events.$on('TodoListUpdated', () => {
+      this.fetchTodoList()
+    })
   },
 
   watch: {

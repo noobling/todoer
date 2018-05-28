@@ -1,5 +1,5 @@
 <template>
-<v-dialog v-model="dialog">
+<v-dialog v-model="dialog" max-width="400">
   <v-card>
     <v-card-title class="title">Edit todo list</v-card-title>
 
@@ -37,11 +37,13 @@
           tags
           required
         ></v-select>
+        <v-btn color="secondary" @click="dialog=false">Cancel</v-btn>
         <v-btn
           :disabled="!valid"
           @click="submit"
+          color="primary"
         >
-          Create
+          Update Todo List
         </v-btn>
       </v-form>
     </v-card-text>
@@ -58,6 +60,11 @@ export default {
 
     window.events.$on('ShowEditTodoList', (todoList) => {
       this.todoList = todoList
+      this.getNamesFromIds(todoList.participants)
+      this.selectedUsers = todoList.participants
+      this.name = todoList.name
+      this.description = todoList.description
+      this.skills = todoList.skills
       this.dialog = true
     })
   },
@@ -101,8 +108,8 @@ export default {
     submit () {
       if (this.$refs.form.validate()) {
         // Native form submission is not yet supported
-        axios(window.HOST + '/todoList', {
-          method: 'POST',
+        axios(window.HOST + '/todoList/' + this.todoList._id, {
+          method: 'PUT',
           data: {
             name: this.name,
             description: this.description,
@@ -111,8 +118,10 @@ export default {
           },
           withCredentials: true
         }).then(({data}) => {
-          window.events.$emit('TodoListCreated', data)
-          this.$router.push('/todolist/' + data._id)
+          window.events.$emit('TodoListUpdated', data)
+          this.dialog = false
+          // eslint-disable-next-line
+          flash('Todo List Update')
         }).catch(err => {
           // eslint-disable-next-line
           flash('Validation failed please try again, check developer console for more information.', 'error')
@@ -139,6 +148,16 @@ export default {
       user.skills.forEach(userSkill => {
         console.log(userSkill)
         if (this.skillsList.indexOf(userSkill) === -1) this.skillsList.push(userSkill)
+      })
+    },
+
+    getNamesFromIds (ids) {
+      this.selectedNames = []
+      ids.forEach(id => {
+        let match = this.users.find(user => {
+          return user._id === id
+        })
+        this.selectedNames.push(match.name)
       })
     }
   }

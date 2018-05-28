@@ -61,7 +61,7 @@ module.exports.users = (req, res) => {
 module.exports.destroy = (req, res) => {
   const todoListIdToDel = req.params.todoListId;
 
-  TodoItem.deleteMany({ todoList: todoListIdToDel }, err => console.log(err))
+  TodoItem.deleteMany({ todoList: todoListIdToDel }, err => console.log(err));
 
   TodoList.deleteOne({ _id: todoListIdToDel }, err => console.log(err));
 
@@ -69,15 +69,21 @@ module.exports.destroy = (req, res) => {
 };
 
 module.exports.index = (req, res) => {
-  TodoList.find({}, (err, todoLists) => res.json(todoLists))
-}
+  TodoList.find({}, (err, todoLists) => res.json(todoLists));
+};
 
 module.exports.join = (req, res) => {
-  if (!req.user) return res.status(401).json({message: 'Unauthorized'})
+  if (!req.user) return res.status(401).json({ message: "Unauthorized" });
 
-  TodoList.findOne({ _id: req.params.todoListId}).then(result => {
-    result.participants.push(req.user.id)
-    result.save()
-    res.json({ message: 'Todo List Joined'})
-  })
-}
+  TodoList.findOne({ _id: req.params.todoListId }).then(result => {
+    result.participants.push(req.user.id);
+    result.save();
+    res.json({ message: "Todo List Joined" });
+  });
+};
+
+module.exports.update = (req, res) => {
+  TodoList.update({ _id: req.params.todoListId }, req.body).then(() => {
+    res.json("Updated Todo List");
+  });
+};

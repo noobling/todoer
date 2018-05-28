@@ -3,7 +3,7 @@
     <v-flex xs12 sm6 offset-sm3>
       <v-card>
         <v-list three-line>
-          <v-subheader v-if="todoList.name">{{ todoList.name }}</v-subheader>
+          <v-subheader v-if="todoList.name" class="title">{{ todoList.name }}</v-subheader>
           <template v-for="(item, index) in todoItems">
             <v-divider v-if="index != 0" :inset="true" :key="index"></v-divider>
             <v-list-tile :key="item.name" class="tile" avatar>

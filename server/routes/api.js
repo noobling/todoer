@@ -21,12 +21,13 @@ router.get("/todoList/:todoListId", ctrlTodoLists.show);
 router.post("/todoList/:todoListId/join", ctrlTodoLists.join);
 router.get("/todoList/:todoListId/users", ctrlTodoLists.users);
 router.delete("/todoList/:todoListId", ctrlTodoLists.destroy);
+router.put("/todoList/:todoListId", ctrlTodoLists.update);
 
 router.post("/todoList/:todoListId/todoItem/create", ctrlTodoItems.store);
 router.get("/todoList/:todoListId/todoItems", ctrlTodoItems.index);
 router.post("/todoItem/:todoItemId/complete", ctrlTodoItems.complete);
 router.post("/todoItem/:todoItemId/uncomplete", ctrlTodoItems.uncomplete);
 router.delete("/todoItem/:todoListId/:todoItemId", ctrlTodoItems.delete);
-router.put('/todoItem/:todoItemId', ctrlTodoItems.update);
+router.put("/todoItem/:todoItemId", ctrlTodoItems.update);
 
 module.exports = router;
