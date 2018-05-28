@@ -34,4 +34,6 @@ router.put("/todoItem/:todoItemId", ctrlTodoItems.update);
 
 router.post("/todoItem/:todoItemId/chat", ctrlTodoItemsChat.store);
 router.get("/todoItem/:todoItemId/messages", ctrlTodoItemsChat.index);
+router.delete("/message/:messageId", ctrlTodoItemsChat.destroy);
+
 module.exports = router;
