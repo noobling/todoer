@@ -39,7 +39,7 @@
       :disabled="!valid"
       @click="submit"
     >
-      Create Todo
+      Update Todo
     </v-btn>
   </v-form>
 </template>
@@ -56,7 +56,7 @@ export default {
 
   data () {
     return {
-      valid: false,
+      valid: true,
       users: null,
       names: [],
       selectedNames: this.item.assignedUser.name,

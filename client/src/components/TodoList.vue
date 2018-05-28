@@ -1,29 +1,11 @@
 <template>
   <v-content>
-    <v-layout mt-5>
-      <v-flex xs12 sm6 offset-sm3>
-        <v-toolbar
-          xs12 sm6 offset-sm3
-          dense
-        >
-        <v-text-field prepend-icon="search" hide-details single-line placeholder="Search Todos"></v-text-field>
-        <v-btn :to="'/todolist/'+todoList._id+'/todoItem/create'" icon>
-          <v-icon>add</v-icon>
-        </v-btn>
-        <v-btn icon>
-          <v-icon>edit</v-icon>
-        </v-btn>
-        <v-btn icon>
-          <v-icon>people</v-icon>
-        </v-btn>
-      </v-toolbar>
-      </v-flex>
-    </v-layout>
     <v-tabs>
       <v-tab key="todoListKey">
         Ongoing Todos
       </v-tab>
       <v-tab-item key="todoListKey">
+        <todo-list-tool-bar :todoList="todoList"></todo-list-tool-bar>
         <todo-list-show :payload="{todoList, flag: 'normal'}"></todo-list-show>
       </v-tab-item>
 
@@ -31,11 +13,13 @@
         Completed Todos
       </v-tab>
       <v-tab-item key="todoListCompleted">
+        <todo-list-tool-bar :todoList="todoList"></todo-list-tool-bar>
         <todo-list-show :payload="{todoList, flag: 'completed'}"></todo-list-show>          
       </v-tab-item>
     </v-tabs>
 
-    <todo-item-dialog></todo-item-dialog>    
+    <todo-item-dialog></todo-item-dialog>
+    <todo-list-edit-dialog></todo-list-edit-dialog>   
 </v-content>
   
 </template>
@@ -43,11 +27,15 @@
 import axios from 'axios'
 import TodoListShow from './TodoListShow'
 import TodoItemDialog from './TodoItemDialog'
+import TodoListToolBar from './TodoListToolBar'
+import TodoListEditDialog from './TodoListEditDialog'
 
 export default {
   components: {
     TodoListShow,
-    TodoItemDialog
+    TodoItemDialog,
+    TodoListToolBar,
+    TodoListEditDialog
   },
 
   created () {

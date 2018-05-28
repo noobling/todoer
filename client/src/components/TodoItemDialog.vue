@@ -3,9 +3,11 @@
     <v-card v-if="item && !editing">
       <v-card-title class="title">
         {{ item.name }}
-        <v-icon class="edit-btn" @click="editing=true">edit</v-icon>
+        <v-btn icon @click="editing=true">
+          <v-icon>edit</v-icon>
+        </v-btn>
         <v-spacer></v-spacer>
-        <v-btn flat @click="dialog=false">
+        <v-btn icon @click="dialog=false">
           <v-icon>close</v-icon>
         </v-btn>
       </v-card-title>
@@ -36,7 +38,7 @@
 
     <v-card v-else>
       <v-card-text>
-        <todo-item-create-show :item="item"></todo-item-create-show>
+        <todo-item-create-show :item="item" v-if="item"></todo-item-create-show>
         <v-btn @click="editing=false" color="primary">Cancel</v-btn>        
         
       </v-card-text>
@@ -111,10 +113,5 @@
 <style scoped>
   .todoItem li {
     list-style: none;
-  }
-
-  .edit-btn {
-    cursor: pointer;
-    margin-left: 1rem;
   }
 </style>
