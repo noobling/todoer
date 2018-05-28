@@ -4,6 +4,7 @@ const ctrlUsers = require("../controller/users");
 const auth = require("../controller/auth");
 const ctrlTodoLists = require("../controller/todoLists");
 const ctrlTodoItems = require("../controller/todoItems");
+const ctrlTodoItemsChat = require("../controller/todoItemsChat");
 
 router.post("/register", auth.register);
 router.post("/login", auth.login);
@@ -31,4 +32,6 @@ router.post("/todoItem/:todoItemId/uncomplete", ctrlTodoItems.uncomplete);
 router.delete("/todoItem/:todoListId/:todoItemId", ctrlTodoItems.delete);
 router.put("/todoItem/:todoItemId", ctrlTodoItems.update);
 
+router.post("/todoItem/:todoItemId/chat", ctrlTodoItemsChat.store);
+router.get("/todoItem/:todoItemId/messages", ctrlTodoItemsChat.index);
 module.exports = router;

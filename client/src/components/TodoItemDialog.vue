@@ -30,10 +30,13 @@
       </v-card-text>
 
       <v-card-actions>
+        <v-btn @click="showChat = !showChat" v-html="showChat? 'Hide Chat' : 'Show Chat'"></v-btn>
         <v-spacer></v-spacer>        
         <v-btn color="red" @click="deleteTodo">Delete <v-icon>delete</v-icon></v-btn>
         <v-btn :color="item.completed? 'orange': 'green'" @click="complete" v-html="item.completed? 'Uncomplete': 'Complete'" width="100px"></v-btn>        
       </v-card-actions>
+
+      <todo-item-chat v-if="showChat" :todoItem="item"></todo-item-chat>
     </v-card>
 
     <v-card v-else>
@@ -50,9 +53,10 @@
   import timeago from 'timeago.js'
   import axios from 'axios'
   import TodoItemCreateShow from './TodoItemCreateShow'
+  import TodoItemChat from './TodoItemChat'
 
   export default {
-    components: { TodoItemCreateShow },
+    components: { TodoItemCreateShow, TodoItemChat },
 
     created () {
       window.events.$on('ShowTodoItem', payload => {
@@ -72,7 +76,8 @@
         todoList: null,
         dialog: false,
         timeago,
-        editing: false
+        editing: false,
+        showChat: false
       }
     },
 

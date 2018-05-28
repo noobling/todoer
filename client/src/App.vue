@@ -2,7 +2,6 @@
   <v-app dark id="inspire">
     <Navbar></Navbar>
     <router-view></router-view>
-    <profile-dialog></profile-dialog>
     <Flash></Flash>
   </v-app>
 </template>
