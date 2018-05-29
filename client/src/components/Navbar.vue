@@ -81,6 +81,7 @@
         <v-btn to="/signup" flat>Sign Up</v-btn>
     </div>
     <div v-else>
+      <notifications :user="user"></notifications>
       <v-btn flat @click="logout">Logout</v-btn>
     </div>
   </v-toolbar>
@@ -89,9 +90,12 @@
 </template>
 <script>
 import axios from 'axios'
+import Notifications from './Notifications'
 const utils = require('../js/utils')
 
 export default {
+  components: { Notifications },
+
   created () {
     ['NewRegistration', 'Login'].forEach(event => {
       window.events.$on(event, user => {

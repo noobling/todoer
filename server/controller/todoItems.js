@@ -2,6 +2,7 @@ const TodoItem = require("../models/todoItem");
 const TodoList = require("../models/todoList");
 const User = require("../models/user");
 const TodoItemChat = require("../models/todoItemChat");
+const ctrlNotifications = require('./notifications')
 
 module.exports.store = (req, res) => {
   // if (!req.user) {
@@ -87,11 +88,30 @@ function saveTodoItem(todoItem, req, res) {
         result.todoItems.push(newTodoItem._id);
         result.save();
         res.json(newTodoItem);
+        sendNotifs(req)
       });
     })
     .catch(err => {
       res.status(400).json(err);
     });
+}
+
+function sendNotifs(req) {
+  TodoList.findById(req.params.todoListId)
+    .then(todoList => {
+      const usersToNotif = todoList.participants
+      usersToNotif.push(todoList.owner)
+      console.log(usersToNotif)
+      usersToNotif.forEach((participant) => {
+        if (req.user.id != participant) {
+          ctrlNotifications.store({
+            forUser: participant,
+            route: '/todoList/' + req.params.todoListId,
+            message: req.user.name + ' has created new todo'
+          })
+        }
+      })
+    })
 }
 
 function findMostSuitableUser(todoListId, skills, cb) {

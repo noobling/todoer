@@ -15,7 +15,7 @@ module.exports.store = data => {
   notification.message = data.message;
   notification.forUser = data.forUser;
   notification.save().then(newNotification => {
-    pusher.trigger(data.forUser, "new-notification");
+    pusher.trigger('user-' + data.forUser, "new-notification", data);
   });
 };
 
@@ -27,5 +27,6 @@ module.exports.read = (req, res) => {
 
 module.exports.index = (req, res) => {
   Notification.find({$and: [{forUser: req.user.id}, {read: false}]})
+    .sort({$natural: -1})
     .then(notifications => res.json(notifications))
 }

@@ -84,11 +84,13 @@ module.exports.join = (req, res) => {
         const usersToNotif = result.participants
         usersToNotif.push(result.owner)
         usersToNotif.forEach((participant) => {
-          ctrlNotifications.store({
-            forUser: participant,
-            route: '/todoList/' + req.params.todoListId,
-            message: req.user.name + ' has joined ' + result.name
-          })
+          if (req.user.id != participant) {
+            ctrlNotifications.store({
+              forUser: participant,
+              route: '/todoList/' + req.params.todoListId,
+              message: req.user.name + ' has joined ' + result.name
+            })
+          }
         })
       })
   });
