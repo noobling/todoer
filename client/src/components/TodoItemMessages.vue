@@ -1,7 +1,7 @@
 <template>
 <v-list v-if="messages" three-line>
   <template v-for="(message, index) in messages">
-      <v-list-tile :key="index" avatar v-if="message.user">
+      <v-list-tile :key="index" avatar v-if="message.user.name" :to="'/profile/' + message.user._id">
         <v-list-tile-avatar>
           <v-btn icon @click="deleteMessage(message)" v-if="message.user._id === loggedInUser._id"><v-icon>close</v-icon></v-btn>      
           <img :src="userAvatar(message.user)" v-else>
@@ -21,6 +21,7 @@
 
 <script>
   import axios from 'axios'
+  import Pusher from 'pusher-js'
   let utils = require('../js/utils')
 
   export default {
@@ -30,6 +31,18 @@
       this.fetchMessages()
       this.fetchLoggedInUser()
       window.events.$on('AddedMessage', () => {
+        this.fetchMessages()
+      })
+
+      Pusher.logToConsole = true
+
+      const pusher = new Pusher('779f9709b78f6c1b0f60', {
+        cluster: 'ap1',
+        encrypted: true
+      })
+
+      const channel = pusher.subscribe(this.todoItem._id)
+      channel.bind('new-message', (data) => {
         this.fetchMessages()
       })
     },

@@ -99,6 +99,14 @@ export default {
       })
     })
 
+    window.events.$on('JoinedTodoList', () => {
+      this.fetchUserTodoLists()
+    })
+
+    window.events.$on('TodoListCreated', () => {
+      this.fetchUserTodoLists()
+    })
+
     this.fetchUser()
   },
 
@@ -172,6 +180,8 @@ export default {
         method: 'GET',
         withCredentials: true
       }).then(({data}) => {
+        this.ownerTodoLists = []
+        this.participatingTodoLists = []
         data.forEach(todoList => {
           if (todoList.owner === this.user._id) {
             this.ownerTodoLists.push(todoList)

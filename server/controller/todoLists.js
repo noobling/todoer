@@ -2,6 +2,7 @@ const TodoList = require("../models/todoList");
 const User = require("../models/user");
 const TodoItem = require("../models/todoItem");
 const mongoose = require("mongoose");
+const ctrlNotifications = require('./notifications')
 
 module.exports.store = (req, res) => {
   if (!req.user) {
@@ -77,8 +78,19 @@ module.exports.join = (req, res) => {
 
   TodoList.findOne({ _id: req.params.todoListId }).then(result => {
     result.participants.push(req.user.id);
-    result.save();
-    res.json({ message: "Todo List Joined" });
+    result.save()
+      .then(() => {
+        res.json({ message: "Todo List Joined" });
+        const usersToNotif = result.participants
+        usersToNotif.push(result.owner)
+        usersToNotif.forEach((participant) => {
+          ctrlNotifications.store({
+            forUser: participant,
+            route: '/todoList/' + req.params.todoListId,
+            message: req.user.name + ' has joined ' + result.name
+          })
+        })
+      })
   });
 };
 

@@ -5,6 +5,7 @@ const auth = require("../controller/auth");
 const ctrlTodoLists = require("../controller/todoLists");
 const ctrlTodoItems = require("../controller/todoItems");
 const ctrlTodoItemsChat = require("../controller/todoItemsChat");
+const ctrlNotifications = require("../controller/notifications");
 
 router.post("/register", auth.register);
 router.post("/login", auth.login);
@@ -35,5 +36,8 @@ router.put("/todoItem/:todoItemId", ctrlTodoItems.update);
 router.post("/todoItem/:todoItemId/chat", ctrlTodoItemsChat.store);
 router.get("/todoItem/:todoItemId/messages", ctrlTodoItemsChat.index);
 router.delete("/message/:messageId", ctrlTodoItemsChat.destroy);
+
+router.post('/notification/:notificationId/read', ctrlNotifications.read)
+router.get('/notifications', ctrlNotifications.index)
 
 module.exports = router;

@@ -1,4 +1,13 @@
 const TodoItemChat = require("../models/todoItemChat");
+const Pusher = require('pusher')
+
+const pusher = new Pusher({
+  appId: '533304',
+  key: '779f9709b78f6c1b0f60',
+  secret: 'a57fc77fa89e3e8a7a0f',
+  cluster: 'ap1',
+  encrypted: true
+});
 
 module.exports.store = (req, res) => {
   const todoItemChat = new TodoItemChat();
@@ -7,6 +16,8 @@ module.exports.store = (req, res) => {
   todoItemChat.todoItem = req.params.todoItemId;
 
   todoItemChat.save().then(newTodoItemChat => {
+    pusher.trigger(req.params.todoItemId, 'new-message', newTodoItemChat);
+
     res.json(newTodoItemChat);
   });
 };

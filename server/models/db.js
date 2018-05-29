@@ -44,3 +44,4 @@ require("./user");
 require("./todoList");
 require("./todoItem");
 require("./todoItemChat");
+require("./notification");

@@ -1,6 +1,7 @@
 const TodoItem = require("../models/todoItem");
 const TodoList = require("../models/todoList");
 const User = require("../models/user");
+const TodoItemChat = require("../models/todoItemChat");
 
 module.exports.store = (req, res) => {
   // if (!req.user) {
@@ -64,6 +65,8 @@ module.exports.delete = (req, res) => {
     { _id: req.params.todoListId },
     { $pull: req.params.todoItemId }
   ).then(() => {});
+
+  TodoItemChat.deleteMany({ todoItem: req.params.todoItemId }, err => console.log(err))
 
   TodoItem.deleteOne({ _id: req.params.todoItemId }, err =>
     res.json("Delete todo item")
