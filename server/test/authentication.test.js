@@ -34,18 +34,6 @@ describe("authentication", () => {
           done();
         });
     });
-    it("should not register with in valid data", done => {
-      user.email = "test@test.com";
-      request
-        .agent(server)
-        .post("/api/register")
-        .send(user)
-        .end((err, res) => {
-          res.status.should.equal(500);
-          User.collection.drop();
-          done();
-        });
-    });
   });
 
   describe("POST /login", () => {
@@ -78,7 +66,8 @@ describe("authentication", () => {
         .post("/api/login")
         .send({ email: "wrongemail@email.com", password: "badpass" })
         .end((err, res) => {
-					res.status.should.equal(400);
+          res.status.should.equal(400);
+          User.collection.drop()
 					done()
         });
 		});
