@@ -1,51 +1,55 @@
 <template>
   <v-content>
-    <v-container>
-      <v-form ref="form" v-model="valid" lazy-validation>
-        <v-text-field
-          v-model="email"
-          :rules="emailRules"
-          label="E-mail"
-          required
-        ></v-text-field>
+    <v-layout row mt-4>
+      <v-flex xs12 sm6 offset-sm3>
+        <h1 class="display-1">Get Started</h1>
+        <v-form class="mt-4" ref="form" v-model="valid" lazy-validation>
+          <v-text-field
+            v-model="email"
+            :rules="emailRules"
+            label="E-mail"
+            required
+          ></v-text-field>
 
-         <v-text-field
-          v-model="name"
-          :rules="nameRules"
-          label="name"
-          required
-        ></v-text-field>
-        
-        <v-select
-          v-model="skills"
-          :items="items"
-          :rules="[v => v.length > 0 || 'You need to have at least one skill']"
-          label="Skills"
-          chips
-          tags
-          required
-        ></v-select>
-        
-        <v-text-field
-          :append-icon="visible ? 'visibility' : 'visibility_off'"
-          :append-icon-cb="() => (visible = !visible)"
-          :rules="passwordRules"
-          :type="visible ? 'password' : 'text'"
-          label="Enter your password"
-          hint="At least 6 characters"
-          min="6"
-          v-model="password"
-          :counter="6"
-          required
-        ></v-text-field>
-        <v-btn
-          :disabled="!valid"
-          @click="submit"
-        >
-          Sign Up
-        </v-btn>
-      </v-form>
-    </v-container>
+          <v-text-field
+            v-model="name"
+            :rules="nameRules"
+            label="Name"
+            required
+          ></v-text-field>
+          
+          <v-select
+            v-model="skills"
+            :items="items"
+            :rules="[v => v.length > 0 || 'You need to have at least one skill']"
+            label="Skills"
+            chips
+            tags
+            required
+          ></v-select>
+          
+          <v-text-field
+            :append-icon="visible ? 'visibility' : 'visibility_off'"
+            :append-icon-cb="() => (visible = !visible)"
+            :rules="passwordRules"
+            :type="visible ? 'password' : 'text'"
+            label="Enter your password"
+            hint="At least 6 characters"
+            min="6"
+            v-model="password"
+            :counter="6"
+            required
+            @keyup.enter="submit"
+          ></v-text-field>
+          <v-btn
+            :disabled="!valid"
+            @click="submit"
+          >
+            Sign Up
+          </v-btn>
+        </v-form>
+      </v-flex>
+    </v-layout>
   </v-content>
 </template>
 
@@ -70,7 +74,7 @@ export default {
       password: '',
       passwordRules: [v => (v && v.length >= 6) || 'Password must be at least 6 chracters'],
       skills: null,
-      items: ['Frontend', 'Backend', 'Marketing', 'Designer']
+      items: ['Frontend', 'Backend', 'Marketing', 'Designer', 'Leadership', 'Databases', 'SEO', 'Writer', 'C', 'Java', 'HTML', 'CSS', 'Python', 'Security', 'Photography', 'Cooking']
     }
   },
 
@@ -94,7 +98,7 @@ export default {
           })
           .catch((err) => {
             // eslint-disable-next-line
-            flash('Something went wrong :/ check developer console for more information', 'error')
+            flash('Your email or name has already been taken', 'error')
             console.log(err.response.data)
           })
       }

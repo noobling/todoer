@@ -2,7 +2,7 @@
     <div>
       <v-content>
         <v-layout column>
-          <v-flex xs12 sm6 v-if="todoLists && todoLists.length > 0">
+          <v-flex xs12 sm6>
             <v-card>
               <v-container fluid grid-list-md>
                 <v-tabs>
@@ -15,9 +15,15 @@
                         v-for="todoList in ownerTodoLists"
                         :key="todoList.name"
                         xs12
+                        v-if="ownerTodoLists && ownerTodoLists.length > 0"
                       >
                       <todo-list-brief :todoList="todoList"></todo-list-brief>
                       </v-flex>
+                      <v-flex>
+                        <h1 class="headline text-sm-center mt-4 mb-4">
+                          <v-btn to="todolist/create">Create a todo list</v-btn>     
+                        </h1>
+                      </v-flex>          
                     </v-layout>
                   </v-tab-item>
 
@@ -30,8 +36,14 @@
                         v-for="todoList in participantTodoLists"
                         :key="todoList.name"
                         xs12
+                        v-if="participantTodoLists && participantTodoLists.length > 0"
                       >
                         <todo-list-brief :todoList="todoList"></todo-list-brief>
+                      </v-flex>
+                      <v-flex>
+                        <h1 class="headline text-sm-center mt-4 mb-4">
+                          <v-btn to="todolist/join">Join a todo list</v-btn>     
+                        </h1>
                       </v-flex>
                     </v-layout>
                   </v-tab-item>
@@ -46,11 +58,7 @@
               </v-container>
             </v-card>
           </v-flex>
-
-          <div v-else>
-            <getting-started-dialog></getting-started-dialog>
-            <h1 class="headline text-sm-center mt-4">You are not part of any shared todo list...</h1>
-          </div>
+          <getting-started-dialog></getting-started-dialog>
         </v-layout>
       </v-content>
     </div>

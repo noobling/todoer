@@ -1,37 +1,29 @@
 <template>
     <v-content>
       <section>
-        <v-parallax :src="require('@/assets/hero.jpeg')" height="600">
+        <v-parallax :src="require('@/assets/bg-header-star.jpg')" height="600">
           <v-layout
             column
             align-center
             justify-center
             class="white--text"
           >
-            <img src="@/assets/vuetify.png" alt="Vuetify.js" height="200">
-            <h1 class="white--text mb-2 display-1 text-xs-center">Parallax Template</h1>
-            <div class="subheading mb-3 text-xs-center">Powered by Vuetify</div>
+            <h1 class="white--text mb-2 display-3 text-xs-center mt-5">Todoer</h1>
+            <div class="subheading mb-3 text-xs-center">by David and Thai</div>
             <v-layout class="mt-5">
               <v-flex>
                 <v-btn
-                  class="blue lighten-2"
-                  dark
                   large
-                  href="/pre-made-themes"
+                  color="primary"
                   to="/signup"
                 >
-                Get Started
-                </v-btn>
-              </v-flex>
-              <v-flex>
-                <v-btn large color="primary" to="/login">
-                  Log In
+                  Get Started
                 </v-btn>
               </v-flex>
               <v-flex>
                 <a href="/info">
-                  <v-btn large color="success">
-                    Info
+                  <v-btn large color="secondary">
+                    Learn More
                   </v-btn>
                 </a>
               </v-flex>
@@ -50,9 +42,9 @@
         >
           <v-flex xs12 sm4 class="my-3">
             <div class="text-xs-center">
-              <h2 class="headline">The best way to start developing</h2>
+              <h2 class="headline">A Modern Todo App</h2>
               <span class="subheading">
-                Cras facilisis mi vitae nunc 
+                Powered by the latest web technologies
               </span>
             </div>
           </v-flex>
@@ -65,12 +57,10 @@
                       <v-icon x-large class="blue--text text--lighten-2">color_lens</v-icon>
                     </v-card-text>
                     <v-card-title primary-title class="layout justify-center">
-                      <div class="headline text-xs-center">Material Design</div>
+                      <div class="headline text-xs-center">Responsive to the Core</div>
                     </v-card-title>
                     <v-card-text>
-                      Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare. 
-                      Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
-                      Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti. 
+                      Browse the app anywhere on any device. 100% repsonsive, anything less would be not be acceptable. 
                     </v-card-text>
                   </v-card>
                 </v-flex>
@@ -80,12 +70,10 @@
                       <v-icon x-large class="blue--text text--lighten-2">flash_on</v-icon>
                     </v-card-text>
                     <v-card-title primary-title class="layout justify-center">
-                      <div class="headline">Fast development</div>
+                      <div class="headline">Blazing Fast SPA App</div>
                     </v-card-title>
                     <v-card-text>
-                      Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare. 
-                      Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
-                      Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti. 
+                      Built from the ground up to be a fast modern web application. Pages load instantly, get work done faster.
                     </v-card-text>
                   </v-card>
                 </v-flex>
@@ -95,12 +83,10 @@
                       <v-icon x-large class="blue--text text--lighten-2">build</v-icon>
                     </v-card-text>
                     <v-card-title primary-title class="layout justify-center">
-                      <div class="headline text-xs-center">Completely Open Sourced</div>
+                      <div class="headline text-xs-center">For Collaboration</div>
                     </v-card-title>
                     <v-card-text>
-                      Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare. 
-                      Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
-                      Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti. 
+                      We didn't hold back when it came to extending the software for collaboration. With real time chat and updates work with your team members more effectively.
                     </v-card-text>
                   </v-card>
                 </v-flex>
@@ -111,15 +97,14 @@
       </section>
 
       <section>
-        <v-parallax :src="require('@/assets/section.jpg')" height="380">
+        <v-parallax :src="require('@/assets/bg-header-star.jpg')" height="380">
           <v-layout column align-center justify-center>
-            <div class="headline white--text mb-3 text-xs-center">Web development has never been easier</div>
-            <em>Kick-start your application today</em>
+            <div class="headline white--text mb-3 text-xs-center">Collaboration has never been easier</div>
+            <em>Kick-start your life today</em>
             <v-btn
-              class="blue lighten-2 mt-5"
-              dark
               large
-              href="/pre-made-themes"
+              color="primary"
+              to="/signup"
             >
               Get Started
             </v-btn>
@@ -133,22 +118,20 @@
             <v-flex xs12 sm4>
               <v-card class="elevation-0 transparent">
                 <v-card-title primary-title class="layout justify-center">
-                  <div class="headline">Company info</div>
+                  <div class="headline">Thai Nguyen</div>
                 </v-card-title>
                 <v-card-text>
-                  Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare. 
-                  Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
-                  Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti. 
+                  Your description here
                 </v-card-text>
               </v-card>
             </v-flex>
             <v-flex xs12 sm4 offset-sm1>
               <v-card class="elevation-0 transparent">
                 <v-card-title primary-title class="layout justify-center">
-                  <div class="headline">Contact us</div>
+                  <div class="headline">David Yu</div>
                 </v-card-title>
                 <v-card-text>
-                  Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.
+                  I program sometimes and I made this web app. Check out my club too <a href="https://codersforcauses.org" target="_blank"> here </a>
                 </v-card-text>
                 <v-list class="transparent">
                   <v-list-tile>
@@ -156,7 +139,7 @@
                       <v-icon class="blue--text text--lighten-2">phone</v-icon>
                     </v-list-tile-action>
                     <v-list-tile-content>
-                      <v-list-tile-title>777-867-5309</v-list-tile-title>
+                      <v-list-tile-title>450-759-888</v-list-tile-title>
                     </v-list-tile-content>
                   </v-list-tile>
                   <v-list-tile>
@@ -164,7 +147,7 @@
                       <v-icon class="blue--text text--lighten-2">place</v-icon>
                     </v-list-tile-action>
                     <v-list-tile-content>
-                      <v-list-tile-title>Chicago, US</v-list-tile-title>
+                      <v-list-tile-title>UWA, BEST UNIVERSITY</v-list-tile-title>
                     </v-list-tile-content>
                   </v-list-tile>
                   <v-list-tile>
@@ -172,7 +155,7 @@
                       <v-icon class="blue--text text--lighten-2">email</v-icon>
                     </v-list-tile-action>
                     <v-list-tile-content>
-                      <v-list-tile-title>john@vuetifyjs.com</v-list-tile-title>
+                      <v-list-tile-title>21711933@student.uwa.edu.au</v-list-tile-title>
                     </v-list-tile-content>
                   </v-list-tile>
                 </v-list>
@@ -181,19 +164,6 @@
           </v-layout>
         </v-container>
       </section>
-
-      <v-footer class="blue darken-2">
-        <v-layout row wrap align-center>
-          <v-flex xs12>
-            <div class="white--text ml-3">
-              Made with
-              <v-icon class="red--text">favorite</v-icon>
-              by <a class="white--text" href="https://vuetifyjs.com" target="_blank">Vuetify</a>
-              and <a class="white--text" href="https://github.com/vwxyzjn">Costa Huang</a>
-            </div>
-          </v-flex>
-        </v-layout>
-      </v-footer>
     </v-content>
 </template>
 

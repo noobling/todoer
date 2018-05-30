@@ -1,4 +1,4 @@
-# tester
+# todoer
 
 > just a test
 
@@ -9,7 +9,7 @@
 npm install
 
 # serve with hot reload at localhost:8080
-npm run dev
+npm run devnode
 
 # build for production with minification
 npm run build

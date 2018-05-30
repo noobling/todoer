@@ -78,12 +78,18 @@
     <v-spacer></v-spacer>    
     <div v-if="!user">
         <v-btn to="/login" flat>Log In</v-btn>
-        <v-btn to="/signup" flat>Sign Up</v-btn>
     </div>
     <div v-else>
       <notifications :user="user"></notifications>
       <v-btn flat @click="logout">Logout</v-btn>
     </div>
+    <div>
+    <v-switch
+      class="mt-4"
+      v-model="darkTheme"
+    ></v-switch>
+    </div>
+    
   </v-toolbar>
 </div>
     
@@ -117,6 +123,9 @@ export default {
   watch: {
     user: function (val) {
       this.fetchUserTodoLists()
+    },
+    darkTheme: function (val) {
+      window.events.$emit('ThemeChange', this.darkTheme)
     }
   },
 
@@ -155,7 +164,8 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Todoer'
+      title: 'Todoer',
+      darkTheme: true
     }
   },
 

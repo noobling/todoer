@@ -17,7 +17,6 @@ module.exports.register = (req, res) => {
     .then(savedUser => {
       req.login(savedUser, err => {
         if (err) {
-          console.log(err);
           res.status(400).json(err);
         } else {
           res.json(savedUser);
@@ -25,7 +24,6 @@ module.exports.register = (req, res) => {
       });
     })
     .catch(err => {
-      console.log(err);
       res.status(500).json(err);
     });
 };
@@ -38,7 +36,6 @@ module.exports.login = (req, res, next) => {
     }
 
     if (!user) {
-      console.log("no user");
       res.status(400).json("Invalid credentials");
       return;
     }
