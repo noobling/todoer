@@ -7,8 +7,7 @@
     <Flash></Flash>
     <v-footer class="blue darken-2 footer">
       <v-layout row wrap align-center>
-          <v-spacer></v-spacer>        
-          <div class="white--text mr-3">
+          <div class="white--text ml-3">
             Made with
             <v-icon class="red--text">favorite</v-icon>
             by <a href="https://github.com/noobling" target="_blank" class="user-link" style="color: white;">David</a>
@@ -58,6 +57,7 @@ export default {
     position: fixed;
     width: 100%;
     bottom: 0;
+    z-index: 50;
   }
   .bounce-enter-active {
   animation: bounce-in .5s;

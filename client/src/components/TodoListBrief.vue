@@ -19,7 +19,7 @@
     </v-card-title>
     <v-card-actions>
       <v-btn flat color="orange" :to="'/todolist/'+todoList._id">View</v-btn>
-      <delete-dialog :todoList="todoList"></delete-dialog>
+      <delete-dialog :todoList="todoList" v-if="!todoList.hideDel"></delete-dialog>
     </v-card-actions>
   </v-card>
 </template>

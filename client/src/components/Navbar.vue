@@ -66,23 +66,16 @@
     app
     :clipped-left="clipped"
   >
-    <div v-if="user">
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-btn flat :to="user? '/dashboard': '/home'">
+      <v-toolbar-side-icon @click.stop="drawer = !drawer" v-if="user"></v-toolbar-side-icon>
+      <v-btn flat :to="user? '/dashboard': '/'">
         Home
       </v-btn>
-    </div>
-    <div v-else>
-      <v-btn flat to="/">Home</v-btn>
-    </div>
     <v-spacer></v-spacer>    
-    <div v-if="!user">
-        <v-btn to="/login" flat>Log In</v-btn>
-    </div>
-    <div v-else>
-      <notifications :user="user"></notifications>
-      <v-btn flat @click="logout">Logout</v-btn>
-    </div>
+        <v-btn to="/login" flat v-if="!user">Log In</v-btn>
+      <notifications :user="user" v-if="user"></notifications>
+      
+      <v-btn flat @click="logout" v-if="user">Logout</v-btn>
+    
     <div>
     <v-switch
       class="mt-4"
@@ -106,6 +99,7 @@ export default {
     ['NewRegistration', 'Login'].forEach(event => {
       window.events.$on(event, user => {
         this.user = user
+        window.user_id = user._id
       })
     })
 
@@ -176,6 +170,7 @@ export default {
         withCredentials: true
       }).then(({ data }) => {
         this.user = data
+        window.user_id = data._id
       })
     },
 

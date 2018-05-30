@@ -1,55 +1,55 @@
 <template>
   <v-content>
-    <v-layout row mt-4>
-      <v-flex xs12 sm6 offset-sm3>
-        <h1 class="display-1">Get Started</h1>
-        <v-form class="mt-4" ref="form" v-model="valid" lazy-validation>
-          <v-text-field
-            v-model="email"
-            :rules="emailRules"
-            label="E-mail"
-            required
-          ></v-text-field>
-
-          <v-text-field
-            v-model="name"
-            :rules="nameRules"
-            label="Name"
-            required
-          ></v-text-field>
-          
-          <v-select
-            v-model="skills"
-            :items="items"
-            :rules="[v => v.length > 0 || 'You need to have at least one skill']"
-            label="Skills"
-            chips
-            tags
-            required
-          ></v-select>
-          
-          <v-text-field
-            :append-icon="visible ? 'visibility' : 'visibility_off'"
-            :append-icon-cb="() => (visible = !visible)"
-            :rules="passwordRules"
-            :type="visible ? 'password' : 'text'"
-            label="Enter your password"
-            hint="At least 6 characters"
-            min="6"
-            v-model="password"
-            :counter="6"
-            required
-            @keyup.enter="submit"
-          ></v-text-field>
-          <v-btn
-            :disabled="!valid"
-            @click="submit"
-          >
-            Sign Up
-          </v-btn>
-        </v-form>
-      </v-flex>
-    </v-layout>
+      <v-layout row mt-4>
+        <v-flex xs10 sm6 offset-sm3 offset-xs1>
+          <h1 class="display-1">Get Started</h1>
+          <v-form class="mt-4" ref="form" v-model="valid" lazy-validation>
+            <v-text-field
+              v-model="email"
+              :rules="emailRules"
+              label="E-mail"
+              required
+            ></v-text-field>
+  
+            <v-text-field
+              v-model="name"
+              :rules="nameRules"
+              label="Name"
+              required
+            ></v-text-field>
+            
+            <v-select
+              v-model="skills"
+              :items="items"
+              :rules="[v => v.length > 0 || 'You need to have at least one skill']"
+              label="Skills"
+              chips
+              tags
+              required
+            ></v-select>
+            
+            <v-text-field
+              :append-icon="visible ? 'visibility' : 'visibility_off'"
+              :append-icon-cb="() => (visible = !visible)"
+              :rules="passwordRules"
+              :type="visible ? 'password' : 'text'"
+              label="Enter your password"
+              hint="At least 6 characters"
+              min="6"
+              v-model="password"
+              :counter="6"
+              required
+              @keyup.enter="submit"
+            ></v-text-field>
+            <v-btn
+              :disabled="!valid"
+              @click="submit"
+            >
+              Sign Up
+            </v-btn>
+          </v-form>
+        </v-flex>
+      </v-layout>
   </v-content>
 </template>
 

@@ -30,10 +30,13 @@
                   </v-card-title>
                   <v-card-actions>
                     <v-btn flat color="green" @click="join(todoList)">Join</v-btn>
+                    <v-btn flat color="orange" :to="'/todolist/' + todoList._id">View</v-btn>
                   </v-card-actions>
                 </v-card>
               </v-flex>
             </v-layout>
+              <div class="spacer"></div>
+            
           </v-container>
         </v-card>
       </v-flex>
@@ -87,5 +90,4 @@ export default {
   }
 }
 </script>
-
 

@@ -13,10 +13,10 @@
       v-model="toSearch"
     >
     </v-text-field>
-    <v-btn :to="'/todolist/'+todoList._id+'/todoItem/create'" icon>
+    <v-btn :to="'/todolist/'+todoList._id+'/todoItem/create'" icon v-if="isParticipating"> 
       <v-icon>add</v-icon>
     </v-btn>
-    <v-btn icon @click="edit">
+    <v-btn icon @click="edit" v-if="isParticipating">
       <v-icon>edit</v-icon>
     </v-btn>
     <v-btn icon @click="participants">
@@ -40,6 +40,12 @@
     data () {
       return {
         toSearch: ''
+      }
+    },
+
+    computed: {
+      isParticipating: function () {
+        return this.todoList && this.todoList.participants.includes(window.user_id)
       }
     },
 

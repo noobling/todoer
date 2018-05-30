@@ -3,7 +3,7 @@
     <v-card v-if="item && !editing">
       <v-card-title class="title">
         {{ item.name }}
-        <v-btn icon @click="editing=true">
+        <v-btn icon @click="editing=true" v-if="isParticipating">
           <v-icon>edit</v-icon>
         </v-btn>
         <v-spacer></v-spacer>
@@ -36,8 +36,8 @@
       <v-card-actions>
         <v-btn @click="showChat = !showChat" v-html="showChat? 'Hide Chat' : 'Show Chat'" flat></v-btn>
         <v-spacer></v-spacer>        
-        <v-btn @click="deleteTodo" icon><v-icon>delete</v-icon></v-btn>
-        <v-btn :color="item.completed? 'orange': 'green'" @click="complete" v-html="item.completed? 'uncomplete' : 'complete'" class="complete-btn"></v-btn>        
+        <v-btn @click="deleteTodo" icon v-if="isParticipating"><v-icon>delete</v-icon></v-btn>
+        <v-btn :color="item.completed? 'orange': 'green'" @click="complete" v-html="item.completed? 'uncomplete' : 'complete'" class="complete-btn" v-if="isParticipating"></v-btn>        
       </v-card-actions>
 
       <todo-item-chat v-if="showChat" :todoItem="item"></todo-item-chat>
@@ -81,7 +81,14 @@
         dialog: false,
         timeago,
         editing: false,
-        showChat: false
+        showChat: false,
+        user: null
+      }
+    },
+
+    computed: {
+      isParticipating: function () {
+        return (this.todoList && this.todoList.participants.includes(window.user_id))
       }
     },
 

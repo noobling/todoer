@@ -10,7 +10,7 @@
               <v-icon>chevron_left</v-icon>
             </v-btn>
             <v-spacer></v-spacer>
-            <v-btn icon class="mr-3" v-if="loggedInUser._id === user._id" @click="edit">
+            <v-btn icon class="mr-3" v-if=" loggedInUser && (loggedInUser._id === user._id)" @click="edit">
               <v-icon>edit</v-icon>
             </v-btn>
             <v-btn icon>
@@ -46,6 +46,7 @@
           </v-list-tile>        
         </v-list>
       </v-card>
+      <div class="spacer"></div>
     </v-flex>
   </v-layout>
 

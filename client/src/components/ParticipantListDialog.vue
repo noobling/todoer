@@ -9,10 +9,10 @@
 
       <v-list three-line>
         <v-list-tile v-for="(participant, index) in participants" :key="index" @click="profile(participant)">
-          <v-list-tile-avatar>
+          <v-list-tile-avatar v-if="participant">
             <img :src="userAvatar(participant)">
           </v-list-tile-avatar>
-          <v-list-tile-content>
+          <v-list-tile-content v-if="participant">
             <v-list-tile-title v-if="participant._id === todoList.owner">{{ participant.name }} <v-icon>person</v-icon></v-list-tile-title>
             <v-list-tile-title v-else>{{ participant.name }}</v-list-tile-title>
             <v-list-tile-sub-title>{{ participant.email }}</v-list-tile-sub-title>
@@ -55,7 +55,9 @@ export default {
     },
 
     fetchUser: function (userId) {
-      axios.get(window.HOST + '/user/' + userId).then(({ data }) => this.participants.push(data))
+      axios.get(window.HOST + '/user/' + userId).then(({ data }) => {
+        this.participants.push(data)
+      })
     },
 
     profile: function (user) {

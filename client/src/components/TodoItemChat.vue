@@ -2,7 +2,7 @@
  <v-container>
    <todo-item-messages :todoItem="todoItem"></todo-item-messages>
   
-    <v-form v-model="valid" lazy-validation>
+    <v-form v-model="valid" lazy-validation v-on:submit.prevent>
       <v-text-field
         v-model="message"
         label="Enter your message"

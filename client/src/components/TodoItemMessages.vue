@@ -1,14 +1,14 @@
 <template>
 <v-list v-if="messages" three-line>
   <template v-for="(message, index) in messages">
-      <v-list-tile :key="index" avatar v-if="message.user.name" :to="'/profile/' + message.user._id">
+      <v-list-tile :key="index" avatar v-if="message.user.name" :to="message.user._id != loggedInUser._id? '/profile/' + message.user._id: ''">
         <v-list-tile-avatar>
           <v-btn icon @click="deleteMessage(message)" v-if="message.user._id === loggedInUser._id"><v-icon>close</v-icon></v-btn>      
           <img :src="userAvatar(message.user)" v-else>
         </v-list-tile-avatar>
         <v-list-tile-content>
           <v-list-tile-title>
-            {{ message.user.name }}
+            {{ message.user.name }} {{ timeago().format(message.dateTime)}} 
           </v-list-tile-title>
           <v-list-tile-sub-title>
             {{ message.message }}
@@ -22,6 +22,7 @@
 <script>
   import axios from 'axios'
   import Pusher from 'pusher-js'
+  import timeago from 'timeago.js'
   let utils = require('../js/utils')
 
   export default {
@@ -51,7 +52,8 @@
       return {
         messages: null,
         userAvatar: utils.userAvatar,
-        loggedInUser: null
+        loggedInUser: null,
+        timeago: timeago
       }
     },
 

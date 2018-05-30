@@ -1,5 +1,8 @@
 <template>
   <v-content>
+    <v-btn icon dark @click="$router.go(-1)">
+      <v-icon>chevron_left</v-icon>
+    </v-btn>
     <v-tabs>
       <v-tab key="todoListKey">
         Ongoing Todos

@@ -98,8 +98,10 @@ export default {
         }).then(({data}) => {
           data.forEach(todoList => {
             if (todoList.owner === this.userId) {
+              todoList.hideDel = false
               this.ownerTodoLists.push(todoList)
             } else {
+              todoList.hideDel = true
               this.participantTodoLists.push(todoList)
             }
           })
