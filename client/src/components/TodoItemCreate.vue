@@ -1,63 +1,68 @@
 <template>
   <v-content>
-    <v-container>
-      <h3 class="display-3" v-if="todoList" >Create New Todo for {{ todoList.name }}</h3>
-      <v-btn icon dark @click="$router.go(-1)">
-        <v-icon>chevron_left</v-icon>
-      </v-btn>
-      <v-form ref="form" v-model="valid" lazy-validation>
-        <v-text-field
-          v-model="name"
-          :rules="[v => !!v || 'Name is required']"
-          label="Todo name"
-          required
-        ></v-text-field>
-        
-        <v-text-field
-          v-model="description"
-          :rules="[v => !!v || 'Description is required']"
-          label="Description"
-          textarea=""
-          required
-        ></v-text-field>
-
-        <v-checkbox
-          v-model="autoAssign"
-          label="Auto Assign User"
-          type="checkbox"
-        ></v-checkbox>
-
-        <div v-if="!autoAssign">
-          <v-select
-            v-model="selectedNames"
-            :items="names"
-            label="Who do you want this todo to be assigned to?"
-            autocomplete
-          ></v-select>
-        </div>
-       
-
-        <v-select
-          v-model="skills"
-          :items="skillsList"
-          :rules="[v => v.length > 0 || 'Choose at least one skill']"
-          label="Skills needed for Todo (enter separated)"
-          chips
-          tags
-          required
-        ></v-select>
-        
-        <p class="title mt-3">Due Date</p>
-        <v-date-picker v-model="dueDate" :landscape="true" full-width></v-date-picker>
-
-        <v-btn
-          :disabled="!valid"
-          @click="submit"
-        >
-          Create Todo
+    
+    <v-layout row mt-4>
+      <v-flex xs12 sm6 offset-sm3>
+        <h3 class="display-1" v-if="todoList" >Create New Todo for {{ todoList.name }}</h3>
+        <v-btn icon dark @click="$router.go(-1)">
+          <v-icon>chevron_left</v-icon>
         </v-btn>
-      </v-form>
-    </v-container>
+        <v-form ref="form" v-model="valid" lazy-validation>
+          <v-text-field
+            v-model="name"
+            :rules="[v => !!v || 'Name is required']"
+            label="Todo name"
+            required
+          ></v-text-field>
+          
+          <v-text-field
+            v-model="description"
+            :rules="[v => !!v || 'Description is required']"
+            label="Description"
+            textarea=""
+            required
+          ></v-text-field>
+  
+          <v-checkbox
+            v-model="autoAssign"
+            label="Auto Assign User"
+            type="checkbox"
+          ></v-checkbox>
+  
+          <div v-if="!autoAssign">
+            <v-select
+              v-model="selectedNames"
+              :items="names"
+              label="Who do you want this todo to be assigned to?"
+              autocomplete
+            ></v-select>
+          </div>
+          
+  
+          <v-select
+            v-model="skills"
+            :items="skillsList"
+            :rules="[v => v.length > 0 || 'Choose at least one skill']"
+            label="Skills needed for Todo (enter separated)"
+            chips
+            tags
+            required
+          ></v-select>
+          
+          <p class="title mt-3">Due Date</p>
+          <v-date-picker v-model="dueDate" :landscape="true" full-width></v-date-picker>
+  
+          <v-btn
+            :disabled="!valid"
+            @click="submit"
+          >
+            Create Todo
+          </v-btn>
+
+          <div class="spacer"></div>
+        </v-form>
+      </v-flex>
+    </v-layout>
   </v-content>
 </template>
 

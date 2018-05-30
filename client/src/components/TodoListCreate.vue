@@ -2,7 +2,12 @@
   <v-content>
     <v-layout row mt-4>
       <v-flex xs12 sm6 offset-sm3>
-        <h3 class="display-1">Create New Shared Todo List</h3>          
+        <h3 class="display-1">
+          <v-btn icon dark @click="$router.go(-1)">
+            <v-icon>chevron_left</v-icon>
+          </v-btn>
+          Create New Shared Todo List
+        </h3>          
         <v-form ref="form" v-model="valid" lazy-validation>
           <v-text-field
             v-model="name"
@@ -50,9 +55,11 @@
           <v-btn
             :disabled="!valid"
             @click="submit"
+            class="mb-4"
           >
             Create
           </v-btn>
+          <div class="spacer"></div>
         </v-form>
       </v-flex>
     </v-layout>
@@ -188,5 +195,8 @@ export default {
 input[type='file'] {
   position: absolute;
   left: -99999px;
+}
+.spacer {
+  height: 100px
 }
 </style>

@@ -52,8 +52,6 @@ export default {
       todoList.participants.forEach(participant => {
         this.fetchUser(participant)
       })
-
-      this.fetchUser(todoList.owner)
     },
 
     fetchUser: function (userId) {

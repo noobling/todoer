@@ -5,7 +5,14 @@
       xs12 sm6 offset-sm3
       dense
     >
-    <v-text-field prepend-icon="search" hide-details single-line placeholder="Search Todos"></v-text-field>
+    <v-text-field 
+      prepend-icon="search" 
+      hide-details 
+      single-line 
+      placeholder="Search Todos"
+      v-model="toSearch"
+    >
+    </v-text-field>
     <v-btn :to="'/todolist/'+todoList._id+'/todoItem/create'" icon>
       <v-icon>add</v-icon>
     </v-btn>
@@ -23,6 +30,18 @@
 <script>
   export default {
     props: ['todoList'],
+
+    watch: {
+      toSearch: function (val) {
+        window.events.$emit('NewSearch', val)
+      }
+    },
+
+    data () {
+      return {
+        toSearch: ''
+      }
+    },
 
     methods: {
       edit: function () {

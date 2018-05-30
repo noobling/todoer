@@ -11,7 +11,7 @@
           <div class="white--text mr-3">
             Made with
             <v-icon class="red--text">favorite</v-icon>
-            by <a href="https://github.com/noobling" target="_blank" class="link">David</a>
+            by <a href="https://github.com/noobling" target="_blank" class="user-link" style="color: white;">David</a>
             and Thai
           </div>
       </v-layout>
@@ -45,13 +45,13 @@ export default {
 }
 </script>
 
-<style scoped>
-  .link {
+<style>
+  .user-link {
     text-decoration: 1px dotted white;
-    color: white;
+    color: white !important;
     transition: all 1000ms
   }
-  .link:hover {
+  .user-link:hover {
     text-decoration: none
   }
   .footer {
@@ -75,5 +75,8 @@ export default {
   100% {
     transform: scale(1);
   }
+}
+.spacer {
+  height: 50px;
 }
 </style>

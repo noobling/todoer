@@ -20,7 +20,11 @@
           </li>
           <li>
             <div class="title">Assigned To</div>
-            <p class="body-1">{{ item.assignedUser.name }}</p>
+            <p>
+              <router-link :to="'/profile/' + item.assignedUser._id" class="body-1">
+                {{ item.assignedUser.name }}
+              </router-link>
+            </p>
           </li>
           <li>
             <div class="title">Due</div>
@@ -30,10 +34,10 @@
       </v-card-text>
 
       <v-card-actions>
-        <v-btn @click="showChat = !showChat" v-html="showChat? 'Hide Chat' : 'Show Chat'"></v-btn>
+        <v-btn @click="showChat = !showChat" v-html="showChat? 'Hide Chat' : 'Show Chat'" flat></v-btn>
         <v-spacer></v-spacer>        
-        <v-btn color="red" @click="deleteTodo">Delete <v-icon>delete</v-icon></v-btn>
-        <v-btn :color="item.completed? 'orange': 'green'" @click="complete" v-html="item.completed? 'Uncomplete': 'Complete'" width="100px"></v-btn>        
+        <v-btn @click="deleteTodo" icon><v-icon>delete</v-icon></v-btn>
+        <v-btn :color="item.completed? 'orange': 'green'" @click="complete" v-html="item.completed? 'uncomplete' : 'complete'" class="complete-btn"></v-btn>        
       </v-card-actions>
 
       <todo-item-chat v-if="showChat" :todoItem="item"></todo-item-chat>
@@ -118,5 +122,8 @@
 <style scoped>
   .todoItem li {
     list-style: none;
+  }
+  .complete-btn {
+    width: 100px;
   }
 </style>

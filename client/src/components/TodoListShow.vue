@@ -6,9 +6,9 @@
           <v-subheader v-if="todoList.name" class="title">{{ todoList.name }}</v-subheader>
           <template v-for="(item, index) in todoItems">
             <v-divider v-if="index != 0" :inset="true" :key="index"></v-divider>
-            <v-list-tile :key="item.name" class="tile" avatar>
-              <v-list-tile-avatar @click="item.profileDialog = true">
-                <img :src="userAvatar(item)">
+            <v-list-tile :key="item.name" :class="item.name.includes(toSearch) ? 'tile': 'tile hide' " avatar>
+              <v-list-tile-avatar v-if="item.assignedUser">
+                <img :src="userAvatar(item.assignedUser)">
               </v-list-tile-avatar>
               <v-list-tile-content @click="showTodoItem(item)" class="tile-text">
                 <v-list-tile-title>{{ item.name }} <span :class="overDue(item.dueDate)? 'red': ''">{{ timeago().format(item.dueDate) }}</span></v-list-tile-title>
@@ -37,6 +37,10 @@ export default {
         this.fetchTodoListItems(this.flag)
       })
     })
+
+    window.events.$on('NewSearch', toSearch => {
+      this.toSearch = toSearch
+    })
   },
 
   watch: {
@@ -53,7 +57,9 @@ export default {
       todoList: '',
       userAvatar: utils.userAvatar,
       timeago: timeago,
-      flag: 'normal'
+      flag: 'normal',
+      finishedLoading: false,
+      toSearch: ''
     }
   },
 
@@ -96,6 +102,9 @@ export default {
         axios.get(window.HOST + '/user/' + participant).then(({ data }) => {
           // assuming only one participant for now
           this.todoItems[indexToAdd].assignedUser = data
+          let preve = this.todoItems
+          this.todoItems = []
+          this.todoItems = preve
         })
       })
     }
@@ -123,5 +132,8 @@ export default {
 
 .tile-text:hover {
   cursor: pointer;
+}
+.hide {
+  display: none;
 }
 </style>
