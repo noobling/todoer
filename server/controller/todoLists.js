@@ -33,12 +33,13 @@ module.exports.store = (req, res) => {
 module.exports.show = (req, res) => {
   TodoList.findById(req.params.todoListId, (err, todoList) => {
     if (err) {
-      console.log(err);
-      res.status(400).json(err);
     } else {
       res.json(todoList);
     }
-  });
+  })
+  .catch(err => {
+    res.status(400).json(err)
+  })
 };
 
 module.exports.users = (req, res) => {
@@ -62,11 +63,18 @@ module.exports.users = (req, res) => {
 module.exports.destroy = (req, res) => {
   const todoListIdToDel = req.params.todoListId;
 
-  TodoItem.deleteMany({ todoList: todoListIdToDel }, err => console.log(err));
+  TodoItem.deleteMany({ todoList: todoListIdToDel }, {
+    if (err) {
+      console.log(err)
+    }
+  });
 
-  TodoList.deleteOne({ _id: todoListIdToDel }, err => console.log(err));
-
-  res.json("TodoListDeleted");
+  TodoList.deleteOne({ _id: todoListIdToDel }, err => {
+    if (err) {
+      console.log(err)
+    }
+  });
+  res.json("TodoListDeleted");      
 };
 
 module.exports.index = (req, res) => {
@@ -99,5 +107,8 @@ module.exports.join = (req, res) => {
 module.exports.update = (req, res) => {
   TodoList.update({ _id: req.params.todoListId }, req.body).then(() => {
     res.json("Updated Todo List");
-  });
+  })
+  .catch(err => {
+    res.status(400).json(err)
+  })
 };

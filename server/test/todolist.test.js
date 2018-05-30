@@ -6,14 +6,8 @@ const TodoList = require("../models/todoList");
 const chai = require("chai");
 const request = require("supertest");
 const should = chai.should();
-describe("todolist", () => {
-  beforeEach(done => {
-    done();
-  });
 
-  afterEach(done => {
-    done();
-  });
+describe("todolist", () => {
   describe("POST /todolist", () => {
     let cookie = null;
     let id = null;
@@ -24,7 +18,7 @@ describe("todolist", () => {
         .send({
           email: "a@b.com",
           name: "jack wang1",
-          password: "asd123",
+          password: "password",
           skills: ["fwe", "skill"]
         })
         .end((err, res) => {
@@ -46,6 +40,70 @@ describe("todolist", () => {
               done();
             });
         });
+    });
+  });
+
+  describe("GET /todolist", () => {
+    it("should retrieve todo list", done => {
+      const todoList = new TodoList();
+      todoList.name = "todo list name";
+      todoList.description = "todo list description";
+      todoList.skills = ["skill1", "skill2"];
+      todoList.participants = ["5b0e3df2cb2d6e41407ea015"];
+      todoList.owner = "5b0e3df2cb2d6e41407ea015";
+      todoList.save().then(newTodoList => {
+        request
+          .agent(server)
+          .get("/api/todoList/" + newTodoList._id)
+          .end((err, res) => {
+            TodoList.collection.drop();
+            res.status.should.equal(200);
+            done();
+          });
+      });
+    });
+  });
+
+  // describe("DELETE /todolist", () => {
+  //   it("should delete todo list", done => {
+  //     const todoList = new TodoList();
+  //     todoList.name = "todo list name";
+  //     todoList.description = "todo list description";
+  //     todoList.skills = ["skill1", "skill2"];
+  //     todoList.participants = ["5b0e3df2cb2d6e41407ea015"];
+  //     todoList.owner = "5b0e3df2cb2d6e41407ea015";
+  //     todoList.save().then(newTodoList => {
+  //       request
+  //         .agent(server)
+  //         .delete("/api/todoList/" + newTodoList._id)
+  //         .end((err, res) => {
+  //           TodoList.collection.drop();
+  //           res.status.should.equal(200);
+  //           done();
+  //         });
+  //     });
+  //   });
+  // });
+
+  describe("PUT /todolist", () => {
+    it("should delete todo list", done => {
+      const todoList = new TodoList();
+      todoList.name = "new name";
+      todoList.description = "todo list description";
+      todoList.skills = ["skill1", "skill2"];
+      todoList.participants = ["5b0e3df2cb2d6e41407ea015"];
+      todoList.owner = "5b0e3df2cb2d6e41407ea015";
+      todoList.save().then(newTodoList => {
+        request
+          .agent(server)
+          .put("/api/todoList/" + newTodoList._id)
+          .send({name: 'change name'})
+          .end((err, res) => {
+            TodoList.collection.drop();
+            res.status.should.equal(200);
+            done();
+          });
+      });
     });
   });
 });

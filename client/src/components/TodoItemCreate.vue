@@ -105,27 +105,31 @@ export default {
   methods: {
     submit () {
       if (this.$refs.form.validate()) {
-        // Native form submission is not yet supported
-        axios(window.HOST + '/todoList/' + this.todoListId + '/todoItem/create', {
-          method: 'POST',
-          data: {
-            name: this.name,
-            description: this.description,
-            skills: this.skills,
-            participants: this.selectedUsers,
-            dueDate: this.dueDate,
-            autoAssign: this.autoAssign
-          },
-          withCredentials: true
-        })
-          .then(({ data }) => {
-            this.$router.push('/todolist/' + this.todoListId)
+        if (!this.dueDate) {
+          // eslint-disable-next-line
+          flash('Pleae enter a due date', 'error')
+        } else {
+          axios(window.HOST + '/todoList/' + this.todoListId + '/todoItem/create', {
+            method: 'POST',
+            data: {
+              name: this.name,
+              description: this.description,
+              skills: this.skills,
+              participants: this.selectedUsers,
+              dueDate: this.dueDate,
+              autoAssign: this.autoAssign
+            },
+            withCredentials: true
           })
-          .catch(err => {
-            // eslint-disable-next-line
-            flash('Failed to crete todo', 'error')
-            console.log(err.response.data.message)
-          })
+            .then(({ data }) => {
+              this.$router.push('/todolist/' + this.todoListId)
+            })
+            .catch(err => {
+              // eslint-disable-next-line
+              flash('Failed to crete todo', 'error')
+              console.log(err.response.data.message)
+            })
+        }
       }
     },
 

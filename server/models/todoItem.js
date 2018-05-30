@@ -11,18 +11,21 @@ let TodoItemSchema = new mongoose.Schema({
   },
   participants: {
     type: [mongoose.Schema.ObjectId],
+    required: true
   },
   skills: {
     type: [String]
   },
   dueDate: {
-    type: Date
+    type: Date,
+    required: true
   },
   creator: {
     type: mongoose.Schema.ObjectId
   },
   todoList: {
-    type: mongoose.Schema.ObjectId
+    type: mongoose.Schema.ObjectId,
+    required: true
   },
   completed: {
     type: Boolean,

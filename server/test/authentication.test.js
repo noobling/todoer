@@ -7,14 +7,6 @@ const request = require("supertest");
 const should = chai.should();
 
 describe("authentication", () => {
-  beforeEach(done => {
-    done();
-  });
-
-  afterEach(done => {
-    done();
-  });
-
   describe("POST /register", () => {
     const user = {
       email: "test@test.com",
