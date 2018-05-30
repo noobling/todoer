@@ -25,7 +25,6 @@ module.exports.store = (req, res) => {
       res.json(newTodoList);
     })
     .catch(err => {
-      console.log(err);
       res.status(400).json(err);
     });
 };

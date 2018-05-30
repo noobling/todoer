@@ -66,6 +66,7 @@ describe("authentication", () => {
 						.send({ email: "a@a.com", password: "asd123" })
 						.end((err, res) => {
 							res.status.should.equal(200);
+							User.collection.drop()												
 							done()
 						});
 				});
@@ -78,7 +79,6 @@ describe("authentication", () => {
         .send({ email: "wrongemail@email.com", password: "badpass" })
         .end((err, res) => {
 					res.status.should.equal(400);
-					User.collection.drop()					
 					done()
         });
 		});

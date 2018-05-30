@@ -1,7 +1,7 @@
 {
-  "name": "tester",
+  "name": "todoer",
   "version": "1.0.0",
-  "description": "just a test",
+  "description": "worlds best todo app",
   "author": "0x0 <ghstoreinvesting@gmail.com>",
   "private": true,
   "scripts": {

@@ -8,7 +8,7 @@ module.exports.loggedInUser = (req, res) => {
 };
 
 module.exports.index = (req, res) => {
-  User.find({}, (err, users) => {
+  User.find({}, "_id email name skills", (err, users) => {
     res.json(users);
   });
 };

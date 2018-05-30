@@ -5,10 +5,6 @@ const TodoItemChat = require("../models/todoItemChat");
 const ctrlNotifications = require('./notifications')
 
 module.exports.store = (req, res) => {
-  // if (!req.user) {
-  //   res.status(401).json({ message: "Authorization error" });
-  // }
-
   const todoItem = new TodoItem();
   todoItem.name = req.body.name;
   todoItem.description = req.body.description;

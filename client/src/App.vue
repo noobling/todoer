@@ -1,7 +1,9 @@
 <template>
   <v-app :dark="darkTheme">
     <Navbar></Navbar>
-    <router-view></router-view>
+    <transition name="bounce">
+      <router-view></router-view>    
+    </transition>
     <Flash></Flash>
     <v-footer class="blue darken-2 footer">
       <v-layout row wrap align-center>
@@ -57,4 +59,21 @@ export default {
     width: 100%;
     bottom: 0;
   }
+  .bounce-enter-active {
+  animation: bounce-in .5s;
+}
+.bounce-leave-active {
+  animation: bounce-in .5s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 </style>

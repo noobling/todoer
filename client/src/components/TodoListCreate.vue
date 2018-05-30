@@ -1,57 +1,61 @@
 <template>
   <v-content>
-    <v-container>
-        <h3 class="display-3">Create New Shared Todo List</h3>
-
-      <v-form ref="form" v-model="valid" lazy-validation>
-        <v-text-field
-          v-model="name"
-          :rules="nameRules"
-          label="Name"
-          required
-        ></v-text-field>
-        
-        <v-text-field
-          v-model="description"
-          :rules="descriptionRules"
-          label="Description"
-          textarea=""
-          required
-        ></v-text-field>
-
-        <v-select
-          v-model="selectedNames"
-          :items="names"
-          label="Who do you want to share this todo list with?"
-          chips
-          tags
-        ></v-select>
-
-        <v-select
-          v-model="skills"
-          :items="skillsList"
-          :rules="[v => v.length > 0 || 'Choose at least one skill']"
-          label="Skills needed for project (enter separated)"
-          chips
-          tags
-          required
-        ></v-select>
-
-        <v-text-field prepend-icon="attach_file" single-line
-                v-model="filename" label="Image"
-                ref="fileTextField"
-                @click.native="onFocus"></v-text-field>
-        <input type="file" accept="image/*"
-                ref="fileInput"
-                @change="onFileChange">
-        <v-btn
-          :disabled="!valid"
-          @click="submit"
-        >
-          Create
-        </v-btn>
-      </v-form>
-    </v-container>
+    <v-layout row mt-4>
+      <v-flex xs12 sm6 offset-sm3>
+        <h3 class="display-1">Create New Shared Todo List</h3>          
+        <v-form ref="form" v-model="valid" lazy-validation>
+          <v-text-field
+            v-model="name"
+            :rules="nameRules"
+            label="Name"
+            required
+          ></v-text-field>
+          
+          <v-text-field
+            v-model="description"
+            :rules="descriptionRules"
+            label="Description"
+            textarea=""
+            required
+          ></v-text-field>
+  
+          <v-select
+            v-model="selectedNames"
+            :items="names"
+            label="Participants"
+            :rules="[v => v.length > 0 || 'There must be at least one participant']"            
+            chips
+            tags
+            required
+          ></v-select>
+  
+          <v-select
+            v-model="skills"
+            :items="skillsList"
+            :rules="[v => v.length > 0 || 'Choose at least one skill']"
+            label="Skills needed for project"
+            chips
+            tags
+            required
+            @keyup.enter.native="submit"
+          ></v-select>
+  
+          <v-text-field prepend-icon="attach_file" single-line
+                  v-model="filename" label="Image"
+                  ref="fileTextField"
+                  @click.native="onFocus"></v-text-field>
+          <input type="file" accept="image/*"
+                  ref="fileInput"
+                  @change="onFileChange">
+          <v-btn
+            :disabled="!valid"
+            @click="submit"
+          >
+            Create
+          </v-btn>
+        </v-form>
+      </v-flex>
+    </v-layout>
   </v-content>
 </template>
 
@@ -65,9 +69,9 @@ export default {
 
   data () {
     return {
-      users: null,
-      selectedNames: null,
-      selectedUsers: null,
+      users: [],
+      selectedNames: [],
+      selectedUsers: [],
       names: [],
       valid: false,
       visible: true,
@@ -77,22 +81,25 @@ export default {
       descriptionRules: [v => !!v || 'Description is required'],
       skillsList: [],
       skills: null,
-      filename: ''
+      filename: '',
+      loggedInUser: null
     }
   },
 
   watch: {
     selectedNames: function (val) {
-      this.selectedUsers = []
-      val.forEach(selectedName => {
-        this.users.forEach(user => {
-          if (user.name === selectedName) {
-            this.selectedUsers.push(user._id)
+      if (val) {
+        this.selectedUsers = []
+        val.forEach(selectedName => {
+          this.users.forEach(user => {
+            if (user.name === selectedName) {
+              this.selectedUsers.push(user._id)
 
-            this.addUserSkills(user)
-          }
+              this.addUserSkills(user)
+            }
+          })
         })
-      })
+      }
     }
   },
 
@@ -148,22 +155,28 @@ export default {
     },
 
     fetchUsers () {
-      axios(window.HOST + '/users', {
-        method: 'GET',
-        withCredentials: true
-      }).then(({data}) => {
-        this.users = data
-        this.users.forEach((user) => {
-          if (user.name) {
-            this.names.push(user.name)
-          }
+      axios.get(window.HOST + '/loggedInUser', {withCredentials: true})
+      .then((result) => {
+        this.loggedInUser = result.data
+        axios(window.HOST + '/users', {
+          method: 'GET',
+          withCredentials: true
+        }).then(({data}) => {
+          this.users = []
+          data.forEach((user) => {
+            if (user.name !== this.loggedInUser.name) {
+              this.names.push(user.name)
+              this.users.push(user)
+            }
+          })
+          this.users.push(this.loggedInUser)
+          this.selectedNames.push(this.loggedInUser.name)
         })
       })
     },
 
     addUserSkills (user) {
       user.skills.forEach(userSkill => {
-        console.log(userSkill)
         if (this.skillsList.indexOf(userSkill) === -1) this.skillsList.push(userSkill)
       })
     }
