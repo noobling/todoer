@@ -59,7 +59,7 @@
                     <v-card-title primary-title class="layout justify-center">
                       <div class="headline text-xs-center">Responsive to the Core</div>
                     </v-card-title>
-                    <v-card-text class="text-sm-center">
+                    <v-card-text class="text-xs-center">
                       Browse the app anywhere on any device. 100% repsonsive, anything less would be not be acceptable. 
                     </v-card-text>
                   </v-card>
@@ -73,7 +73,7 @@
                       <div class="headline">Blazing Fast SPA App</div>
                     </v-card-title>
                     <v-card-text class="text-xs-center">
-                      Built from the ground up to be a fast modern web application. Pages load instantly, get work done faster.
+                      Built from the ground up to be a fast modern web application. Pages load instantly, get work done fast.
                     </v-card-text>
                   </v-card>
                 </v-flex>
@@ -86,7 +86,7 @@
                       <div class="headline text-xs-center">For Collaboration</div>
                     </v-card-title>
                     <v-card-text class="text-xs-center">
-                      We didn't hold back when it came to extending the software for collaboration. With real time chat and updates work with your team members more effectively.
+                      We didn't hold back when it came to extending the software for collaboration. With real time chat and updates, work with your team more effectively.
                     </v-card-text>
                   </v-card>
                 </v-flex>
@@ -121,7 +121,7 @@
                   <div class="headline">Thai Nguyen</div>
                 </v-card-title>
                 <v-card-text>
-                  Software engi. Check out my club too <a href="https://codersforcauses.org" target="_blank"> here </a>
+                  Software eng. Check out my club too <a href="https://codersforcauses.org" target="_blank"> here </a>
                 </v-card-text>
                 <v-list class="transparent">
                   <v-list-tile>
