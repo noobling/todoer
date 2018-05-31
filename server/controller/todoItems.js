@@ -10,7 +10,7 @@ module.exports.store = (req, res) => {
   todoItem.description = req.body.description;
   todoItem.skills = req.body.skills;
   todoItem.todoList = req.params.todoListId;
-  //todoItem.creator = req.user.id;
+  todoItem.priority = stringToNumPriority(req.body.priority)
   todoItem.dueDate = req.body.dueDate;
   if (req.body.autoAssign === true) {
     findMostSuitableUser(
@@ -34,7 +34,7 @@ module.exports.index = (req, res) => {
         $in: todoList.todoItems
       }
     })
-    .sort({dueDate: 1 })
+    .sort({priority: -1, dueDate: 1 })
     .then(todoItems => res.json(todoItems));
   });
 };
@@ -135,4 +135,17 @@ function findMostSuitableUser(todoListId, skills, cb) {
       }
     );
   });
+}
+
+function stringToNumPriority(priority) {
+  console.log(priority)
+  if (priority == 'Low') {
+    return 1
+  } else if (priority == 'Medium') {
+    return 2
+  } else if (priority == 'High') {
+    return 3
+  } else {
+    return 1
+  }
 }

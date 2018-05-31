@@ -30,6 +30,14 @@
             <div class="title">Due</div>
             <p class="body-1">{{ timeago().format(item.dueDate) }}</p>
           </li>
+          <li>
+            <div class="title">Priority</div>
+            <p class="body-1">{{ numPriorToStr(item.priority) }}</p>
+          </li>
+          <li>
+            <div class="title">Skills Needed</div>
+            <div><v-chip v-for="(skill, index) in item.skills" :key=index>{{ skill }}</v-chip></div>
+          </li>
         </ul>
       </v-card-text>
 
@@ -121,7 +129,22 @@
             // eslint-disable-next-line
             flash('Deleted Todo', 'warning')
           })
+      },
+
+      numPriorToStr (num) {
+        if (num === 1) return 'Low'
+        if (num === 2) return 'Medium'
+        if (num === 3) return 'High'
+        return 'Low'
+      },
+
+      priorColor (num) {
+        if (num === 1) return 'green'
+        if (num === 2) return 'blue'
+        if (num === 3) return 'red'
+        return 'green'
       }
+
     }
   }
 </script>

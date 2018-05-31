@@ -111,6 +111,10 @@ export default {
       this.fetchUserTodoLists()
     })
 
+    window.events.$on('DeletedTodoList', () => {
+      this.fetchUserTodoLists()
+    })
+
     this.fetchUser()
   },
 

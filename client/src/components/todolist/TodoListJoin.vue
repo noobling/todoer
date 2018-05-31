@@ -3,6 +3,7 @@
     <v-content>
       <v-layout column>
         <v-flex xs12>
+        <h1 class="display-1 text-xs-center mt-4" v-if="todoLists.length < 1">No todo list for you to join right now.</h1>          
           <v-card>
             <v-container fluid grid-list-md>
               <v-layout row wrap>

@@ -48,6 +48,14 @@
             tags
             required
           ></v-select>
+
+          <v-select
+            v-model="priority"
+            :items="priorities"
+            :rules="[v => !!v || 'Priority is required for todo']"
+            label="Priority"
+            required
+          ></v-select>
           
           <p class="title mt-3">Due Date</p>
           <v-date-picker v-model="dueDate" :landscape="true" full-width></v-date-picker>
@@ -89,7 +97,9 @@ export default {
       skillsList: [],
       todoListId: this.$route.params.todoListId,
       description: null,
-      name: null
+      name: null,
+      priority: 'Low',
+      priorities: ['Low', 'Medium', 'High']
     }
   },
 
@@ -117,7 +127,8 @@ export default {
               skills: this.skills,
               participants: this.selectedUsers,
               dueDate: this.dueDate,
-              autoAssign: this.autoAssign
+              autoAssign: this.autoAssign,
+              priority: this.priority
             },
             withCredentials: true
           })

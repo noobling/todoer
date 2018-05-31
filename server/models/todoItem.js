@@ -30,6 +30,11 @@ let TodoItemSchema = new mongoose.Schema({
   completed: {
     type: Boolean,
     default: false
+  },
+  priority: {
+    type: Number,
+    required: true,
+    default: 1
   }
 });
 

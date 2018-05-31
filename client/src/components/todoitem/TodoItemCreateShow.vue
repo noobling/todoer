@@ -32,6 +32,14 @@
       required
     ></v-select>
     
+    <v-select
+      v-model="priority"
+      :items="priorities"
+      :rules="[v => !!v || 'Priority is required for todo']"
+      label="Priority"
+      required
+    ></v-select>
+
     <p class="title mt-3">Due Date</p>
     <v-date-picker v-model="dueDate" :landscape="true" full-width></v-date-picker>
 
@@ -66,7 +74,9 @@ export default {
       skillsList: [],
       todoListId: this.$route.params.todoListId,
       description: this.item.description,
-      name: this.item.name
+      name: this.item.name,
+      priority: this.numPriorToStr(this.item.priority),
+      priorities: ['Low', 'Medium', 'High']
     }
   },
 
@@ -91,7 +101,8 @@ export default {
             skills: this.skills,
             participants: this.selectedUsers,
             dueDate: this.dueDate,
-            todoList: this.todoList
+            todoList: this.todoList,
+            priority: this.strPriorToNum(this.priority)
           },
           withCredentials: true
         })
@@ -102,7 +113,7 @@ export default {
           })
           .catch(err => {
             // eslint-disable-next-line
-            flash('Failed to crete todo', 'error')
+            flash('Failed to create todo', 'error')
             console.log(err.response.data.message)
           })
       }
@@ -139,6 +150,20 @@ export default {
       let day = d.getDate()
       day = day.toString().length < 2 ? '0' + day : day
       return d.getFullYear() + '-' + month + '-' + day
+    },
+
+    numPriorToStr (num) {
+      if (num === 1) return 'Low'
+      if (num === 2) return 'Medium'
+      if (num === 3) return 'High'
+      return 'Low'
+    },
+
+    strPriorToNum (str) {
+      if (str === 'Low') return 1
+      if (str === 'Medium') return 2
+      if (str === 'High') return 3
+      return 1
     }
   }
 }

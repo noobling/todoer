@@ -63,7 +63,7 @@ module.exports.users = (req, res) => {
 module.exports.destroy = (req, res) => {
   const todoListIdToDel = req.params.todoListId;
 
-  TodoItem.deleteMany({ todoList: todoListIdToDel }, {
+  TodoItem.deleteMany({ todoList: todoListIdToDel }, err => {
     if (err) {
       console.log(err)
     }

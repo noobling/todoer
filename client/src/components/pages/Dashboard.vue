@@ -75,8 +75,6 @@ export default {
 
   created () {
     this.fetchUserTodoLists()
-
-    window.events.$on('DeletedTodoList', () => this.fetchUserTodoLists())
   },
 
   data () {
@@ -92,10 +90,14 @@ export default {
     fetchUserTodoLists () {
       axios.get(window.HOST + '/loggedInUser', {withCredentials: true}).then((result) => {
         this.userId = result.data._id
+        window.events.$on('DeletedTodoList', () => this.$router.push('/profile/' + this.userId))
         axios(window.HOST + '/user/todoLists', {
           method: 'GET',
           withCredentials: true
         }).then(({data}) => {
+          this.participantTodoLists = []
+          this.ownerTodoLists = []
+          this.todoLists = []
           data.forEach(todoList => {
             if (todoList.owner === this.userId) {
               todoList.hideDel = false
