@@ -33,7 +33,9 @@ module.exports.index = (req, res) => {
       _id: {
         $in: todoList.todoItems
       }
-    }).then(todoItems => res.json(todoItems));
+    })
+    .sort({dueDate: 1 })
+    .then(todoItems => res.json(todoItems));
   });
 };
 
