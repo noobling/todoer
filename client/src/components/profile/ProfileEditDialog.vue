@@ -66,7 +66,7 @@ export default {
         v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
       ],
       skills: null,
-      items: ['Frontend', 'Backend', 'Marketing', 'Designer'],
+      items: ['Frontend', 'Backend', 'Marketing', 'Designer', 'Leadership', 'Databases', 'SEO', 'Writer', 'C', 'Java', 'HTML', 'CSS', 'Python', 'Security', 'Photography', 'Cooking'],
       dialog: false
     }
   },

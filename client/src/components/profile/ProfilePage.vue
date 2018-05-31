@@ -26,14 +26,22 @@
         <v-list three-line>
           <v-list-tile @click="">
             <v-list-tile-action>
-            <v-icon color="indigo">mail</v-icon>
+              <v-icon color="indigo">mail</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-            <v-list-tile-title>{{ user.email }}</v-list-tile-title>
-            <v-list-tile-sub-title>Personal</v-list-tile-sub-title>
+              <v-list-tile-title>{{ user.email }}</v-list-tile-title>
+              <v-list-tile-sub-title>Personal</v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
-          <v-divider inset></v-divider>
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-title>User skills</v-list-tile-title>
+              <div>
+                <v-chip v-for="(skill, index) in user.skills" :key=index>{{ skill }}</v-chip>
+              </div>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-divider></v-divider>
           <v-subheader>Public Shared Todo Lists</v-subheader>   
           <v-list-tile :to="'/todolist/' + todoList._id" v-for="todoList in todoLists" :key="todoList.description">
             <v-list-tile-action>

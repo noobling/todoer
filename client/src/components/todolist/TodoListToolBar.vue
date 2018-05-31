@@ -1,5 +1,5 @@
 <template>
-<v-layout mt-5>
+<v-layout mt-3>
   <v-flex xs12 sm6 offset-sm3>
     <v-toolbar
       xs12 sm6 offset-sm3
