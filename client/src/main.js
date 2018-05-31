@@ -16,6 +16,7 @@ Vue.prototype.loggedIn = false
 window.events = new Vue()
 
 window.HOST = 'http://localhost:3000/api'
+// window.HOST = '/api' // For production
 
 window.axios = require('axios')
 
