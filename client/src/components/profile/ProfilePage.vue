@@ -1,6 +1,6 @@
 <template>
 <v-content>
-  <v-layout row mt-4>
+  <v-layout row>
     <v-flex x12 sm6 offset-sm3>
       <v-card v-if="user">
         <v-card-media :src="backgroundImg(user)" height="300px">
@@ -23,7 +23,7 @@
           </v-card-title>
         </v-layout>
         </v-card-media>
-        <v-list two-line>
+        <v-list three-line>
           <v-list-tile @click="">
             <v-list-tile-action>
             <v-icon color="indigo">mail</v-icon>
@@ -57,7 +57,7 @@
 <script>
 import axios from 'axios'
 import ProfileEditDialog from './ProfileEditDialog'
-const utils = require('../js/utils')
+const utils = require('../../js/utils')
 
 export default {
   components: {ProfileEditDialog},

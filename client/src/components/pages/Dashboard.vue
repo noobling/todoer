@@ -66,9 +66,9 @@
 
 <script>
 import axios from 'axios'
-import GettingStartedDialog from './GettingStartedDialog'
-import TodoListBrief from './TodoListBrief'
-import TodoListJoinChildComponent from './TodoListJoinChildComponent'
+import GettingStartedDialog from '../helpers/GettingStartedDialog'
+import TodoListBrief from '../todolist/TodoListBrief'
+import TodoListJoinChildComponent from '../todolist/TodoListJoinChildComponent'
 
 export default {
   components: {GettingStartedDialog, TodoListBrief, TodoListJoinChildComponent},

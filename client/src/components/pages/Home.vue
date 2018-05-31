@@ -8,7 +8,7 @@
             justify-center
             class="white--text"
           >
-            <h1 class="white--text mb-2 display-3 text-xs-center mt-5">Todoer</h1>
+            <h1 class="white--text mb-2 display-3 text-xs-center top-margin">Todoer</h1>
             <div class="subheading mb-3 text-xs-center">by David and Thai</div>
             <v-layout class="mt-5">
               <v-flex>
@@ -21,7 +21,7 @@
                 </v-btn>
               </v-flex>
               <v-flex>
-                <a href="/info">
+                <a href="/info" class="no-decoration">
                   <v-btn large color="secondary">
                     Learn More
                   </v-btn>
@@ -168,7 +168,11 @@
 </template>
 
 <style>
-  a {
+  .top-margin {
+    margin-top: 150px
+  }
+
+  .no-decoration {
     text-decoration: none;
   }
 </style>

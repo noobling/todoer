@@ -26,7 +26,7 @@
 import timeago from 'timeago.js'
 import axios from 'axios'
 
-let utils = require('../js/utils')
+let utils = require('../../js/utils')
 
 export default {
   props: ['payload'],

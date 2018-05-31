@@ -25,7 +25,7 @@
 
 <script>
 import axios from 'axios'
-const utils = require('../js/utils')
+const utils = require('../../js/utils')
 
 export default {
   created () {
