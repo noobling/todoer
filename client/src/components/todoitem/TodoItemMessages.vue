@@ -23,7 +23,7 @@
   import axios from 'axios'
   import Pusher from 'pusher-js'
   import timeago from 'timeago.js'
-  let utils = require('../js/utils')
+  let utils = require('../../js/utils')
 
   export default {
     props: ['todoItem'],

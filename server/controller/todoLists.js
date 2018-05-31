@@ -89,9 +89,7 @@ module.exports.join = (req, res) => {
     result.save()
       .then(() => {
         res.json({ message: "Todo List Joined" });
-        const usersToNotif = result.participants
-        usersToNotif.push(result.owner)
-        usersToNotif.forEach((participant) => {
+        result.participants.forEach((participant) => {
           if (req.user.id != participant) {
             ctrlNotifications.store({
               forUser: participant,

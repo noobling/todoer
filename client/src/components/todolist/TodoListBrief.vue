@@ -37,7 +37,7 @@ export default {
       return Math.floor(Math.random() * Math.floor(max))
     },
     randomTodoListImg: function () {
-      return require('@/assets/todolist-' + this.getRandomInt(4) + '.jpg')
+      return require('@/assets/todolist-' + this.getRandomInt(5) + '.jpg')
     }
   }
 }

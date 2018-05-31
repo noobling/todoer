@@ -1,6 +1,6 @@
 <template>
 <v-content>
-  <v-layout row mt-4>
+  <v-layout row>
     <v-flex x12 sm6 offset-sm3>
       <v-card v-if="user">
         <v-card-media :src="backgroundImg(user)" height="300px">
@@ -23,17 +23,25 @@
           </v-card-title>
         </v-layout>
         </v-card-media>
-        <v-list two-line>
+        <v-list three-line>
           <v-list-tile @click="">
             <v-list-tile-action>
-            <v-icon color="indigo">mail</v-icon>
+              <v-icon color="indigo">mail</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-            <v-list-tile-title>{{ user.email }}</v-list-tile-title>
-            <v-list-tile-sub-title>Personal</v-list-tile-sub-title>
+              <v-list-tile-title>{{ user.email }}</v-list-tile-title>
+              <v-list-tile-sub-title>Personal</v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
-          <v-divider inset></v-divider>
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-title>User skills</v-list-tile-title>
+              <div>
+                <v-chip v-for="(skill, index) in user.skills" :key=index>{{ skill }}</v-chip>
+              </div>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-divider></v-divider>
           <v-subheader>Public Shared Todo Lists</v-subheader>   
           <v-list-tile :to="'/todolist/' + todoList._id" v-for="todoList in todoLists" :key="todoList.description">
             <v-list-tile-action>
@@ -57,7 +65,7 @@
 <script>
 import axios from 'axios'
 import ProfileEditDialog from './ProfileEditDialog'
-const utils = require('../js/utils')
+const utils = require('../../js/utils')
 
 export default {
   components: {ProfileEditDialog},

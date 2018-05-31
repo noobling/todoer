@@ -1,7 +1,7 @@
 <template>
   <v-content>
     <v-layout row mt-4>
-      <v-flex xs12 sm6 offset-sm3>
+      <v-flex xs10 sm6 offset-sm3 offset-xs1>
         <h1 class="display-1">Lets get back to work!</h1>
         <v-form ref="form" v-model="valid" lazy-validation class="mt-4">  
           <v-text-field

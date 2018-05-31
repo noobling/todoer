@@ -19,8 +19,8 @@
 </template>
    
 <script>
-import Navbar from '@/components/Navbar'
-import Flash from '@/components/Flash'
+import Navbar from '@/components/helpers/Navbar'
+import Flash from '@/components/helpers/Flash'
 
 export default {
   components: {

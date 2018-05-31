@@ -7,7 +7,7 @@
         <v-btn icon @click="dialog=false"><v-icon>close</v-icon></v-btn>
       </v-card-title>
 
-      <v-list three-line>
+      <v-list two-line v-if="!loading">
         <v-list-tile v-for="(participant, index) in participants" :key="index" @click="profile(participant)">
           <v-list-tile-avatar v-if="participant">
             <img :src="userAvatar(participant)">
@@ -19,13 +19,15 @@
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
+
+      <h1 class="text-xs-center pt-4 pb-4" v-if="loading">Loading...</h1>      
     </v-card>
   </v-dialog>
 </template>
 
 <script>
 import axios from 'axios'
-const utils = require('../js/utils')
+const utils = require('../../js/utils')
 
 export default {
   created () {
@@ -42,13 +44,15 @@ export default {
       dialog: false,
       userAvatar: utils.userAvatar,
       owner: null,
-      todoList: null
+      todoList: null,
+      loading: false
     }
   },
 
   methods: {
     fetchParticipants: function (todoList) {
       this.participants = []
+      this.loading = true
       todoList.participants.forEach(participant => {
         this.fetchUser(participant)
       })
@@ -57,6 +61,7 @@ export default {
     fetchUser: function (userId) {
       axios.get(window.HOST + '/user/' + userId).then(({ data }) => {
         this.participants.push(data)
+        this.loading = false
       })
     },
 

@@ -90,7 +90,7 @@
 <script>
 import axios from 'axios'
 import Notifications from './Notifications'
-const utils = require('../js/utils')
+const utils = require('../../js/utils')
 
 export default {
   components: { Notifications },
@@ -148,11 +148,6 @@ export default {
           icon: 'group',
           title: 'Join Todo List',
           action: '/todolist/join'
-        },
-        {
-          icon: 'settings',
-          title: 'Settings',
-          action: '/login'
         }
       ],
       miniVariant: false,

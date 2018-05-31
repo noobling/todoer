@@ -30,7 +30,7 @@
 <script>
 import axios from 'axios'
 import TodoListShow from './TodoListShow'
-import TodoItemDialog from './TodoItemDialog'
+import TodoItemDialog from '../todoitem/TodoItemDialog'
 import TodoListToolBar from './TodoListToolBar'
 import TodoListEditDialog from './TodoListEditDialog'
 import ParticipantListDialog from './ParticipantListDialog'

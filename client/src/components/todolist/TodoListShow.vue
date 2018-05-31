@@ -2,11 +2,18 @@
   <v-layout row mt-4 v-if="todoList">
     <v-flex xs12 sm6 offset-sm3>
       <v-card>
-        <v-list three-line>
-          <v-subheader v-if="todoList.name" class="title">{{ todoList.name }}</v-subheader>
+        <v-list three-line v-if="!loading">
+          <v-subheader v-if="todoList.name" class="title">
+            {{ todoList.name }} 
+            <v-btn v-html="yoursOnly? 'Everyones': 'Yours'" @click="yoursOnly = !yoursOnly"></v-btn>
+          </v-subheader>
           <template v-for="(item, index) in todoItems">
             <v-divider v-if="index != 0" :inset="true" :key="index"></v-divider>
-            <v-list-tile :key="item.name" :class="item.name.includes(toSearch) ? 'tile': 'tile hide' " avatar>
+            <v-list-tile 
+              :key="item.name" 
+              :class="item.name.includes(toSearch) ? 'tile': 'tile hide' "
+              v-if="shouldShow(item)"
+              avatar>
               <v-list-tile-avatar v-if="item.assignedUser">
                 <img :src="userAvatar(item.assignedUser)">
               </v-list-tile-avatar>
@@ -17,6 +24,7 @@
             </v-list-tile> 
           </template>
         </v-list>
+        <h1 class="text-xs-center pt-4 pb-4" v-if="loading">Loading...</h1>
       </v-card>
     </v-flex>
   </v-layout>
@@ -26,7 +34,7 @@
 import timeago from 'timeago.js'
 import axios from 'axios'
 
-let utils = require('../js/utils')
+let utils = require('../../js/utils')
 
 export default {
   props: ['payload'],
@@ -59,7 +67,9 @@ export default {
       timeago: timeago,
       flag: 'normal',
       finishedLoading: false,
-      toSearch: ''
+      toSearch: '',
+      loading: false,
+      yoursOnly: false
     }
   },
 
@@ -77,8 +87,18 @@ export default {
     },
 
     fetchTodoListItems (flag) {
+      this.loading = true
       axios.get(window.HOST + '/todolist/' + this.todoList._id + '/todoItems').then(({ data }) => {
         this.todoItems = []
+        let completedCount = 0
+        let todoCount = 0
+        for (let i = 0; i < data.length; i++) {
+          data[i].completed ? completedCount++ : todoCount++
+        }
+
+        if (this.flag === 'completed' && completedCount === 0) this.loading = false
+        else if (this.flag === 'normal' && todoCount === 0) this.loading = false
+
         for (let i = 0; i < data.length; i++) {
           if (flag === 'completed') {
             if (data[i].completed) {
@@ -105,8 +125,21 @@ export default {
           let preve = this.todoItems
           this.todoItems = []
           this.todoItems = preve
+          this.loading = false
         })
       })
+    },
+
+    shouldShow (item) {
+      if (this.yoursOnly) {
+        if (item.assignedUser._id === window.user_id) {
+          return true
+        } else {
+          return false
+        }
+      } else {
+        return true
+      }
     }
   }
 }

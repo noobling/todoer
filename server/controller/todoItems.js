@@ -95,10 +95,7 @@ function saveTodoItem(todoItem, req, res) {
 function sendNotifs(req) {
   TodoList.findById(req.params.todoListId)
     .then(todoList => {
-      const usersToNotif = todoList.participants
-      usersToNotif.push(todoList.owner)
-      console.log(usersToNotif)
-      usersToNotif.forEach((participant) => {
+      todoList.participants.forEach((participant) => {
         if (req.user.id != participant) {
           ctrlNotifications.store({
             forUser: participant,
