@@ -74,6 +74,9 @@ head
       p Unable to access back end from frontend dev server due to CORS
       h2 Solution
       p You have to use the CORS library in express server then set Access-Control-Allow-Credentials to true and withCredentials to true in your http request library. Then you need to add this to app.js app.use(cors({credentials: true, origin: 'frontendserveraddress'})); 
+    #slide3.slide
+      h1 Testing
+      p The mocha testing framework is very minimal it was hard writing tests espcially when we needed to maintain session between tests. Also the async nature of javascript made it even more difficult because different tests would conflict with each other.
   #section2.section
     .intro
       h1 Matching Algorithm

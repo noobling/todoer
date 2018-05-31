@@ -35,6 +35,37 @@ describe("user", () => {
     });
   });
 
+  describe("PUT /user", () => { 
+    let cookie = null; 
+    let id = null; 
+    it("should be able to update user", done => { 
+      request 
+        .agent(server) 
+        .post("/api/register") 
+        .send({ 
+          email: "a@e.com", 
+          name: "jack wang1", 
+          password: "password", 
+          skills: ["fwe", "skill"] 
+        }) 
+        .end((err, res) => { 
+          [cookie] = res.headers["set-cookie"].pop().split(";"); 
+          id = res.body._id; 
+          let req = request.agent(server).put("/api/user"); 
+          req.cookies = cookie; 
+          req.send({name: 'new name'}) 
+            .end((err, res) => { 
+              User.findById(id).then((user) => { 
+                user.name.should.equal('new name') 
+                res.status.should.equal(200);        
+                User.collection.drop();          
+                done();                                 
+              }) 
+          }); 
+        }); 
+    }); 
+  });
+
   describe("GET /user", () => {
     let cookie = null;
     let id = null;
@@ -58,6 +89,7 @@ describe("user", () => {
             res.status.should.equal(200);
             res.body.email.should.equal("a@d.com");
             done();
+            process.exit()
           });
         });
     });

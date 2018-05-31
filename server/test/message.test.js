@@ -4,6 +4,7 @@ const server = require("../app");
 const User = require("../models/user");
 const TodoList = require("../models/todoList");
 const TodoItem = require("../models/todoItem");
+const TodoItemChat = require("../models/todoItemChat");
 const chai = require("chai");
 const request = require("supertest");
 const should = chai.should();
@@ -36,10 +37,11 @@ describe("message test", () => {
               .post("/api/todoItem/" + newTodoItem._id + "/chat");
             req.cookies = cookie;
             req.send({ message: "hello" }).end((err, res) => {
-              User.collection.drop()
-              res.body.message.should.equal('hello')
+              User.collection.drop();
+              TodoItemChat.collection.drop();
+              res.body.message.should.equal("hello");
               res.status.should.equal(200);
-              done()
+              done();
             });
           });
       });
