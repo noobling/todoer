@@ -25,6 +25,9 @@ head
       font-family: arial,helvetica;   
       font-size: 24px;   
     }
+    .margin-bottom {
+      margin-bottom: 100px;
+    }
     /* Centered texts in each section
     * --------------------------------------- */
     .section{
@@ -52,15 +55,16 @@ head
   script(type='text/javascript').
     $(document).ready(function() {
       $('#fullpage').fullpage({
-        anchors: ['firstPage', 'secondPage', '3rdPage'],
-        sectionsColor: ['#0094F0', '#FF4F74', '#FFC600'],
+        anchors: ['firstPage', 'secondPage', '3rdPage', 'fourthPage', 'fifthPage', 'sixthPage', 'seventhPage'],
+        sectionsColor: ['#0094F0', '#FF4F74', '#FFC600', '#FF3D2E', '#00C59D', '#79917C', '#DACA00'],
       });
     });
 #fullpage
   #section0.section
     .intro
-      h1 The Architecture
-      p SPA with express API server
+      h1 The Architecture (tech stack)
+      p SPA Vue + Vuetify with express API server + MongoDB
+      p Scroll down for more
       a.info-page-btn(href="/") BACK TO APP
   #section1.section
     #slide1.slide
@@ -75,8 +79,35 @@ head
       h2 Solution
       p You have to use the CORS library in express server then set Access-Control-Allow-Credentials to true and withCredentials to true in your http request library. Then you need to add this to app.js app.use(cors({credentials: true, origin: 'frontendserveraddress'})); 
     #slide3.slide
-      h1 Testing
+      h1.margin-bottom Testing
       p The mocha testing framework is very minimal it was hard writing tests espcially when we needed to maintain session between tests. Also the async nature of javascript made it even more difficult because different tests would conflict with each other.
+    #slide4.slide
+      h1 Asynchronous nature of javascript
+      p Leading on from the previous challenge javascript being async causes a lot of bugs because it is very different from other programming languages that just simply run from top down
   #section2.section
     .intro
       h1 Matching Algorithm
+      p Users can be auto assigned to todos through the matching algorithm. The matching algorithm works as follows the most suitable user is determined by the number of skills they have in common with the todo. The user with the highest number of matching skills are assigned the todo.
+  #section3.section
+    .intro
+      h1 The web app design
+      p The back end is a very simple api server. Most of the logic and data manipulation occurs in the frontend. This allows us to utilise the strength of express (an un opinionated minimalist web framework) and the power of Vue to write a data driven app.
+  #section4.section
+    .intro
+      h1 Testing and validation strategies
+      p The back end test framework: supertest, chai and mocha. Supertest for making http requests, chai for assertions and mocha for the testing framework. Frontend validation comes out of the box with Vuetify. Back end validation comes from mongoose. `update` does run through the schema validation and only updates valid data.
+  #section5.section
+    .intro
+      h1 References
+      p https://alvarotrigo.com/fullPage/
+      p https://vuetifyjs.com/
+      p https://vuejs.org/
+      p https://github.com/noobling/
+      p https://www.mongodb.com/
+  #section6.section
+    .intro
+      h1 Additional features
+      p Real time chat for each todo
+      p Real time notifications for when a new user joins your todo list and when a user creates a new todo
+      p Emails on sign up
+

@@ -45,13 +45,13 @@
             @keyup.enter.native="submit"
           ></v-select>
   
-          <v-text-field prepend-icon="attach_file" single-line
+          <!-- <v-text-field prepend-icon="attach_file" single-line
                   v-model="filename" label="Image"
                   ref="fileTextField"
                   @click.native="onFocus"></v-text-field>
           <input type="file" accept="image/*"
                   ref="fileInput"
-                  @change="onFileChange">
+                  @change="onFileChange"> -->
           <v-btn
             :disabled="!valid"
             @click="submit"
