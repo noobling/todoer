@@ -15,7 +15,7 @@ Vue.prototype.loggedIn = false
 // The global event bus where we pass data between components
 window.events = new Vue()
 
-window.HOST = 'http://localhost:3000/api'
+window.HOST = 'http://localhost:3000/api' // For dev
 // window.HOST = '/api' // For production
 
 window.axios = require('axios')

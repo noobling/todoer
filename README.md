@@ -1,8 +1,12 @@
+# Todoer
+## by David Yu (21711933)
+## and Thai Nguyen (21986407)
+
 ## Running tests
 `npm run mocha`
 
 ## Running web app
-cd into server directory and run npm start
+cd into server directory and run `npm start`
 
 ## Setting up the dev environment
 1. Make sure you have mongo installed and running

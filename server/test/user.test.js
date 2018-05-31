@@ -89,7 +89,9 @@ describe("user", () => {
             res.status.should.equal(200);
             res.body.email.should.equal("a@d.com");
             done();
-            process.exit()
+            setTimeout(function () {
+              process.exit()
+            }, 1000)
           });
         });
     });
