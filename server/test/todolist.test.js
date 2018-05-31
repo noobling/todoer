@@ -34,8 +34,7 @@ describe("todolist", () => {
               skills: ["Skill1", "Skill2"]
             })
             .end((err, res) => {
-              User.collection.drop();
-              TodoList.collection.drop();
+              //User.collection.drop();
               res.status.should.equal(200);
               done();
             });
@@ -63,27 +62,6 @@ describe("todolist", () => {
       });
     });
   });
-
-  // describe("DELETE /todolist", () => {
-  //   it("should delete todo list", done => {
-  //     const todoList = new TodoList();
-  //     todoList.name = "todo list name";
-  //     todoList.description = "todo list description";
-  //     todoList.skills = ["skill1", "skill2"];
-  //     todoList.participants = ["5b0e3df2cb2d6e41407ea015"];
-  //     todoList.owner = "5b0e3df2cb2d6e41407ea015";
-  //     todoList.save().then(newTodoList => {
-  //       request
-  //         .agent(server)
-  //         .delete("/api/todoList/" + newTodoList._id)
-  //         .end((err, res) => {
-  //           TodoList.collection.drop();
-  //           res.status.should.equal(200);
-  //           done();
-  //         });
-  //     });
-  //   });
-  // });
 
   describe("PUT /todolist", () => {
     it("should delete todo list", done => {

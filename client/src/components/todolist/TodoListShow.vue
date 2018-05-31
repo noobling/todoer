@@ -3,10 +3,17 @@
     <v-flex xs12 sm6 offset-sm3>
       <v-card>
         <v-list three-line v-if="!loading">
-          <v-subheader v-if="todoList.name" class="title">{{ todoList.name }}</v-subheader>
+          <v-subheader v-if="todoList.name" class="title">
+            {{ todoList.name }} 
+            <v-btn v-html="yoursOnly? 'Everyones': 'Yours'" @click="yoursOnly = !yoursOnly"></v-btn>
+          </v-subheader>
           <template v-for="(item, index) in todoItems">
             <v-divider v-if="index != 0" :inset="true" :key="index"></v-divider>
-            <v-list-tile :key="item.name" :class="item.name.includes(toSearch) ? 'tile': 'tile hide' " avatar>
+            <v-list-tile 
+              :key="item.name" 
+              :class="item.name.includes(toSearch) ? 'tile': 'tile hide' "
+              v-if="shouldShow(item)"
+              avatar>
               <v-list-tile-avatar v-if="item.assignedUser">
                 <img :src="userAvatar(item.assignedUser)">
               </v-list-tile-avatar>
@@ -61,7 +68,8 @@ export default {
       flag: 'normal',
       finishedLoading: false,
       toSearch: '',
-      loading: false
+      loading: false,
+      yoursOnly: false
     }
   },
 
@@ -120,6 +128,18 @@ export default {
           this.loading = false
         })
       })
+    },
+
+    shouldShow (item) {
+      if (this.yoursOnly) {
+        if (item.assignedUser._id === window.user_id) {
+          return true
+        } else {
+          return false
+        }
+      } else {
+        return true
+      }
     }
   }
 }
